@@ -53,15 +53,15 @@ Que ce passera-t-il en théorie quantique des champs (QFT) ?}
 \textbf{Quelle est la condition pour qu’un tenseur soit invariant sous transformations de Lorentz ?}
 \vspace{2ex}
 
-Soit un tenseur de rang $(m,n)$, $m,n \in \mathbb{N}$, avec les éléments $T\indices{^{\mu_1\dots \mu_n}_{\nu_1\dots\nu_m}}$, et la métrique de Minkowsky $\eta$. Soit une transformation de 
+Soit un tenseur de rang $(m,n)$, $m,n \in \mathbb{N}$, avec les éléments $T\indices{^{\mu_1\dots \mu_m}_{\nu_1\dots\nu_n}}$, et la métrique de Minkowsky $\eta$. Soit une transformation de 
 Lorentz $\Lambda$ définit tel que
 \begin{equation}
         \eta_{\mu \nu} = \Lambda\indices{^\alpha_\mu} \Lambda\indices{^\beta_\nu} \eta_{\alpha\beta}
 \end{equation} 
 Pour que $T$ soit un invariant de Lorentz, il doit satisfaire
 \begin{equation}
-        \boxed{ T\indices{^{\mu_1\dots\mu_n}_{\nu_1\dots\nu_m}} = \Lambda\indices{^{\mu_1}_{\alpha_1}} \dots \Lambda\indices{^{\mu_n}_{\alpha_n}} 
-        \Lambda\indices{^{\beta_1}_{\nu_1}} \dots \Lambda\indices{^{\beta_m}_{\eta_m}} T\indices{^{\alpha_1\dots \alpha_n}_{\beta_1 \dots \beta_m}}} \, ,
+        \boxed{ T\indices{^{\mu_1\dots\mu_m}_{\nu_1\dots\nu_n}} = \Lambda\indices{^{\mu_1}_{\alpha_1}} \dots \Lambda\indices{^{\mu_m}_{\alpha_m}} 
+        \Lambda\indices{^{\beta_1}_{\nu_1}} \dots \Lambda\indices{^{\beta_n}_{\nu_n}} T\indices{^{\alpha_1\dots \alpha_m}_{\beta_1 \dots \beta_n}}} \, ,
 \end{equation}
 similairement à la métrique de Minkowsky.
 
@@ -84,16 +84,16 @@ Lorentz (par définition), alors $\delta^{\nu}_{\mu}$ l'est aussi.
 %\end{proof}
 
 \begin{solution}
-        Le tenseur de Levi-Civita est un invariant de Lorentz.
+Le tenseur de Levi-Civita est un invariant de Lorentz.
 \end{solution}
 \begin{proof}
 On applique une transformation de Lorentz sur le tenseur de Levi-Civita
 \begin{align*}
-        (\epsilon')^{\mu\nu\rho\sigma} = \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} \epsilon^{\alpha\beta\gamma\delta }
+        (\epsilon')^{\mu\nu\rho\sigma} = \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} \epsilon^{\alpha\beta\gamma\delta }\, .
 \end{align*} 
 On examine maintenant certains éléments du tenseur transformé. Je note $S_n^{+} = \{\sigma \in S_n \mid \mathrm{sgn}(\sigma) = +1\}$ les permutations paires 
 pour $n$ indices, où $\mathrm{sgn}(\sigma)$ dénote le signe du déterminant de la matrice associé à la permutation $\sigma$.
-Par example, $S_3^{+} = \{(1\, 2\, 3),\, (3\, 1\, 2), (2\, 3\, 1)\}$; la matrice associé 
+Par exemple, $S_3^{+} = \{(1\, 2\, 3),\, (3\, 1\, 2), (2\, 3\, 1)\}$; la matrice associé 
 à $\sigma = (3\, 1\, 2)$ est
 \begin{equation*}
 M_{\sigma} = \begin{pmatrix}
@@ -104,14 +104,12 @@ M_{\sigma} = \begin{pmatrix}
 \end{equation*} 
 Elle possède un déterminant positif, $\mathrm{det}(M_\sigma) = 1$, de sortes que $\mathrm{sgn}(\sigma) = +1$. 
 L'ensemble des permutations impaires est noté $S_n^{-}$. Naturellement, $|S_n^{+}| = |S_n^{-}| = \frac{n!}{2}$. 
-En utilisant la propriété complètement 
-antisymétrique du tenseur de Levi-Civita
+En utilisant la propriété complètement antisymétrique du tenseur de Levi-Civita
 \begin{equation}
         \epsilon^{\mu\nu\rho\sigma} = \begin{cases}
                 +1 & \mu\nu\rho\sigma \in S_4^{+} \\
                 -1 & \mu\nu\rho\sigma \in S_4^{-} \\
                 0 & \mathrm{autrement}
-
         \end{cases}\, ,
 \end{equation} 
 on trouve que
@@ -121,7 +119,7 @@ on trouve que
  \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} 
 -
         \sum_{\alpha\beta\gamma\delta \in S_4^{-}} 
- \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} 
+ \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} \, .
 \end{equation} 
 
 \paragraph{Cas des indices identiques:} Sous cette forme, on peut résoudre les valeurs du tenseur transformé lorsqu'au moins 2 indices sont identiques. Dans ce cas, 
@@ -139,44 +137,46 @@ considérons le cas $\mu\nu\rho\sigma = 0012$, où les deux premiers indices son
 -
 \Lambda\indices{^{0}_{1}} \Lambda\indices{^{0}_{0}} \Lambda\indices{^{1}_{2}} \Lambda\indices{^{2}_{3}} 
 -\dots \\
-                           &= 0
+&= 0\, .
 \end{align*}
 En effet, pour chaque permutations $\alpha\beta\gamma\delta \in S_4^{+}$, on peut échanger $\alpha$ et $\beta$, 
 de sortes qu'on peut toujours trouver le terme $\beta\alpha\gamma\delta \in S_4^{-}$ dans la somme 
 sur les indices impaires qui annule le terme $\alpha\beta\gamma\delta$ dans la première somme.
-Cet argument se généralise à tout autre cas où au moins deux indices sont identiques.
+Cet argument se généralise à tout autre cas où au moins deux indices parmis $\mu\nu\rho\sigma$ sont identiques.
 
 \paragraph{Cas des indices distincts:} 
-Je poursuis la démonstration avec l'exemple $\mu\nu\rho\sigma=1234$. Pour le résoudre, on doit démontrer que 
-$(\epsilon')^{1234} = \mathrm{det}(\Lambda) = 1$. Le fait qu'une transformation de Lorentz a un déterminant unité suit du fait qu'une transformation de Lorentz doit satisfaire la condition
+Je poursuis la démonstration avec l'exemple $\mu\nu\rho\sigma=0123$. Pour le résoudre, on doit démontrer que 
+$(\epsilon')^{0123} = \mathrm{det}(\Lambda) = 1$. Le fait qu'une transformation de Lorentz a un déterminant unité suit du fait qu'une transformation de Lorentz doit satisfaire la condition
 \begin{equation}
-        \Lambda(-v) = \Lambda(v)^{-1}
+        \Lambda(-v) = \Lambda(v)^{-1}\, ,
 \end{equation} 
 où $v$ est le paramètre de la transformation (vitesse pour un boost, angle pour une rotation). Puisque 
-$\Lambda(-v) = R(\pi) \Lambda(v) R(\pi) \implies \mathrm{det}(\Lambda(-v)) = \mathrm{det}(\Lambda(v))$, il suit que, 
+$\Lambda(-v) = R(\pi)^{T} \Lambda(v) R(\pi) \implies \mathrm{det}(\Lambda(-v)) = \mathrm{det}(\Lambda(v))$, il suit que, 
 $\mathrm{det}(\Lambda) = \pm 1$. Finalement, on requiert que $\Lambda(0) = \bbone$, la matrice identité, donc $ \mathrm{det}(\Lambda(0)) = 1\implies \mathrm{det}(\Lambda(v)) = 1$. 
 
 La formule de Leibniz pour le déterminant nous indique que
 \begin{equation}\label{eq:Leibniz}
-        \mathrm{det}(\Lambda) = \Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{2}_{\beta}}\Lambda\indices{^{3}_{\gamma}}\Lambda\indices{^{4}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\, .
+        \mathrm{det}(\Lambda) = \Lambda\indices{^{0}_{\alpha}}\Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\gamma}}\Lambda\indices{^{3}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\, .
 \end{equation} 
-Or, le côté droit de l'égalité est précisément le résultat de la transformation de Lorentz pour l'élement $1234$ du tenseur de Levi-Civita, 
-donc $(\epsilon')^{1234} = \mathrm{det}(\Lambda) = 1$. 
+Or, le côté droit de l'égalité est précisément le résultat de la transformation de Lorentz pour l'élement $0123$ du tenseur de Levi-Civita, 
+donc $(\epsilon')^{0123} = \mathrm{det}(\Lambda) = 1$. 
 Les autres cas suivent par la permutation des indices contravariant au côté droit de la formule de Leibniz. 
-Par exemple, supposons que $\mu\nu\rho\sigma = 2143 \in S_4^{+}$:
+Par exemple, supposons que $\mu\nu\rho\sigma = 1032 \in S_4^{+}$:
 \begin{align*}
-        (\epsilon')^{2143} &= \Lambda\indices{^{2}_{\alpha}}\Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{4}_{\gamma}}\Lambda\indices{^{3}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\\
-                           &= \Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\alpha}}\Lambda\indices{^{3}_{\delta}}\Lambda\indices{^{4}_{\gamma}}\epsilon^{\alpha\beta\gamma\delta}  \hspace{1cm} \{\text{Réarrengement des termes}\} \\
-               &= \Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\alpha}}\Lambda\indices{^{3}_{\delta}}\Lambda\indices{^{4}_{\gamma}}\epsilon^{\beta\alpha\delta\gamma}  \hspace{1cm} \{\text{Permutation paire des indices du tenseur de Levi-Civita} \} \\
-               &= \Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{2}_{\beta}}\Lambda\indices{^{3}_{\gamma}}\Lambda\indices{^{4}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}  \hspace{1cm} \{\text{Redéfinition des indices factices} \} \\
-               &= \mathrm{det}(\Lambda) = 1\\ 
+        (\epsilon')^{1032} &= \Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{0}_{\beta}}\Lambda\indices{^{3}_{\gamma}}\Lambda\indices{^{2}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\\
+                           &= \Lambda\indices{^{0}_{\beta}}\Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{2}_{\delta}}\Lambda\indices{^{3}_{\gamma}}\epsilon^{\alpha\beta\gamma\delta}  \hspace{1cm} \{\text{Réarrangement des termes}\} \\
+               &= \Lambda\indices{^{0}_{\beta}}\Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{2}_{\delta}}\Lambda\indices{^{3}_{\gamma}}\epsilon^{\beta\alpha\delta\gamma}  \hspace{1cm} \{\text{Permutation paire des indices du tenseur de Levi-Civita} \} \\
+               &= \Lambda\indices{^{0}_{\alpha}}\Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\gamma}}\Lambda\indices{^{3}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}  \hspace{1cm} \{\text{Redéfinition des indices factices} \} \\
+               &= \mathrm{det}(\Lambda) = 1\, .\\ 
 \end{align*} 
 Comme l'argument est général, on a que $(\epsilon')^{\mu\nu\rho\sigma} = \epsilon^{\mu\nu\rho\sigma},\,\, \forall \mu\nu\rho\sigma \in S_4^{+}$.
 L'argument pour une permutation impaire est très similaire et nous mène à conclure que 
-$$(\epsilon')^{\mu\nu\rho\sigma} = -\mathrm{det}(\Lambda) = \epsilon^{\mu\nu\rho\sigma}, \,\, \forall \mu\nu\rho\sigma \in S_4^{-}\, .$$ 
+\begin{equation}
+(\epsilon')^{\mu\nu\rho\sigma} = -\mathrm{det}(\Lambda) = \epsilon^{\mu\nu\rho\sigma}, \,\, \forall \mu\nu\rho\sigma \in S_4^{-}\, .
+\end{equation} 
 Donc, ayant couvert tous les cas possible, on conclut que
 \begin{equation}
-        \boxed{(\epsilon')^{\mu\nu\rho\sigma} = \epsilon^{\mu\nu\rho\sigma}}
+        (\epsilon')^{\mu\nu\rho\sigma} = \epsilon^{\mu\nu\rho\sigma}\, .
 \end{equation} 
 \end{proof}
         

@@ -1,0 +1,245 @@
+\documentclass{article}
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!blue}
+}
+\usepackage{xcolor}
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{bm, bbm}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{tensor}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Alexandre Adam \\ 20090755}
+\lhead{Théorie des champs 1 (PHY 6812) \\ William Witczak-Krempa}
+\chead{Devoir 1}
+\rfoot{\today}
+\cfoot{\thepage}
+
+\numberwithin{equation}{section}
+\renewcommand\thesubsection{\alph{subsection})}
+\renewcommand\thesubsubsection{\Roman{subsubsection}}
+\DeclareRobustCommand{\bbone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
+%\newtheorem*{remark}{Remark}
+\theoremstyle{solution}
+\newtheorem{solution}{Réponse}[section]
+
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\section{Un peu de relativité}
+
+\subsection{}
+\textbf{Classiquement, un photon se propageant dans le vide peut-il se désintégrer en une paire
+électron-positron ? 
+%Expliquez votre résultat mathématique de manière heuristique. 
+Que ce passera-t-il en théorie quantique des champs (QFT) ?}
+\subsection{}
+\textbf{Quelle est la condition pour qu’un tenseur soit invariant sous transformations de Lorentz ?}
+\vspace{2ex}
+
+Soit un tenseur de rang $(m,n)$, $m,n \in \mathbb{N}$, avec les éléments $T\indices{^{\mu_1\dots \mu_n}_{\nu_1\dots\nu_m}}$, et la métrique de Minkowsky $\eta$. Soit une transformation de 
+Lorentz $\Lambda$ définit tel que
+\begin{equation}
+        \eta_{\mu \nu} = \Lambda\indices{^\alpha_\mu} \Lambda\indices{^\beta_\nu} \eta_{\alpha\beta}
+\end{equation} 
+Pour que $T$ soit un invariant de Lorentz, il doit satisfaire
+\begin{equation}
+        \boxed{ T\indices{^{\mu_1\dots\mu_n}_{\nu_1\dots\nu_m}} = \Lambda\indices{^{\mu_1}_{\alpha_1}} \dots \Lambda\indices{^{\mu_n}_{\alpha_n}} 
+        \Lambda\indices{^{\beta_1}_{\nu_1}} \dots \Lambda\indices{^{\beta_m}_{\eta_m}} T\indices{^{\alpha_1\dots \alpha_n}_{\beta_1 \dots \beta_m}}} \, ,
+\end{equation}
+similairement à la métrique de Minkowsky.
+
+\subsection{}
+\textbf{Les tenseurs $\delta_{\mu}^{\nu}$ et  $\epsilon^{\mu\nu\rho\sigma}$ (Levi-Civita) sont-ils invariants de Lorentz ?}
+\vspace{2ex}
+\begin{solution}
+        Le delta de Kronecker $\delta_\mu^{\nu}$ est un invariant de Lorentz.
+\end{solution}
+\begin{proof}
+On remarque que $\delta^{\nu}_{\mu} = \eta_{\mu \alpha} \eta^{\alpha\nu}$. Puisque la métrique de Minkowsky est une invariant de 
+Lorentz (par définition), alors $\delta^{\nu}_{\mu}$ l'est aussi.
+\end{proof}
+%\begin{proof}[Solution alternative]
+%Soit $\Lambda$ une transformation de Lorentz. Alors,
+%\begin{align}
+        %(\delta')^{\nu}_\mu &= \Lambda\indices{^{\nu}_{\alpha}} \Lambda\indices{^{\beta}_{\mu}} \delta^{\beta}_{\alpha} \\
+%\end{align}
+        
+%\end{proof}
+
+\begin{solution}
+        Le tenseur de Levi-Civita est un invariant de Lorentz.
+\end{solution}
+\begin{proof}
+On applique une transformation de Lorentz sur le tenseur de Levi-Civita
+\begin{align*}
+        (\epsilon')^{\mu\nu\rho\sigma} = \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} \epsilon^{\alpha\beta\gamma\delta }
+\end{align*} 
+On examine maintenant certains éléments du tenseur transformé. Je note $S_n^{+} = \{\sigma \in S_n \mid \mathrm{sgn}(\sigma) = +1\}$ les permutations paires 
+pour $n$ indices, où $\mathrm{sgn}(\sigma)$ dénote le signe du déterminant de la matrice associé à la permutation $\sigma$.
+Par example, $S_3^{+} = \{(1\, 2\, 3),\, (3\, 1\, 2), (2\, 3\, 1)\}$; la matrice associé 
+à $\sigma = (3\, 1\, 2)$ est
+\begin{equation*}
+M_{\sigma} = \begin{pmatrix}
+        0 & 0 & 1 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+\end{pmatrix}\, .
+\end{equation*} 
+Elle possède un déterminant positif, $\mathrm{det}(M_\sigma) = 1$, de sortes que $\mathrm{sgn}(\sigma) = +1$. 
+L'ensemble des permutations impaires est noté $S_n^{-}$. Naturellement, $|S_n^{+}| = |S_n^{-}| = \frac{n!}{2}$. 
+En utilisant la propriété complètement 
+antisymétrique du tenseur de Levi-Civita
+\begin{equation}
+        \epsilon^{\mu\nu\rho\sigma} = \begin{cases}
+                +1 & \mu\nu\rho\sigma \in S_4^{+} \\
+                -1 & \mu\nu\rho\sigma \in S_4^{-} \\
+                0 & \mathrm{autrement}
+
+        \end{cases}\, ,
+\end{equation} 
+on trouve que
+\begin{equation}
+        (\epsilon')^{\mu\nu\rho\sigma} = 
+        \sum_{\alpha\beta\gamma\delta \in S_4^{+}} 
+ \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} 
+-
+        \sum_{\alpha\beta\gamma\delta \in S_4^{-}} 
+ \Lambda\indices{^{\mu}_{\alpha}} \Lambda\indices{^{\nu}_{\beta}} \Lambda\indices{^{\rho}_{\gamma}} \Lambda\indices{^{\sigma}_{\delta}} 
+\end{equation} 
+
+\paragraph{Cas des indices identiques:} Sous cette forme, on peut résoudre les valeurs du tenseur transformé lorsqu'au moins 2 indices sont identiques. Dans ce cas, 
+$(\epsilon')^{\mu\nu\rho\sigma} = \epsilon^{\mu\nu\rho\sigma} = 0$. Par exemple, 
+considérons le cas $\mu\nu\rho\sigma = 0012$, où les deux premiers indices sont identiques.
+\begin{align*}
+        (\epsilon')^{0012} &= 
+        \sum_{\alpha\beta\gamma\delta \in S_4^{+}} 
+ \Lambda\indices{^{0}_{\alpha}} \Lambda\indices{^{0}_{\beta}} \Lambda\indices{^{1}_{\gamma}} \Lambda\indices{^{2}_{\delta}} 
+-
+        \sum_{\alpha\beta\gamma\delta \in S_4^{-}} 
+ \Lambda\indices{^{0}_{\alpha}} \Lambda\indices{^{0}_{\beta}} \Lambda\indices{^{1}_{\gamma}} \Lambda\indices{^{2 }_{\delta}}  \\
+                           &= \dots + 
+ \Lambda\indices{^{0}_{0}} \Lambda\indices{^{0}_{1}} \Lambda\indices{^{1}_{2}} \Lambda\indices{^{2}_{3}} 
+-
+\Lambda\indices{^{0}_{1}} \Lambda\indices{^{0}_{0}} \Lambda\indices{^{1}_{2}} \Lambda\indices{^{2}_{3}} 
+-\dots \\
+                           &= 0
+\end{align*}
+En effet, pour chaque permutations $\alpha\beta\gamma\delta \in S_4^{+}$, on peut échanger $\alpha$ et $\beta$, 
+de sortes qu'on peut toujours trouver le terme $\beta\alpha\gamma\delta \in S_4^{-}$ dans la somme 
+sur les indices impaires qui annule le terme $\alpha\beta\gamma\delta$ dans la première somme.
+Cet argument se généralise à tout autre cas où au moins deux indices sont identiques.
+
+\paragraph{Cas des indices distincts:} 
+Je poursuis la démonstration avec l'exemple $\mu\nu\rho\sigma=1234$. Pour le résoudre, on doit démontrer que 
+$(\epsilon')^{1234} = \mathrm{det}(\Lambda) = 1$. Le fait qu'une transformation de Lorentz a un déterminant unité suit du fait qu'une transformation de Lorentz doit satisfaire la condition
+\begin{equation}
+        \Lambda(-v) = \Lambda(v)^{-1}
+\end{equation} 
+où $v$ est le paramètre de la transformation (vitesse pour un boost, angle pour une rotation). Puisque 
+$\Lambda(-v) = R(\pi) \Lambda(v) R(\pi) \implies \mathrm{det}(\Lambda(-v)) = \mathrm{det}(\Lambda(v))$, il suit que, 
+$\mathrm{det}(\Lambda) = \pm 1$. Finalement, on requiert que $\Lambda(0) = \bbone$, la matrice identité, donc $ \mathrm{det}(\Lambda(0)) = 1\implies \mathrm{det}(\Lambda(v)) = 1$. 
+
+La formule de Leibniz pour le déterminant nous indique que
+\begin{equation}\label{eq:Leibniz}
+        \mathrm{det}(\Lambda) = \Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{2}_{\beta}}\Lambda\indices{^{3}_{\gamma}}\Lambda\indices{^{4}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\, .
+\end{equation} 
+Or, le côté droit de l'égalité est précisément le résultat de la transformation de Lorentz pour l'élement $1234$ du tenseur de Levi-Civita, 
+donc $(\epsilon')^{1234} = \mathrm{det}(\Lambda) = 1$. 
+Les autres cas suivent par la permutation des indices contravariant au côté droit de la formule de Leibniz. 
+Par exemple, supposons que $\mu\nu\rho\sigma = 2143 \in S_4^{+}$:
+\begin{align*}
+        (\epsilon')^{2143} &= \Lambda\indices{^{2}_{\alpha}}\Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{4}_{\gamma}}\Lambda\indices{^{3}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\\
+                           &= \Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\alpha}}\Lambda\indices{^{3}_{\delta}}\Lambda\indices{^{4}_{\gamma}}\epsilon^{\alpha\beta\gamma\delta}  \hspace{1cm} \{\text{Réarrengement des termes}\} \\
+               &= \Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\alpha}}\Lambda\indices{^{3}_{\delta}}\Lambda\indices{^{4}_{\gamma}}\epsilon^{\beta\alpha\delta\gamma}  \hspace{1cm} \{\text{Permutation paire des indices du tenseur de Levi-Civita} \} \\
+               &= \Lambda\indices{^{1}_{\alpha}}\Lambda\indices{^{2}_{\beta}}\Lambda\indices{^{3}_{\gamma}}\Lambda\indices{^{4}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}  \hspace{1cm} \{\text{Redéfinition des indices factices} \} \\
+               &= \mathrm{det}(\Lambda) = 1\\ 
+\end{align*} 
+Comme l'argument est général, on a que $(\epsilon')^{\mu\nu\rho\sigma} = \epsilon^{\mu\nu\rho\sigma},\,\, \forall \mu\nu\rho\sigma \in S_4^{+}$.
+L'argument pour une permutation impaire est très similaire et nous mène à conclure que 
+$$(\epsilon')^{\mu\nu\rho\sigma} = -\mathrm{det}(\Lambda) = \epsilon^{\mu\nu\rho\sigma}, \,\, \forall \mu\nu\rho\sigma \in S_4^{-}\, .$$ 
+Donc, ayant couvert tous les cas possible, on conclut que
+\begin{equation}
+        \boxed{(\epsilon')^{\mu\nu\rho\sigma} = \epsilon^{\mu\nu\rho\sigma}}
+\end{equation} 
+\end{proof}
+        
+
+
+
+
+\section{Invariance d'échelle}
+Soit un champ scalaire Klein-Gordon $\phi$ de masse $m$ en $d$ dimensions spatiales. Considérons une transformation continue
+\begin{align}
+        \label{eq:transformation}
+        x' &= bx \\
+       \phi'(bx) &= b^{-\Delta}\phi(x)  
+\end{align}
+où $b,\Delta \in \mathbb{R}_{>0}$.
+
+\subsection{}
+\textbf{Quelle sont les conditions pour que \eqref{eq:transformation} soit une symétrie de la théorie? Appelons l’action
+de cette théorie $S_{\star}$. Quel est le courant de Noether associé?}
+\subsection{}
+\textbf{Soit une quantité $\mathcal{O}(x)$ qui dépend du champ et ses dérivées au point $x$. Posons que $\mathcal{O}$ 
+transforme comme $\phi$ sous \eqref{eq:transformation}, mais avec $\Delta$ remplacé par $\Delta \mathcal{O}$, appelé la dimension d’échelle
+de $\mathcal{O}$. Pour les conditions trouvées en a), quelle est la dimension d’échelle de la densité
+Lagrangienne $\mathcal{L}_{\star}$ et de $\phi^{n}$, où $n \in \mathbb{N}$}
+\subsection{}
+\textbf{On considère le Lagrangien avec un terme d'intéraction}
+\begin{equation}\label{eq:Lagrangien2c}
+       \mathcal{L}_{\mathrm{int}} = \mathcal{L}_{\star} - \lambda \phi^{2n} 
+\end{equation} 
+\textbf{où $n \in \{1,2,3,\dots \}$}.
+\textbf{Quel doit être le signe de $\lambda$ pour que la théorie soit physiquement 
+raisonnable? Quelle est l’équation du mouvement pour cette théorie intéragissante. Quelle est la nouvelle difficulté?}
+\subsection{}
+\textbf{En $d \in \{1,2,3\}$ dimensions, quelles sont les conditions pour que la théorie intéragissante soit invariante
+sous une transformation d’échelle \eqref{eq:transformation}.}
+
+
+
+\section{Champs de jauge}
+Soit l'action de Maxwell
+\begin{equation}\label{eq:MaxwellAction}
+       S = \int d^{d+1}x\, F_{\mu\nu}F^{\mu\nu}
+\end{equation} 
+où $d \geq 1$.
+\subsection{}
+\textbf{Démontrer que l’action est invariante sous transformations de jauge : $A_{\mu}(x) \rightarrow A_{\mu}(x) +
+        \partial_{\mu}f(x)$, où $f$ est une fonction scalaire suffisamment lisse.}
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+
+\section{Phonons}
+\subsection{}
+\subsection{}
+\subsection{}
+
+\section{Quantification 101}
+
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+
+\end{document}
+

@@ -311,32 +311,46 @@ où $d \geq 1$.
         %F_{\mu\nu} \rightarrow F_{\mu \nu} + \partial_{\mu}\partial_{\nu}f - \partial_{\nu}\partial_{\mu}f\, .
 %\end{equation} 
 \begin{proof}
-Soit le Lagrangien de Maxwell  
+Soit le Lagrangien de Maxwell
 \begin{equation}
-        \mathcal{L} = \frac{1}{4}F^{\mu \nu}F_{\mu\nu} = \frac{1}{2}(\partial^{\mu}A^{\nu})(\partial_{\nu}A_\mu) - \frac{1}{2}(\partial_{\mu}A^{\mu})^{2}
+        \mathcal{L} = -\frac{1}{4}F^{\mu \nu}F_{\mu\nu} %= -\frac{1}{2}(\partial^{\mu}A^{\nu})(\partial_{\nu}A_\mu) + \frac{1}{2}(\partial_{\mu}A^{\mu})^{2}
 \end{equation} 
-où $F_{\mu\nu}$ est le champ électromagnétique
+où $F_{\mu\nu}$ est le tenseur électromagnétique % It is antisymmetric, with a nul trace
 \begin{equation}\label{eq:F}
         F_{\mu\nu} = \partial_{\mu}A_\nu - \partial_{\nu}A_\mu\, .
 \end{equation} 
 Pour déterminer si la transformation de l'action est invariante sous la transformation de jauge, on doit s'assurer que $\delta S = 0$.
 On commence par étudier la variation infinitésimal du Lagrangien
-\begin{align}
-        \mathcal{L} \rightarrow \mathcal{L} + 
-\end{align}
-%La variation infinitésimale de l'action de Maxwell sous l'effet d'une transformation de jauge est
-%\begin{align*}
-        %\delta S &= \int d^{d+1}x\, \delta\mathcal{L}(\partial_{\mu}A_\nu) \\[2ex]
-        %&= \int d^{d+1}x\, \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}A_\nu)} \delta (\partial_{\mu}A_{\nu} + \partial_{\mu}f) \\[2ex]
-        %&= \int d^{d+1}x\, \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}A_\nu)} \delta (\partial_{\mu}A_{\nu} + \partial_{\mu}f) \\[2ex]
-%\end{align*}
-        
+\begin{equation}
+        \delta \mathcal{L} = -\frac{1}{2}F^{\mu \nu} \delta F_{\mu \nu}
+\end{equation} 
+La variation infinitésimale de $F_{\mu \nu}$ sous la transformation de jauge est
+\begin{align*}
+        \delta F_{\mu \nu} &= \partial_{\mu}\delta A_{\nu} - \partial_{\nu} \delta A_\mu \\
+        &= \partial_{\mu}\partial_\nu f - \partial_{\nu} \partial_\mu f \\
+        &= 0\, .
+\end{align*}
+La dernière ligne est une conséquence du théorème de Schwarz, qui dicte que les dérivée secondes d'une fonction scalaire sont symétriques dans une région $\Omega \subset \mathbb{R}^{d+1}$ qui 
+contient un point $\mathcal{O} \in \Omega$ où la fonction $f:\Omega \rightarrow \mathbb{R}$ est lisse. Il suit que l'action est invariante sous la transformation de jauge, 
+$\delta S = \int d^{d+1} \delta L = 0$.
 \end{proof}
 
 \subsection{}
 \textbf{Démontrer que l’action est invariante sous transformations de Lorentz. Est-ce qu’il existe
 un terme de masse pour le champ $A_{\mu}$ qui serait invariant de jauge et invariant de Lorentz?}
 \vspace{2ex}
+\begin{proof}
+Soit la transformation de Lorentz
+\begin{equation}
+        x^{\mu} \rightarrow \Lambda\indices{^\mu_\nu} x^\nu
+\end{equation} 
+On étudie maintenant comment le Lagrangien se transforme. Pour se faire, on doit déterminer comment une 
+dérivée se transforme. On trouve
+\begin{equation}
+        \partial_\mu \rightarrow \partial_\mu' = \frac{\partial }{\partial (\Lambda\indices{^\mu_\nu} x^\nu)}
+\end{equation} 
+        
+\end{proof}
 \subsection{}
 \textbf{Déterminer les équations du mouvement de la théorie. Est-ce qu’elles correspondent aux
 équations classiques de Maxwell? Si oui, sous quelles conditions?}

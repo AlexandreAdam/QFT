@@ -188,32 +188,108 @@ Donc, ayant couvert tous les cas possible, on conclut que
 Soit un champ scalaire Klein-Gordon $\phi$ de masse $m$ en $d$ dimensions spatiales. Considérons une transformation continue
 \begin{align}
         \label{eq:transformation}
-        x' &= bx \\
-       \phi'(bx) &= b^{-\Delta}\phi(x)  
+        x &\rightarrow bx \\
+        \phi(x) &\rightarrow b^{-\Delta}\phi(x)  
 \end{align}
-où $b,\Delta \in \mathbb{R}_{>0}$.
+où $b \in \mathbb{R}_{>0}$ et $\Delta \in \mathbb{R}$.
 
 \subsection{}
 \textbf{Quelle sont les conditions pour que \eqref{eq:transformation} soit une symétrie de la théorie? Appelons l’action
 de cette théorie $S_{\star}$. Quel est le courant de Noether associé?}
+\vspace{2ex}
+
+La transformation \eqref{eq:transformation} est une symétrie de la théorie si l'action 
+\begin{equation}\label{eq:action}
+        S_\star = \int d^{d+1}x\, \mathcal{L}_\star(\phi(x), \partial_{\mu}\phi(x))
+\end{equation} 
+est invariante sous l'application de la transformation. Puisque l'élément de volume devient
+\begin{equation}
+        d^{d+1}x \rightarrow b^{d+1}d^{d+1}x\, ,
+\end{equation} 
+alors la transformation est une symétrie de la théorie si et seulement si
+\begin{equation}
+       \mathcal{L}_{\star} \rightarrow b^{-(d+1)}\mathcal{L_{\star}} + \partial_{\mu}\mathcal{J}^{\mu}\, .
+\end{equation} 
+La divergence $\partial_{\mu}\mathcal{J}^{\mu}$ devient un terme de surface dans l'intégrale de l'action, qui 
+s'annule par définition de la dérivée fonctionnelle de l'action. Puisque $\partial_{\mu} \rightarrow b^{-1}\partial_{\mu}$, alors 
+la densité du Lagrangien de Klein-Gordon transformée devient
+\begin{equation}\label{eq:lagrangian transform}
+        \mathcal{L}_\star' = b^{-2-2\Delta}\frac{1}{2}(\partial_{\mu}\phi)(\partial^\mu \phi) - b^{-2\Delta}\frac{1}{2}m^{2}\phi^{2}\, .
+\end{equation} 
+Ainsi, la transformation d'échelle \eqref{eq:transformation} est une symétrie de la théorie seulement lorsque $\boxed{m=0 \text{ et } \Delta = \frac{d-1}{2}}$.
+
+Le courant de Noether est définit comme
+\begin{equation}
+        j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \delta_\alpha  \phi  - \mathcal{J}^{\nu}.
+\end{equation} 
+Par l'éq.~\eqref{eq:lagrangian transform}, on trouve que $\mathcal{J}^{\nu} = 0$. On cherche maintenant la variation infinitésimale 
+du champ, $\delta_{\alpha} \phi$, en terme du paramètre de la transformation infinitésimale, $\alpha$. On écrit cette variation 
+infinitésimale comme une transformation active de $\phi$:
+\begin{equation}
+       \alpha\delta_\alpha \phi = \phi'(x) - \phi(x) 
+\end{equation} 
+On pose $b = 1 - \alpha$, de sortes que
+\begin{align*}
+        \phi'(x) &= b^{-\Delta}\phi(b^{-1}x) \\
+              &= (1 + \alpha\Delta) \phi(x + \alpha x) + \mathcal{O}(\alpha^{2}) \\
+              &= \phi(x) + \alpha(\Delta + x^{\mu}\partial_{\mu})\phi(x) + \mathcal{O}(\alpha^{2})
+\end{align*}
+On trouve finalement
+\begin{equation}\label{eq:Noether current}
+        \boxed{j^{\mu}_\star = \partial^{\mu} \phi(\Delta + x^{\mu}\partial_{\mu})\phi }
+\end{equation} 
+
 \subsection{}
 \textbf{Soit une quantité $\mathcal{O}(x)$ qui dépend du champ et ses dérivées au point $x$. Posons que $\mathcal{O}$ 
-transforme comme $\phi$ sous \eqref{eq:transformation}, mais avec $\Delta$ remplacé par $\Delta \mathcal{O}$, appelé la dimension d’échelle
+transforme comme $\phi$ sous \eqref{eq:transformation}, mais avec $\Delta$ remplacé par $\Delta_\mathcal{O}$, appelé la dimension d’échelle
 de $\mathcal{O}$. Pour les conditions trouvées en a), quelle est la dimension d’échelle de la densité
-Lagrangienne $\mathcal{L}_{\star}$ et de $\phi^{n}$, où $n \in \mathbb{N}$}
+Lagrangienne $\mathcal{L}_{\star}$ et de $\phi^{n}$, où $n \in \mathbb{N}$}.
+\vspace{2ex}
+
+Avec les conditions trouvées en \textbf{a)}, on a $\boxed{\Delta_{\mathcal{L}_\star} = d+1}$ et $\boxed{\Delta_{\phi^{n}} = \frac{n(d-1)}{2}}$
+
 \subsection{}
-\textbf{On considère le Lagrangien avec un terme d'intéraction}
+\textbf{On considère le Lagrangien avec un terme d'interaction}
 \begin{equation}\label{eq:Lagrangien2c}
        \mathcal{L}_{\mathrm{int}} = \mathcal{L}_{\star} - \lambda \phi^{2n} 
 \end{equation} 
-\textbf{où $n \in \{1,2,3,\dots \}$}.
+\textbf{où $n \in \mathbb{N}$}.
 \textbf{Quel doit être le signe de $\lambda$ pour que la théorie soit physiquement 
-raisonnable? Quelle est l’équation du mouvement pour cette théorie intéragissante. Quelle est la nouvelle difficulté?}
+raisonnable? Quelle est l’équation du mouvement pour cette théorie interagissante. Quelle est la nouvelle difficulté?}
+
+\vspace{2ex}
+
+Le signe de $\lambda $ gouverne la forme du potentiel $V(\phi) = \frac{1}{2}m^{2}\phi^{2} + \lambda \phi^{2n}$. 
+Dans le cas où $\lambda > 0$, alors le potentiel possède un état fondamental avec une énergie minimale, où $\phi = 0$. 
+Dans le cas où $\lambda < 0$, alors on peut, en principe, avoir des états avec une énergie arbitrairement négative.
+Donc il n'y a pas d'état fondamental. Ainsi, on doit avoir $\lambda \in \mathbb{R}_{>0}$.
+L'équation du mouvement du champ $\phi(x)$ gouverné par $\mathcal{L}_{\mathrm{int}}$ est
+\begin{equation}
+        \boxed{\Box\phi + \frac{\partial V}{\partial \phi} = \partial^\mu \partial_{\mu} \phi + m^2\phi + 2n\lambda \phi^{2n-1} = 0}
+\end{equation} 
+La difficulté est de résoudre cette équation différentielle pour $\phi$, qui n'est plus une combination linéaire d'ondes planes. 
+
 \subsection{}
-\textbf{En $d \in \{1,2,3\}$ dimensions, quelles sont les conditions pour que la théorie intéragissante soit invariante
+\textbf{En $d \in \{1,2,3\}$ dimensions, quelles sont les conditions pour que la théorie interagissante soit invariante
 sous une transformation d’échelle \eqref{eq:transformation}.}
+\vspace{2ex}
 
-
+Le terme d'interaction rajouté, $V_{\mathrm{\phi}}(\phi) = \lambda \phi^{2n}$, se transforme comme
+\begin{equation}
+        V_{\mathrm{int}} \rightarrow b^{-2n\Delta}V_{\mathrm{int}}
+\end{equation} 
+Pour que le Lagrangien se transforme comme $\mathcal{L}_{\mathrm{int}} \rightarrow b^{-2-2\Delta}\mathcal{L}_{\mathrm{int}}$, on doit avoir $m=0$ et 
+\begin{equation}
+        n = \frac{\Delta + 1}{\Delta}
+\end{equation} 
+En utilisant la condition dérivée en \textbf{a)} pour que la transformation d'échelle soit une symétrie de la théorie, soit que $\Delta = \frac{d - 1}{2}$, on trouve
+\begin{equation}
+        n = \frac{d}{d - 1} 
+\end{equation} 
+Ainsi, il n'y a pas de symétrie d'échelle pour les théories interagissantes avec $d=1$ dimension, puisque $n = \infty \not\in \mathbb{N}$. 
+Pour $d=2$, la théorie interagissante avec $\boxed{n=1 \text{ et } m=0}$ possède une symétrie d'échelle. 
+Il n'y a pas de symétrie d'échelle pour les théorie interagissante avec $d=3$ dimension, puisque $n = \frac{3}{2} \not\in \mathbb{N}$ n'est pas 
+une théorie physique.
 
 \section{Champs de jauge}
 Soit l'action de Maxwell
@@ -223,11 +299,59 @@ Soit l'action de Maxwell
 où $d \geq 1$.
 \subsection{}
 \textbf{Démontrer que l’action est invariante sous transformations de jauge : $A_{\mu}(x) \rightarrow A_{\mu}(x) +
-        \partial_{\mu}f(x)$, où $f$ est une fonction scalaire suffisamment lisse.}
+\partial_{\mu}f(x)$, où $f$ est une fonction scalaire suffisamment lisse.}
+\vspace{2ex}
+
+%Par définition du tenseur électromagnétique
+%\begin{equation}\label{eq:F}
+        %F_{\mu\nu} = \partial_{\mu}A_\nu - \partial_{\nu}A_\mu\, ,
+%\end{equation} 
+%la transformation de jauge induit 
+%\begin{equation}
+        %F_{\mu\nu} \rightarrow F_{\mu \nu} + \partial_{\mu}\partial_{\nu}f - \partial_{\nu}\partial_{\mu}f\, .
+%\end{equation} 
+\begin{proof}
+Soit le Lagrangien de Maxwell  
+\begin{equation}
+        \mathcal{L} = \frac{1}{4}F^{\mu \nu}F_{\mu\nu} = \frac{1}{2}(\partial^{\mu}A^{\nu})(\partial_{\nu}A_\mu) - \frac{1}{2}(\partial_{\mu}A^{\mu})^{2}
+\end{equation} 
+où $F_{\mu\nu}$ est le champ électromagnétique
+\begin{equation}\label{eq:F}
+        F_{\mu\nu} = \partial_{\mu}A_\nu - \partial_{\nu}A_\mu\, .
+\end{equation} 
+Pour déterminer si la transformation de l'action est invariante sous la transformation de jauge, on doit s'assurer que $\delta S = 0$.
+On commence par étudier la variation infinitésimal du Lagrangien
+\begin{align}
+        \mathcal{L} \rightarrow \mathcal{L} + 
+\end{align}
+%La variation infinitésimale de l'action de Maxwell sous l'effet d'une transformation de jauge est
+%\begin{align*}
+        %\delta S &= \int d^{d+1}x\, \delta\mathcal{L}(\partial_{\mu}A_\nu) \\[2ex]
+        %&= \int d^{d+1}x\, \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}A_\nu)} \delta (\partial_{\mu}A_{\nu} + \partial_{\mu}f) \\[2ex]
+        %&= \int d^{d+1}x\, \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}A_\nu)} \delta (\partial_{\mu}A_{\nu} + \partial_{\mu}f) \\[2ex]
+%\end{align*}
+        
+\end{proof}
+
 \subsection{}
+\textbf{Démontrer que l’action est invariante sous transformations de Lorentz. Est-ce qu’il existe
+un terme de masse pour le champ $A_{\mu}$ qui serait invariant de jauge et invariant de Lorentz?}
+\vspace{2ex}
 \subsection{}
+\textbf{Déterminer les équations du mouvement de la théorie. Est-ce qu’elles correspondent aux
+équations classiques de Maxwell? Si oui, sous quelles conditions?}
+\vspace{2ex}
 \subsection{}
+\textbf{Est-ce que la théorie de Maxwell est invariante sous une transformation d’échelle? Si
+oui, quelle sont les conditions appropriées, ainsi que les dimensions d’échelle du champ de jauge
+et du champ électrique.}
+\vspace{2ex}
 \subsection{}
+\textbf{Quel est le champ canoniquement conjugué à $A_\mu$ . 
+\vspace{2ex}
+%Est-ce qu’il y a quelque chose de bizarre
+%avec votre réponse ?
+}
 
 \section{Phonons}
 \subsection{}

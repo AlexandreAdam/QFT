@@ -58,6 +58,14 @@ Lorentz $\Lambda \in \mathrm{SO}^{+}(1,3)$ définit tel que
 \begin{equation}
         \eta^{\mu \nu} = \Lambda\indices{^{\mu}_\alpha} \Lambda\indices{^{\nu}_\beta} \eta^{\alpha\beta}\, .
 \end{equation} 
+On requiert que la transformation de Lorentz ait un déterminant unité puisqu'elle doit satisfaire la condition
+\begin{equation}
+        \Lambda(-v) = \Lambda(v)^{-1}\, ,
+\end{equation} 
+où $v$ est le paramètre de la transformation (vitesse pour un boost, angle pour une rotation). Puisque 
+$\Lambda(-v) = R(\pi)^{T} \Lambda(v) R(\pi) \implies \mathrm{det}(\Lambda(-v)) = \mathrm{det}(\Lambda(v))$, il suit que, 
+$\mathrm{det}(\Lambda) = \pm 1$. Finalement, on requiert que $\Lambda(0) = \bbone$, la matrice identité, donc $ \mathrm{det}(\Lambda(0)) = 1\implies \mathrm{det}(\Lambda(v)) = 1$. 
+
 L'inverse transposée de la transformation $(\Lambda^{-1})\indices{^{\mu}_{\nu}} = \Lambda\indices{_\mu^{\nu}}$ agit sur les indices covariants et est définit 
 tel que
 \begin{equation}
@@ -150,19 +158,11 @@ Cet argument se généralise à tout autre cas où au moins deux indices parmis 
 
 \paragraph{Cas des indices distincts:} 
 Je poursuis la démonstration avec l'exemple $\mu\nu\rho\sigma=0123$. Pour le résoudre, on doit démontrer que 
-$(\epsilon')^{0123} = \mathrm{det}(\Lambda) = 1$. Le fait qu'une transformation de Lorentz a un déterminant unité suit du fait qu'une transformation de Lorentz doit satisfaire la condition
-\begin{equation}
-        \Lambda(-v) = \Lambda(v)^{-1}\, ,
-\end{equation} 
-où $v$ est le paramètre de la transformation (vitesse pour un boost, angle pour une rotation). Puisque 
-$\Lambda(-v) = R(\pi)^{T} \Lambda(v) R(\pi) \implies \mathrm{det}(\Lambda(-v)) = \mathrm{det}(\Lambda(v))$, il suit que, 
-$\mathrm{det}(\Lambda) = \pm 1$. Finalement, on requiert que $\Lambda(0) = \bbone$, la matrice identité, donc $ \mathrm{det}(\Lambda(0)) = 1\implies \mathrm{det}(\Lambda(v)) = 1$. 
-
-La formule de Leibniz pour le déterminant nous indique que
+$(\epsilon')^{0123} = \mathrm{det}(\Lambda) = 1$.  La formule de Leibniz pour le déterminant nous indique que
 \begin{equation}\label{eq:Leibniz}
         \mathrm{det}(\Lambda) = \Lambda\indices{^{0}_{\alpha}}\Lambda\indices{^{1}_{\beta}}\Lambda\indices{^{2}_{\gamma}}\Lambda\indices{^{3}_{\delta}}\epsilon^{\alpha\beta\gamma\delta}\, .
 \end{equation} 
-Or, le côté droit de l'égalité est précisément le résultat de la transformation de Lorentz pour l'élement $0123$ du tenseur de Levi-Civita, 
+Le côté droit de l'égalité est précisément le résultat de la transformation de Lorentz pour l'élement $0123$ du tenseur de Levi-Civita, 
 donc $(\epsilon')^{0123} = \mathrm{det}(\Lambda) = 1$. 
 Les autres cas suivent par la permutation des indices contravariant au côté droit de la formule de Leibniz. 
 Par exemple, supposons que $\mu\nu\rho\sigma = 1032 \in S_4^{+}$:
@@ -205,40 +205,73 @@ La transformation \eqref{eq:transformation} est une symétrie de la théorie si 
 \end{equation} 
 est invariante sous l'application de la transformation. Puisque l'élément de volume devient
 \begin{equation}
-        d^{d+1}x \rightarrow b^{d+1}d^{d+1}x\, ,
+        d^{d+1}x \rightarrow b^{d+1}(d^{d+1}x)\, ,
 \end{equation} 
 alors la transformation est une symétrie de la théorie si et seulement si
 \begin{equation}
        \mathcal{L}_{\star} \rightarrow b^{-(d+1)}\mathcal{L_{\star}} + \partial_{\mu}\mathcal{J}^{\mu}\, .
 \end{equation} 
 La divergence $\partial_{\mu}\mathcal{J}^{\mu}$ devient un terme de surface dans l'intégrale de l'action, qui 
-s'annule par définition de la dérivée fonctionnelle de l'action. Puisque $\partial_{\mu} \rightarrow b^{-1}\partial_{\mu}$, alors 
-la densité du Lagrangien de Klein-Gordon transformée devient
+s'annule par définition de la dérivée fonctionnelle de l'action.
+%\paragraph{Cas $m=0$:} 
+%On considère en premier lieu le Lagrangien d'un champ sans masse. 
+Sachant que la dérivée se transforme comme
+\begin{equation}
+        \partial^{\mu} \rightarrow b^{-1}\partial^{\mu}\, ,
+\end{equation}
+alors on peut montrer que le Lagrangien de Klein-Gordon se transforme comme
 \begin{equation}\label{eq:lagrangian transform}
-        \mathcal{L}_\star' = b^{-2-2\Delta}\frac{1}{2}(\partial_{\mu}\phi)(\partial^\mu \phi) - b^{-2\Delta}\frac{1}{2}m^{2}\phi^{2}\, .
+        \mathcal{L}_\star \rightarrow  \mathcal{L}_\star' = b^{-2-2\Delta}\frac{1}{2}(\partial_{\mu}\phi)(\partial^\mu \phi) -m^2b^{-2\Delta}\phi^2 %= b^{-2-2\Delta}\mathcal{L}_\star\, .
 \end{equation} 
-Ainsi, la transformation d'échelle \eqref{eq:transformation} est une symétrie de la théorie seulement lorsque $\boxed{m=0 \text{ et } \Delta = \frac{d-1}{2}}$.
-
-Le courant de Noether est définit comme
+Pour factoriser le facteur d'échelle, on doit absolument avoir $\boxed{m=0}$, de sortes que
+\begin{equation}\label{eq:lagrangian transform}
+        \mathcal{L}_\star \rightarrow  \mathcal{L}_\star' = b^{-2-2\Delta}\frac{1}{2}(\partial_{\mu}\phi)(\partial^\mu \phi) = b^{-2-2\Delta}\mathcal{L}_\star\, .
+\end{equation} 
+Ainsi, la condition pour que la théorie possède une symétrie d'échelle est
+\begin{equation}\label{eq:Delta}
+        \boxed{\Delta = \frac{d - 1}{2}}\, .
+\end{equation} 
+Pour déterminer le courant de Noether, on doit considérer la transformation infinitésimale. On pose $b = 1 - \epsilon$, où $\epsilon \rightarrow 0$. 
+On écrit la variation infinitésimale du champ, $\delta \phi$, comme une transformation active de $\phi$:
 \begin{equation}
-        j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \delta_\alpha  \phi  - \mathcal{J}^{\nu}.
+       \delta \phi = \phi'(x) - \phi(x) \, ,
 \end{equation} 
-Par l'éq.~\eqref{eq:lagrangian transform}, on trouve que $\mathcal{J}^{\nu} = 0$. On cherche maintenant la variation infinitésimale 
-du champ, $\delta_{\alpha} \phi$, en terme du paramètre de la transformation infinitésimale, $\alpha$. On écrit cette variation 
-infinitésimale comme une transformation active de $\phi$:
-\begin{equation}
-       \alpha\delta_\alpha \phi = \phi'(x) - \phi(x) 
-\end{equation} 
-On pose $b = 1 - \alpha$, de sortes que
+où
 \begin{align*}
         \phi'(x) &= b^{-\Delta}\phi(b^{-1}x) \\
-              &= (1 + \alpha\Delta) \phi(x + \alpha x) + \mathcal{O}(\alpha^{2}) \\
-              &= \phi(x) + \alpha(\Delta + x^{\mu}\partial_{\mu})\phi(x) + \mathcal{O}(\alpha^{2})
+              &= (1 + \epsilon\Delta) \phi(x + \epsilon x) + \mathcal{O}(\epsilon^{2}) \\
+              &= \phi(x) + \epsilon(\Delta + x^{\mu}\partial_{\mu})\phi(x) + \mathcal{O}(\epsilon^{2})\, .
 \end{align*}
-On trouve finalement
-\begin{equation}\label{eq:Noether current}
-        \boxed{j^{\mu}_\star = (\partial^{\mu} \phi)(\Delta \phi + x^{\mu}\partial_{\mu} \phi)}
+Donc,
+\begin{equation}
+        \delta \phi = \epsilon(\Delta + x^\mu \partial_\mu)\phi\, .
 \end{equation} 
+Puisque l'opérateur $\partial_\mu$ commute avec la variation infinitésimale du champ $\phi$, on peut écrire
+\begin{equation}
+         \delta (\partial_\mu \phi) = \partial_{\mu}\delta\phi =  \epsilon(\Delta + 1 + x^{\mu}\partial_\mu)\partial_\mu \phi + \mathcal{O}(\epsilon^2)
+\end{equation} 
+La variation infinitésimal du Lagrangien devient alors
+\begin{align*}
+        \delta  \mathcal{L}_\star &= (\partial^\mu \phi)(\partial_\mu \delta \phi) \\
+                &= \epsilon (\Delta + 1 + x^\mu \partial_\mu)(\partial^\mu \phi) (\partial_\mu \phi) \\
+                &= \epsilon (\mathcal{L}_\star + x^\mu \partial_\mu \mathcal{L}_\star) + \epsilon \Delta \mathcal{L}_\star\\
+                &= \epsilon \partial_\mu (x^\mu \mathcal{L}_\star) + \epsilon \Delta \mathcal{L}_\star\, ,
+\end{align*}
+où on a absorber le facteur numérique dans l'infinitésimale et où on a laisser tomber la notation $\mathcal{O}(\epsilon^2)$ qui est sous-entendue. 
+On trouve ainsi que le Lagrangien ne varie que par le facteur d'échelle, $\epsilon\Delta \mathcal{L}_\star$, qui laisse l'action invariante lorsque \eqref{eq:Delta} est respectée, et un terme de surface. 
+On peut donc construire un courant de Noether
+\begin{equation}
+        j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \delta  \phi  - \mathcal{J}^{\mu}\, ,
+\end{equation} 
+où on trouve, à l'aide de notre expression pour $\delta \mathcal{L}_\star$,
+\begin{equation}
+        \mathcal{J}^{\mu} = x^{\mu}\mathcal{L}_\star\, .
+\end{equation} 
+Ainsi
+\begin{equation}\label{eq:Noether current}
+        \boxed{j^{\mu}_\star = (\partial^{\mu} \phi)(\Delta + x^{\mu}\partial_{\mu})\phi - x^{\mu}\mathcal{L}_\star}
+\end{equation} 
+
 
 \subsection{}
 \textbf{Soit une quantité $\mathcal{O}(x)$ qui dépend du champ et ses dérivées au point $x$. Posons que $\mathcal{O}$ 
@@ -277,20 +310,16 @@ sous une transformation d’échelle \eqref{eq:transformation}.}
 
 Le terme d'interaction rajouté, $V_{\mathrm{\phi}}(\phi) = \lambda \phi^{2n}$, se transforme comme
 \begin{equation}
-        V_{\mathrm{int}} \rightarrow b^{-2n\Delta}V_{\mathrm{int}}
+        V_{\mathrm{int}} \rightarrow b^{-n(d-1)}V_{\mathrm{int}}
 \end{equation} 
-Pour que le Lagrangien se transforme comme $\mathcal{L}_{\mathrm{int}} \rightarrow b^{-2-2\Delta}\mathcal{L}_{\mathrm{int}}$, on doit avoir $m=0$ et 
+puisque $\Delta_{\phi^{n}} = \frac{n(d-1)}{2}$.
+Pour que le Lagrangien se transforme comme $\mathcal{L}_{\mathrm{int}} \rightarrow b^{-(d+1)}\mathcal{L}_{\mathrm{int}}$, on doit avoir $m=0$ et 
 \begin{equation}
-        n = \frac{\Delta + 1}{\Delta}
+        \boxed{n = \frac{d+1}{d-1}}
 \end{equation} 
-En utilisant la condition dérivée en \textbf{a)} pour que la transformation d'échelle soit une symétrie de la théorie, soit que $\Delta = \frac{d - 1}{2}$, on trouve
-\begin{equation}
-        n = \frac{d}{d - 1} 
-\end{equation} 
-Ainsi, il n'y a pas de symétrie d'échelle pour les théories interagissantes avec $d=1$ dimension, puisque $n = \infty \not\in \mathbb{N}$. 
-Pour $d=2$, la théorie interagissante avec $\boxed{n=1 \text{ et } m=0}$ possède une symétrie d'échelle. 
-Il n'y a pas de symétrie d'échelle pour les théorie interagissante avec $d=3$ dimension, puisque $n = \frac{3}{2} \not\in \mathbb{N}$ n'est pas 
-une théorie physique.
+Ainsi, il n'y a pas de symétrie d'échelle pour les théories interagissantes avec $d=1$ dimension. 
+Pour $d=2$, la théorie interagissante avec $n=3$ possède une symétrie d'échelle. Pour $d=3$, la théorie interagissante 
+avec $n=2$ possède une symétrie d'échelle.
 
 \section{Champs de jauge}
 Soit l'action de Maxwell

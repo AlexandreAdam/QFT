@@ -357,10 +357,9 @@ on déduit la règle de transformation pour le vecteur covariant $A_{\mu}$
         A_{\mu} \rightarrow  \Lambda\indices{_{\mu}^{\nu}}A_{\nu}\, .
 \end{equation} 
 On calcule ensuite la transformation du tenseur électromagnétique
-\begin{align*}
-        F_{\mu\nu}\rightarrow F^{'}_{\mu\nu} &= \partial'_{[\mu} A'_{\nu]}\\
-                 &= \Lambda\indices{_{\mu}^{\rho}}\Lambda\indices{_{\nu}^{\sigma}}\partial_{[\rho} A_{\sigma]}\, .
-\end{align*}
+\begin{align}
+        F_{\mu\nu}\rightarrow F^{'}_{\mu\nu} &=\Lambda\indices{_{\mu}^{\rho}}\Lambda\indices{_{\nu}^{\sigma}}\partial_{[\rho} A_{\sigma]}\, .
+\end{align}
 Finalement, on calcule la transformation du Lagrangien. Notons que les vecteurs contravariants $A^{\mu}$ et $\partial^{\mu}$ se transforme 
 exactement comme \eqref{eq:transf1}, de sortes que
 \begin{align*}
@@ -390,20 +389,32 @@ Donc l'action est invariante sous une transformation de Lorentz
 équations classiques de Maxwell? Si oui, sous quelles conditions?}
 \vspace{2ex}
 
-Comme le Lagrangien ne dépend que du tenseur électromagnétique, on a que les équations du mouvements sont proportionnelles à
-\begin{equation}
-        \partial_{\mu}\left( \frac{\partial L}{\partial F_{\mu\nu}} \right) \propto \boxed{-\partial_{\mu}F^{\mu\nu} = 0}
+%Comme le Lagrangien ne dépend que du tenseur électromagnétique, on a que les équations du mouvements sont proportionnelles à
+%\begin{equation}
+        %\partial_{\mu}\left( \frac{\partial L}{\partial F_{\mu\nu}} \right) \propto \boxed{-\partial_{\mu}F^{\mu\nu} = 0}
+%\end{equation} 
+%En principe, on devrais prendre la dérivée en terme de $\partial_{\mu}A_\nu$ pour obtenir les bons préfacteur (puisqu'on a normaliser le Lagrangien par $\frac{1}{4}$). 
+%Toutefois, ce raccourcis nous donne la bonne équation du mouvement.
+On commence par calculer
+\begin{align*}
+        \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}A_\nu)} &= -\frac{1}{4}\frac{\partial }{\partial (\partial_{\mu}A_\nu)} (\partial^{[\rho}A^{\sigma]})(\partial_{[\rho}A_{\sigma]}) \\
+                &= -\frac{1}{2}\frac{\partial }{\partial (\partial_{\mu}A_\nu)} \big((\partial^{\rho}A^{\sigma})(\partial_{\rho}A_\sigma) - (\partial^{\rho}A^{\sigma})(\partial_{\sigma}A_\rho) \big)\\
+                &= -(\partial^{\rho}A^{\sigma})\delta_\rho^{\mu}\delta_\sigma^{\nu} + (\partial^{\rho}A^{\sigma})\delta_\sigma^{\mu}\delta_\rho^{\nu}\\
+                &= -(\partial^{\mu}A^{\nu}) + (\partial^{\nu}A^{\mu})\\
+                &= -F^{\mu\nu}\, .
+\end{align*}
+D'où les équations du mouvement
+\begin{equation}\label{eq:eq mouvement}
+        \boxed{\partial_{\mu}F^{\mu\nu} = 0 }\, .
 \end{equation} 
-En principe, on devrais prendre la dérivée en terme de $\partial_{\mu}A_\nu$ pour obtenir les bons préfacteur (puisqu'on a normaliser le Lagrangien par $\frac{1}{4}$). 
-Toutefois, ce raccourcis nous donne la bonne équation du mouvement.
 
 On peut maintenant vérifier que cette équation nous permet de retrouver les équations classiques de Maxwell. On pose
 \begin{equation}
-        A^{\mu} = (\phi, \mathbf{A})
+        A^{\mu} = (\phi, \mathbf{A})\, ,
 \end{equation} 
 et
 \begin{equation}
-        \partial^{\mu} = (\partial_{t}, -\grad)
+        \partial^{\mu} = (\partial_{t}, -\grad)\, .
 \end{equation} 
 On utilise les définitions $\mathbf{E} = -\grad \phi - \partial_t \mathbf{A}$ et $\mathbf{B} = \grad \times \mathbf{A}$ pour les 
 champs électriques et magnétiques respectivement.
@@ -413,9 +424,9 @@ On trouve que
         \partial_{\mu}F^{\mu 0} &= \partial_{\mu} \partial^{\mu}\phi - \partial_{\mu}\partial_{t}A^{\mu} \\
                 &= (\partial_{t}^{2} - \grad^{2})\phi - (\partial_{t}^{2}\phi - \grad \cdot \partial_{t}\mathbf{A}) \\
                 &= \grad \cdot (-\grad \phi - \partial_t \mathbf{A}) \\
-                &= \grad \cdot \mathbf{E}
+                &= \grad \cdot \mathbf{E}\, .
 \end{align*}
-D'où $\grad \cdot \mathbf{E} = 0$, la première équation de Maxwell.
+D'où $\grad \cdot \mathbf{E} = 0$, la première équation de Maxwell dans le vide.
 On poursuit avec $\nu = i \in \{1,2,3\}$:
 \begin{align*}
         \partial_{\mu}F^{\mu i} &= \partial_{\mu}\partial^{\mu}A^{i} - \partial_{\mu}\partial^{i}A^{\mu} \\
@@ -439,6 +450,30 @@ où on a utiliser l'identité vectorielle $\grad^{2}\mathbf{A} = \grad (\grad \c
 oui, quelle sont les conditions appropriées, ainsi que les dimensions d’échelle du champ de jauge
 et du champ électrique.}
 \vspace{2ex}
+
+Soit la transformation d'échelle
+\begin{equation}
+\begin{split}
+        x &\rightarrow  bx \\
+        A^{\mu} &\rightarrow b^{-1}A^{\mu}\,. 
+\end{split}
+\end{equation} 
+Le Lagrangien de Maxwell se transforme comme
+\begin{equation}
+        \mathcal{L} \rightarrow b^{-4}\mathcal{L}
+\end{equation} 
+Ce qui laisse invariant l'action
+\begin{equation}
+        S \rightarrow S' =  b^{d+1 - 4}\int d^{d+1}x \,\mathcal{L} = b^{d-3}S\, ,
+\end{equation} 
+\textbf{seulement si $\boxed{d=3}$.} La dimension d'échelle du champ de jauge $A^{\mu}$ est $\boxed{\Delta_{A^{\mu}} = 1}$, de sortes que la 
+dimension d'échelle du champ électrique se doit d'être $\boxed{\Delta_{\mathbf{E}} = 2}$ puisque
+\begin{equation}
+        \Delta_{\mathbf{E}} = \Delta_{\partial^{\mu}} + \Delta_{A^{\mu}}
+\end{equation} 
+
+
+
 \subsection{}
 \textbf{Quel est le champ canoniquement conjugué à $A_\mu$ . 
 \vspace{2ex}
@@ -448,15 +483,29 @@ et du champ électrique.}
 
 \section{Phonons}
 \subsection{}
+\textbf{En vous basant sur l’analyse faite en classe en 1+1 dimensions, obtenez la théorie classique des champs décrivant les vibrations d’un cristal cubique en 2 et 3 dimensions spatiales.
+Utilisez l’approche "vache sphérique" : posez une forme simple pour l’énergie potentielle
+d’élongation-compression qui généralise le cas en d = 1. Le vrai cas des phonons est plus
+difficile à traiter}
 \subsection{}
-\subsection{}
+\textbf{Quelles sont les symétries continues de cette théorie en 2+1 et 3+1 dimensions ? Travaillez avec les symétries internes seulement, 
+c’est-à-dire les symétries ne faisant pas intervenir d’opération sur l’espace-temps. Déterminez les courants de Noether associés.}
 
 \section{Quantification 101}
-
+%Considérons la chaîne harmonique classique en 1 dimension spatiale, telle que vue en classe.
 \subsection{}
+%Faites la quantification canonique de la chaîne discrète. Vous aurez alors un système
+%quantique non-relativiste avec un nombre infini, mais discret, de degrés de libertés quan-
+%tiques. Nous sommes donc encore dans le contexte de la mécanique quantique habituelle.
+%Rappel : {A, B} → −i[ Â, B̂], avec ~ = 1. Utilisez le point de vue de Schrödinger.
 \subsection{}
+%Prenez ensuite la limite du continu de cette théorie. Donnez toutes les relations de com-
+%mutation entre les opérateurs de champ issus des opérateurs φ̂ I et p̂ I . Ces commutateurs
+%respectent-ils la causalité ? Ne vous inquiétez pas trop de la rigueur mathématique de l’ex-
+%pansion de Taylor pour des opérateurs.
 \subsection{}
-\subsection{}
+%Évaluez ∂ t 2 h φ̂(x)i t à l’aide de la théorie discrète. Passez au continu à la fin du calcul.
+%Votre résultat est-il relié à l’équation de Klein-Gordon ? Expliquez.
 
 \end{document}
 

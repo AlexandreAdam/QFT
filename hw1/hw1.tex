@@ -27,7 +27,7 @@
 \rhead{Alexandre Adam \\ 20090755}
 \lhead{Théorie des champs 1 (PHY 6812) \\ William Witczak-Krempa}
 \chead{Devoir 1}
-\rfoot{\today}
+\rfoot{14 Octobre 2022}
 \cfoot{\thepage}
 
 \numberwithin{equation}{section}
@@ -45,10 +45,10 @@
 \section{Un peu de relativité}
 
 \subsection{}
-\textbf{Classiquement, un photon se propageant dans le vide peut-il se désintégrer en une paire
-électron-positron ? 
-%Expliquez votre résultat mathématique de manière heuristique. 
-Que ce passera-t-il en théorie quantique des champs (QFT) ?}
+%\textbf{Classiquement, un photon se propageant dans le vide peut-il se désintégrer en une paire
+%électron-positron ? 
+%%Expliquez votre résultat mathématique de manière heuristique. 
+%Que ce passera-t-il en théorie quantique des champs (QFT) ?}
 \subsection{}
 \textbf{Quelle est la condition pour qu’un tenseur soit invariant sous transformations de Lorentz ?}
 \vspace{2ex}
@@ -215,9 +215,10 @@ La divergence $\partial_{\mu}\mathcal{J}^{\mu}$ devient un terme de surface dans
 s'annule par définition de la dérivée fonctionnelle de l'action.
 %\paragraph{Cas $m=0$:} 
 %On considère en premier lieu le Lagrangien d'un champ sans masse. 
-Sachant que la dérivée se transforme comme
+%Sachant que la dérivée se transforme comme
+Comme la dérivée se transforme de la façon suivante
 \begin{equation}
-        \partial^{\mu} \rightarrow b^{-1}\partial^{\mu}\, ,
+        \partial^{\mu} \rightarrow \frac{\partial}{\partial (b x)} = b^{-1}\partial^{\mu}\, ,
 \end{equation}
 alors on peut montrer que le Lagrangien de Klein-Gordon se transforme comme
 \begin{equation}\label{eq:lagrangian transform}
@@ -242,23 +243,27 @@ où
               &= (1 + \epsilon\Delta) \phi(x + \epsilon x) + \mathcal{O}(\epsilon^{2}) \\
               &= \phi(x) + \epsilon(\Delta + x^{\mu}\partial_{\mu})\phi(x) + \mathcal{O}(\epsilon^{2})\, .
 \end{align*}
+où on a utiliser la dérivée directionnelle pour exprimer la variation du champs dû à un changement de coordonnées 
+$\phi(x + a^{\mu}) = \phi(x) + a^{\mu}\partial_{\mu}\phi(x) + \mathcal{O}(a^{2})$.
 Donc,
 \begin{equation}
         \delta \phi = \epsilon(\Delta + x^\mu \partial_\mu)\phi\, .
 \end{equation} 
-Puisque l'opérateur $\partial_\mu$ commute avec la variation infinitésimale du champ $\phi$, on peut écrire
+Puisque l'opérateur $\partial_\mu$ commute avec la variation infinitésimale $\delta$, on peut écrire
 \begin{equation}
-         \delta (\partial_\mu \phi) = \partial_{\mu}\delta\phi =  \epsilon(\Delta + 1 + x^{\mu}\partial_\mu)\partial_\mu \phi + \mathcal{O}(\epsilon^2)
+         \delta (\partial_\mu \phi) = \partial_{\mu}\delta\phi =  \epsilon(\Delta + 1 + x^{\nu}\partial_\nu)\partial_\mu \phi 
 \end{equation} 
 La variation infinitésimal du Lagrangien devient alors
 \begin{align*}
-        \delta  \mathcal{L}_\star &= (\partial^\mu \phi)(\partial_\mu \delta \phi) \\
+        \delta  \mathcal{L}_\star &= \frac{\partial \mathcal{L}_\star}{\partial (\partial_\mu \phi)} \delta (\partial_\mu \phi) \\
+                &= (\partial^\mu \phi)(\partial_\mu \delta \phi) \\
                 &= \epsilon (\Delta + 1 + x^\mu \partial_\mu)(\partial^\mu \phi) (\partial_\mu \phi) \\
-                &= \epsilon (\mathcal{L}_\star + x^\mu \partial_\mu \mathcal{L}_\star) + \epsilon \Delta \mathcal{L}_\star\\
-                &= \epsilon \partial_\mu (x^\mu \mathcal{L}_\star) + \epsilon \Delta \mathcal{L}_\star\, ,
+                &= \epsilon  x^\mu \partial_\mu \mathcal{L}_\star + 2\epsilon (\Delta + 1) \mathcal{L}_\star \\
+                %&= \epsilon \partial_\mu (x^\mu \mathcal{L}_\star) +  2 \epsilon (\Delta + 1) \mathcal{L}_\star\, ,
 \end{align*}
-où on a absorber le facteur numérique dans l'infinitésimale et où on a laisser tomber la notation $\mathcal{O}(\epsilon^2)$ qui est sous-entendue. 
-On trouve ainsi que le Lagrangien ne varie que par le facteur d'échelle, $\epsilon\Delta \mathcal{L}_\star$, qui laisse l'action invariante lorsque \eqref{eq:Delta} est respectée, et un terme de surface. 
+Le second terme laisse l'action invariante lorsque \eqref{eq:Delta} est respectée puisque ce terme annule le déterminant de la Jacobienne dans l'intégrale d'action. 
+%La manipulation à la dernière ligne mérite quelques explications. 
+%En effet, on 
 On peut donc construire un courant de Noether
 \begin{equation}
         j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \delta  \phi  - \mathcal{J}^{\mu}\, ,
@@ -310,12 +315,12 @@ sous une transformation d’échelle \eqref{eq:transformation}.}
 
 Le terme d'interaction rajouté, $V_{\mathrm{\phi}}(\phi) = \lambda \phi^{2n}$, se transforme comme
 \begin{equation}
-        V_{\mathrm{int}} \rightarrow b^{-n(d-1)}V_{\mathrm{int}}
+        V_{\mathrm{int}} \rightarrow b^{-n(d-1)}V_{\mathrm{int}}\, .
 \end{equation} 
 puisque $\Delta_{\phi^{n}} = \frac{n(d-1)}{2}$.
 Pour que le Lagrangien se transforme comme $\mathcal{L}_{\mathrm{int}} \rightarrow b^{-(d+1)}\mathcal{L}_{\mathrm{int}}$, on doit avoir $m=0$ et 
 \begin{equation}
-        \boxed{n = \frac{d+1}{d-1}}
+        \boxed{n = \frac{d+1}{d-1}}\, .
 \end{equation} 
 Ainsi, il n'y a pas de symétrie d'échelle pour les théories interagissantes avec $d=1$ dimension. 
 Pour $d=2$, la théorie interagissante avec $n=3$ possède une symétrie d'échelle. Pour $d=3$, la théorie interagissante 
@@ -324,7 +329,7 @@ avec $n=2$ possède une symétrie d'échelle.
 \section{Champs de jauge}
 Soit l'action de Maxwell
 \begin{equation}\label{eq:MaxwellAction}
-       S = \int d^{d+1}x\, F_{\mu\nu}F^{\mu\nu}
+       S = \int d^{d+1}x\, F_{\mu\nu}F^{\mu\nu}\, ,
 \end{equation} 
 où $d \geq 1$.
 \subsection{}
@@ -343,7 +348,7 @@ où $d \geq 1$.
 \begin{proof}
 Soit le Lagrangien de Maxwell
 \begin{equation}
-        \mathcal{L} = -\frac{1}{4}F^{\mu \nu}F_{\mu\nu} %= -\frac{1}{2}(\partial^{\mu}A^{\nu})(\partial_{\nu}A_\mu) + \frac{1}{2}(\partial_{\mu}A^{\mu})^{2}
+        \mathcal{L} = -\frac{1}{4}F^{\mu \nu}F_{\mu\nu}\, , %= -\frac{1}{2}(\partial^{\mu}A^{\nu})(\partial_{\nu}A_\mu) + \frac{1}{2}(\partial_{\mu}A^{\mu})^{2}
 \end{equation} 
 où $F_{\mu\nu}$ est le tenseur électromagnétique % It is antisymmetric, with a nul trace
 \begin{equation}\label{eq:F}
@@ -466,12 +471,13 @@ où la dernière ligne suit du théorème de Schwarz.
 On additionne ensuite les équations pour chaque indice $i$, de sortes que 
 \begin{align*}
         0 &= \partial_{t}^{2}\mathbf{A} - \grad^{2}\mathbf{A} + \partial_{t}\grad \phi + \grad (\grad \cdot \mathbf{A}) \\
-        \implies 0 &= -\partial_{t}\mathbf{E} + \grad \times \mathbf{B}\, ,
+        \implies 0 &= -\partial_{t}\mathbf{E} + \grad \times \mathbf{B}\, .
 \end{align*}
-où on a utiliser l'identité vectorielle $\grad^{2}\mathbf{A} = \grad (\grad \cdot \mathbf{A}) - \grad \times (\grad \times \mathbf{A})$. On trouve finalement la loi d'Ampère dans le vide. 
-%La seconde loi de Maxwell suit de l'identité vectorielle $\grad \cdot (\grad \times \mathbf{A}) = 0$.
+On a utiliser l'identité vectorielle $\grad^{2}\mathbf{A} = \grad (\grad \cdot \mathbf{A}) - \grad \times (\grad \times \mathbf{A})$ à la dernière ligne. 
+On trouve la loi d'Ampère dans le vide. 
+%La seconde loi de Maxwell suit de l'identité vectorielle $\grad \cdot (\grad \times \mathbf{A}) = 0$, alors que la loi de ... suit de l'identité de Bianchi
 
-%TODO: a quelles condition
+%%TODO: a quelles condition
 
 
 \subsection{}
@@ -512,29 +518,438 @@ dimension d'échelle du champ électrique se doit d'être $\boxed{\Delta_{\mathb
 
 \section{Phonons}
 \subsection{}
-\textbf{En vous basant sur l’analyse faite en classe en 1+1 dimensions, obtenez la théorie classique des champs décrivant les vibrations d’un cristal cubique en 2 et 3 dimensions spatiales.
-Utilisez l’approche "vache sphérique" : posez une forme simple pour l’énergie potentielle
-d’élongation-compression qui généralise le cas en d = 1. Le vrai cas des phonons est plus
-difficile à traiter}
+%\textbf{En vous basant sur l’analyse faite en classe en 1+1 dimensions, obtenez la théorie classique des champs décrivant les vibrations d’un cristal cubique en 2 et 3 dimensions spatiales.
+%Utilisez l’approche "vache sphérique" : posez une forme simple pour l’énergie potentielle
+%d’élongation-compression qui généralise le cas en d = 1. Le vrai cas des phonons est plus
+%difficile à traiter}
+
+%%On considère une chaîne de $N$ atomes de masse $m$. Chaque atome est connecté par un ressort de raideur $\kappa$. 
+%%On définit la fréquence d'oscillation
+%%\begin{equation}
+        %%\omega \equiv \sqrt{\frac{\kappa}{m}}\, .
+%%\end{equation} 
+%On utilise les coordonnées canoniques $q_i$ et $p_i$ pour décrire le déplacement horizontal de chaque atome par rapport à leur position d'équilibre. 
+%Pour déterminer le Lagrangien, on fait une expansion de Taylor du potentiel de Hooke, $V$, convexe autour de la position d'équilibre du système. Dans cette expansion, 
+%on ignore les termes d'interactions, ce qui revient à faire l'approximation que la matrice hessienne du potentiel est diagonale
+%\begin{equation}\label{eq:Hooke Pot}
+        %V = \frac{\kappa}{2}\sum_{i=1}^Nq_i^2 +\mathcal{O}((q_i - q_{i+1})^{2}) %\frac{\kappa}{2}\sum_{i=1}^N (q_i - q_{i+1})^2 
+%\end{equation} 
+%où le prochain terme dans l'expansion nous donnerais le potentiel lié aux interactions voisines. 
+%On obtient donc le Lagrangien du système
+%\begin{equation}
+        %L = \sum_{i=1}^{N}\bigg(\frac{1}{2}m\dot{q}_i^2 - \frac{1}{2}m\omega^{2}q_i^2\bigg) %- \frac{1}{2}m\omega^2(q_i - q_{i+1})^2\bigg)
+%\end{equation} 
+%Puisqu'on est libre de redéfinir les coordonnées canoniques, on absorbe le paramètres de masse dans les $\sqrt{m}q_i \rightarrow q_i$.
+%L'Hamiltonien est la transformée de Legendre du Lagrangien, avec les moments conjugués $p_i = \frac{\partial L}{\partial \dot{q}_i} = \dot{q}_i$, d'où
+%\begin{equation}
+        %H = \sum_{i=1}^N \bigg(\frac{p_i^2}{2} + \frac{1}{2}\omega^{2}q_i^2\bigg) %+ \frac{1}{2}m\omega^2(q_i - q_{i+1})^2\bigg)
+%\end{equation} 
+
+
 \subsection{}
-\textbf{Quelles sont les symétries continues de cette théorie en 2+1 et 3+1 dimensions ? Travaillez avec les symétries internes seulement, 
-c’est-à-dire les symétries ne faisant pas intervenir d’opération sur l’espace-temps. Déterminez les courants de Noether associés.}
+%\textbf{Quelles sont les symétries continues de cette théorie en 2+1 et 3+1 dimensions ? Travaillez avec les symétries internes seulement, 
+%c’est-à-dire les symétries ne faisant pas intervenir d’opération sur l’espace-temps. Déterminez les courants de Noether associés.}
 
 \section{Quantification 101}
 %Considérons la chaîne harmonique classique en 1 dimension spatiale, telle que vue en classe.
-\subsection{}
-%Faites la quantification canonique de la chaîne discrète. Vous aurez alors un système
-%quantique non-relativiste avec un nombre infini, mais discret, de degrés de libertés quan-
-%tiques. Nous sommes donc encore dans le contexte de la mécanique quantique habituelle.
+On considère une chaîne de $N$ atomes de masse $m$. Chaque atome est connecté par un ressort de raideur $\kappa$. 
+On définit la fréquence d'oscillation
+\begin{equation}
+        \omega \equiv \sqrt{\frac{\kappa}{m}}\, .
+\end{equation} 
+On utilise les coordonnées canoniques $q_i$ et $p_i$ pour décrire le déplacement horizontal (1d) de chaque atome par rapport à leur position d'équilibre. 
+Pour déterminer le Lagrangien, on fait une expansion de Taylor du potentiel de Hooke, $V$, convexe autour de la position d'équilibre du système. Dans cette expansion, 
+on ignore les termes d'interactions \textit{lointains}, ce qui revient à faire l'approximation que la matrice hessienne du potentiel est presque diagonale
+\begin{equation}\label{eq:Hooke Pot}
+        V = \frac{\kappa}{2}\sum_{i=1}^Nq_i^2 + \frac{\kappa}{2}\sum_{i=1}^N (q_i - q_{i+1})^2 +\mathcal{O}((q_i - q_{i+2})^{2})\, .
+\end{equation} 
+%où le prochain terme dans l'expansion nous donnerais le potentiel lié aux interactions voisines. 
+On obtient donc le Lagrangien du système
+\begin{equation}
+        L = \sum_{i=1}^{N}\bigg(\frac{1}{2}m\dot{q}_i^2 - \frac{1}{2}m\omega^{2}q_i^2- \frac{1}{2}m\omega^2(q_i - q_{i+1})^2\bigg)\, .
+\end{equation} 
+Puisqu'on est libre de redéfinir les coordonnées canoniques, on absorbe le paramètres de masse dans les $\sqrt{m}q_i \rightarrow q_i$.
+L'Hamiltonien est la transformée de Legendre du Lagrangien, avec les moments conjugués $p_i = \frac{\partial L}{\partial \dot{q}_i} = \dot{q}_i$, d'où
+\begin{equation}
+        H = \sum_{i=1}^N \bigg(\frac{p_i^2}{2} + \frac{1}{2}\omega^{2}q_i^2 + \frac{1}{2}\omega^2(q_i - q_{i+1})^2\bigg)
+\end{equation} 
+
+\subsection{Quantification canonique}
+%On considère la quantification canonique de la chaîne discrète, soit un système
+%quantique non-relativiste avec un nombre infini, mais discret, de degrés de libertés quantiques. 
+%Nous sommes donc encore dans le contexte de la mécanique quantique habituelle.
 %Rappel : {A, B} → −i[ Â, B̂], avec ~ = 1. Utilisez le point de vue de Schrödinger.
-\subsection{}
+On performe la (seconde) quantification canonique de la chaîne harmonique discrète selon le point de vue de Schrödinger. 
+On commence par la promotion des coordonnées canoniques à des opérateurs, 
+$q_i \rightarrow \hat{q}_i$ et $p_i \rightarrow \hat{p}_i$. On assume qu'on connaît la relation des commutateurs canoniques (à temps égale selon notre point de vue), 
+de sortes que les crochets de Poisson deviennent ($\hbar = 1$)
+\begin{equation}\label{eq:ccr}
+\begin{split}
+        \{q_i, p_j\} = \delta_{ij} &\overset{\mathrm{QM}}{\longrightarrow } -i[\hat{q}_i, \hat{p}_j] = \delta_{ij}\\
+        \{q_i, q_j\} = \{p_i, p_j\} = 0 &\overset{\mathrm{QM}}{\longrightarrow } [\hat{q}_i, \hat{q}_j] = [\hat{p}_i, \hat{p}_j] = 0
+\end{split}
+\end{equation} 
+On exprime ensuite les opérateurs dans la base des modes de Fourier pour diagonaliser l'Hamiltonien
+\begin{equation}\label{eq:op fourier}
+\begin{split}
+        \hat{q}_k &= \frac{1}{\sqrt{N}} \sum_{r=1}^{N} e^{2\pi i kr / N}\hat{Q}_r \\
+        \hat{p}_k &= \frac{1}{\sqrt{N}}\sum_{r=1}^{N} e^{2\pi i kr / N}\hat{P}_r\, .
+\end{split}
+\end{equation} 
+Les relations inverses sont données par
+\begin{equation}
+\begin{split}
+        \hat{Q}_r &= \frac{1}{\sqrt{N}}\sum_{k=1}^{N} e^{-2\pi i kr / N}\hat{q}_k \\
+        \hat{P}_r &= \frac{1}{\sqrt{N}}\sum_{k=1}^{N} e^{-2\pi i kr / N}\hat{p}_k\, .
+\end{split}
+\end{equation} 
+Pour démontrer que ce choix diagonalise l'Hamiltonien, on utilise la définition du delta de Kronecker
+\begin{equation}
+        \delta_{mn} = \frac{1}{N}\sum_{k=1}^{N}e^{2\pi i k(m-n)/N}\, .
+\end{equation} 
+On observe que
+\begin{align*}
+        \sum_{k=1}^{N}\hat{q}_k^2 &= \sum_{k=1}^{N}\hat{q}_k \hat{q}^{\dagger}_k\\
+         &= \frac{1}{N}\sum_{k=1}^{N}\left( \sum_{r=1}^{N} e^{2\pi i k r/N} \hat{Q}_r\right) \left( \sum_{n=1}^{N}e^{-2\pi i k n / N} \hat{Q}^{\dagger}_n \right) \\
+         &= \frac{1}{N}\sum_{k=1}^{N}\sum_{r=1}^{N}\sum_{n=1}^{N} e^{2\pi i k (r-n)/N} \hat{Q}_r \hat{Q}^{\dagger}_n \\
+         &= \sum_{r=1}^{N}\sum_{n=1}^{N} \delta_{rn} \hat{Q}_r \hat{Q}^{\dagger}_n \\
+         &= \sum_{r=1}^{N} \hat{Q}_r \hat{Q}^{\dagger}_r \, .
+\end{align*} 
+et
+\begin{align*}
+        \sum_{k=1}^{N}(\hat{q}_k - \hat{q}_{k+1})^{2} &= \sum_{k=1}^{N}(\hat{q}_k - \hat{q}_{k+1})(\hat{q}_k - \hat{q}_{k+1})^{\dagger}\\
+        &= \sum_{k=1}^{N}\hat{q}_k\hat{q}^{\dagger}_k + \sum_{k=1}^{N}\hat{q}_{k+1}\hat{q}^{\dagger}_{k+1} 
+        - \sum_{k=1}^{N}(\hat{q}_{k}\hat{q}^{\dagger}_{k+1} + \hat{q}_{k+1}\hat{q}^{\dagger}_{k})
+\end{align*} 
+On impose une condition frontière périodique à la corde, de sortes que $\hat{q}_1 = \hat{q}_{N+1}$. On peut ainsi combiner les 
+deux premières sommes pour obtenir
+\begin{align*}
+        \sum_{k=1}^{N}(\hat{q}_k - \hat{q}_{k+1})^{2} 
+        &= 2\sum_{k=1}^{N}\hat{q}_k\hat{q}^{\dagger}_k 
+        - \sum_{k=1}^{N}(\hat{q}_{k}\hat{q}^{\dagger}_{k+1} + \hat{q}_{k+1}\hat{q}^{\dagger}_{k})
+\end{align*} 
+Il s'avère que le terme croisé se simplifie de la façon suivante
+\begin{align*}
+        \sum_{k=1}^{N}\hat{q}_{k}\hat{q}^{\dagger}_{k+1} &= \frac{1}{N}\sum_{k=1}^{N}\sum_{r=1}^{N}\sum_{n=1}^{N}e^{2\pi ik(r-n)/N}e^{-2\pi i n/N}\hat{Q}_{r}\hat{Q}^{\dagger}_{n} \\
+        &= \frac{1}{N}\sum_{r=1}^{N}\sum_{n=1}^{N} \delta_{rn} e^{-2\pi i n/N}\hat{Q}_{r}\hat{Q}^{\dagger}_{n} \\
+        &= \sum_{r=1}^{N}\sum_{n=1}^{N} \delta_{rn} e^{-2\pi i n/N}\hat{Q}_{r}\hat{Q}^{\dagger}_{n} \\
+        &= \sum_{r=1}^{N} e^{-2\pi i r/N}\hat{Q}_{r}\hat{Q}^{\dagger}_{r}
+\end{align*}
+En combinant les derniers résultats, et en utilisant l'identité d'Euler
+\begin{align*}
+        \sum_{k=1}^{N}(\hat{q}_k - \hat{q}_{k+1})^{2} &= 2\sum_{r=1}^{N}\hat{Q}_r\hat{Q}^{\dagger}_r - \sum_{r=1}^{N}( e^{-2\pi i r / N} + e^{2\pi i r / N})\hat{Q}_r\hat{Q}^{\dagger}_r \\
+                                                      &= 2\sum_{r=1}^{N}\hat{Q}_r\hat{Q}^{\dagger}_r - 2\sum_{r=1}^{N} \cos \left( \frac{2 \pi r}{N} \right)\hat{Q}_r\hat{Q}^{\dagger}_r \, ,
+\end{align*} 
+on obtient l'Hamiltonien 
+\begin{equation}
+        \label{eq:H}
+        \hat{H} = \sum_{r=1}^N \bigg(\frac{1}{2}\hat{P}_r\hat{P}^{\dagger}_r + \frac{1}{2}\omega_r^{2}\hat{Q}_r \hat{Q}^{\dagger}_r\bigg) \, .
+\end{equation} 
+On a définit
+\begin{equation}
+        \omega_r^{2} \equiv 3\omega^{2} - 4\omega^2 \sin^2 \left( \frac{\pi r}{N} \right) \, .
+\end{equation} 
+De cette définition, il suit que $\omega_r = \omega_{N-r}$.
+%$\hat{H}$ est un opérateur diagonale dans l'espace des modes de Fourier.
+Le commutateur entre les opérateurs canoniques est
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+        [\hat{Q}_r, \hat{P}_n] &= \frac{1}{N}\bigg[\sum_{k=1}^{N} e^{-2\pi i kr / N}\hat{q}_k , \sum_{k'=1}^{N} e^{-2\pi i k'n / N}\hat{p}_{k'} \bigg] \\
+                             &= \frac{1}{N}\sum_{k=1}^{N}e^{-2\pi i kr / N}\sum_{k'=1}^{N} e^{-2\pi i k'n / N}\bigg[\hat{q}_k , \hat{p}_{k'} \bigg] \\
+                             &= \frac{1}{N}\sum_{k=1}^{N}e^{-2\pi i kr / N}\sum_{k'=1}^{N} e^{-2\pi i k'n / N}(i\delta_{k k'}) \\
+                             &= \frac{i}{N}\sum_{k=1}^{N}e^{-2\pi i k(r + n) / N}\\
+                             &= \frac{i}{N}\sum_{k=1}^{N}e^{2\pi i k((-n) - r) / N}\\
+                             &= i \delta_{r,-n}
+\end{align*}
+\endgroup
+%Pour continuer, on doit déterminer la condition aux frontières de la chaîne harmonique. 
+On utilise la condition périodique, de sortes que l'indice $-n$ est associé à $N-n$. 
+%Cette condition périodique introduit une infinité de degrés de libertés, qu'on décrit de façon succincte 
+%en ne traitant que l'ensemble des indices $i\,\, \mathrm{mod}\,\, N$. 
+Ainsi,
+\begin{equation}
+        [\hat{Q}_r, \hat{P}_n] = i\delta_{r,N-n}
+\end{equation} 
+Puisque les opérateurs $\hat{q}_k$ et $\hat{p}_k$ sont des opérateurs hermitiens ($\hat{q}^{\dagger}_k = \hat{q}_k$), 
+la transformée de Fourier est un opération unitaire si et seulement si
+\begin{equation}
+\begin{split}
+        \hat{Q}^{\dagger}_r &= \hat{Q}_{N-r} \\
+        \hat{P}^{\dagger}_r &= \hat{P}_{N-r} \\
+\end{split}
+\end{equation} 
+De sortes qu'on peut trouver les commutateurs restants
+\begin{equation}
+\begin{split}
+        [\hat{Q}_r, \hat{P}^{\dagger}_n] &= i\delta_{r,n} \\
+        [\hat{Q}_r, \hat{Q}^{\dagger}_n] = [\hat{P}_r, \hat{P}^{\dagger}_n] &= 0
+\end{split}
+\end{equation} 
+On introduit finalement l'opérateur d'échelle $\hat{a}_r$, définit en terme des opérateurs $\hat{Q}_r$ et $\hat{P}_r$.
+Encore une fois, on assume une relation pour le commutateur canonique par correspondance avec le modèle classique avec 
+un seul oscillateur harmonique
+\begin{equation}
+        [\hat{a}_r, \hat{a}^{\dagger}_n] = \delta_{rn}\, .
+\end{equation} 
+Avec cette supposition, on peut trouver un candidat pour l'opérateur d'échelle
+\begin{equation}
+        \hat{a}_r = \frac{1}{\sqrt{2\omega_r}}(\omega_r \hat{Q}_r + i\hat{P})
+\end{equation} 
+En effet
+\begin{align*}
+        [\hat{a}_r, \hat{a}^{\dagger}_n] &= \frac{1}{2 \sqrt{\omega_r \omega_n}} \left([\omega_r \hat{Q}_r + i\hat{P}_r, \omega_n \hat{Q}^{\dagger}_n - i\hat{P}^{\dagger}_n] \right)  \\[2ex]
+              &= \frac{1}{2 \sqrt{\omega_r \omega_n}}\left( -i\omega_r[\hat{Q}_r,\hat{P}^{\dagger}_n] 
+              + i\omega_n[\hat{P}_r,\hat{Q}^{\dagger}_n]  \right)  \\[2ex]
+              &= \delta_{rn}\, ,
+\end{align*}
+tel que souhaité.
+Toutefois, on évite d'identifier immédiatement les opérateurs d'échelle $\hat{a}_r$ et $\hat{a}^{\dagger}_r$ avec les opérateurs 
+d'annihilation et de création respectivement. Leur interprétation physique demande plus de travail.
+Pour compléter la seconde quantification de notre théorie discrète, on exprime les opérateurs canoniques et l'Hamiltonien en terme de $\hat{a}_r$ et $\hat{a}^{\dagger}_r$. 
+Les opérateurs canoniques deviennent
+\begin{align}
+        \label{eq:Q2}
+        \hat{Q}_r &= \frac{1}{\sqrt{2 \omega_r}} (\hat{a}_r + \hat{a}^{\dagger}_{N-r}) \\[2ex]
+        \label{eq:P2}
+        \hat{P}_r &= -i\sqrt{\frac{ \omega_r}{2}} (\hat{a}_r - \hat{a}^{\dagger}_{N-r})\, .
+\end{align} 
+On obtient l'Hamiltonien en remplaçant \eqref{eq:Q2} et \eqref{eq:P2} dans \eqref{eq:H}
+\begin{align*}
+        \hat{H} 
+        &= \sum_{r=1}^N \bigg(\frac{1}{2}\frac{(-i^2)\omega_r}{2}(\hat{a}_r - \hat{a}^{\dagger}_{N-r})(\hat{a}^{\dagger}_r - \hat{a}_{N-r}) 
+        +\frac{1}{2}\omega_r^{2}\frac{1}{2 \omega_r}(\hat{a}_r + \hat{a}^{\dagger}_{N-r})(\hat{a}^{\dagger}_r + \hat{a}_{N-r})\bigg) \\[2ex]
+         &= \frac{1}{2}\sum_{r=1}^N \omega_r\big( \hat{a}_r \hat{a}^{\dagger}_r + \hat{a}^{\dagger}_{N-r}\hat{a}_{N-r}\big) \\
+         \implies \Aboxed{ \hat{H}   &= \sum_{r=1}^N \omega_r\bigg( \hat{a}_r^{\dagger} \hat{a}_r + \frac{1}{2}\delta_{rr}\bigg)}
+\end{align*} 
+%et on donne les équations de mouvement pour une solution de l'équation de Schrödinger $\psi($
+
+\subsection{Limite du continuum}
 %Prenez ensuite la limite du continu de cette théorie. Donnez toutes les relations de com-
 %mutation entre les opérateurs de champ issus des opérateurs φ̂ I et p̂ I . Ces commutateurs
 %respectent-ils la causalité ? Ne vous inquiétez pas trop de la rigueur mathématique de l’ex-
 %pansion de Taylor pour des opérateurs.
+On prend maintenant la limite du continuum pour notre théorie, ç.-à-d.~qu'on prend $N \rightarrow \infty $, tout en 
+prenant simultanément les limites $m \rightarrow 0$ et $\kappa \rightarrow \infty $ pour guarder la fréquence d'oscillation, $\omega$, constante.
+Pour ce faire, on doit changer la description des états du système en terme des coordonnées canoniques $q_i$ et $p_i$ 
+en faveur de la description en terme des champs $\phi(x)$ et $\pi(x)$, où $x \in \mathbb{R}$ est l'indice continu qui remplace l'indice discret $i \in \{1,\dots,N\}$. 
+%En fait, on associe ces champs avec une densité et une densité d'impulsion respectivement.
+%, de sortes qu'on absorbe la masse des atomes $m$ dans  
+%la définition des champs. 
+On introduit $P$ comme la période de $\phi(x)$, soit la longueur de la chaîne harmonique.
+%On introduit le delta de Dirac
+%\begin{equation}
+        %\delta(x - y) = \frac{1}{2\pi}\int_{-\infty}^{\infty}
+%\end{equation} 
+
+
+Par correspondance avec les relations de commutations pour les opérateurs canoniques \eqref{eq:ccr}, on a
+\begin{equation}\label{eq:ccr2}
+\begin{split}
+        \{\phi(x), \pi(y)\} = 2\pi\delta(x - y) &\overset{\mathrm{QM}}{\longrightarrow } -i[\hat{\phi}(x), \hat{\pi}(y)] = 2\pi \delta(x - y)\\
+        \{\phi(x), \phi(y)\} = \{\pi(x), \pi(y)\} = 0 &\overset{\mathrm{QM}}{\longrightarrow } [\hat{\phi}(x), \hat{\phi}(y)] = [\hat{\pi}(x), \hat{\pi}(y)] = 0
+\end{split}
+\end{equation} 
+où on a introduit le delta de Dirac $\delta(x) = \frac{1}{2\pi}\int_{-\infty }^{\infty }dk\, e^{ikx}$.
+Dans la description continue, on suppose que les champs $\phi(x)$ et $\pi(x)$ sont périodiques, de sortes qu'on 
+peut prendre leur transformée de Fourier de la façon suivante
+\begin{equation}
+\begin{split}
+        \hat{ \phi}(x) &= \frac{1}{2\pi} \int_{-\infty }^{\infty} dk\, e^{i kx} \hat{\phi}(k) \\
+        \hat{\pi}(x) &= \frac{1}{2\pi}\int_{-\infty }^{\infty } dk\, e^{i kx} \hat{\pi}(k)\, .
+\end{split}
+\end{equation} 
+Les relations inverses sont
+\begin{equation}
+\begin{split}
+        \hat{\phi}(k) &=  \int_{-\infty }^{\infty}dx\,  e^{- i kx} \hat{\phi}(x) \\
+        \hat{\pi}(k) &= \int_{-\infty }^{\infty } dx\,e^{- i kx} \hat{\pi}(x)\, .
+\end{split}
+\end{equation} 
+On a choisit une normalisation différente pour faire correspondre nos résultats avec ceux du cours.
+Par correspondance avec la définition des opérateurs canoniques \eqref{eq:Q2} et \eqref{eq:P2}, on a de plus
+\begin{align}
+        \label{eq:Q2c}
+        \hat{\phi}(k) &= \frac{1}{\sqrt{2\omega_k}} (\hat{a}_k + \hat{a}^{\dagger}_{-k}) \\[2ex]
+        \label{eq:P2c}
+        \hat{\pi}(k) &= -i\sqrt{\frac{\omega_k}{2}} (\hat{a}_k - \hat{a}^{\dagger}_{-k})\, ,
+\end{align} 
+avec l'opérateur d'échelle
+\begin{align}
+        \hat{a}_k = \frac{1}{\sqrt{2 \omega_k}}(\omega_k \phi(k) + i \pi(k)) \, .
+\end{align}
+Ainsi, on a les commutateurs canoniques
+\begin{align}
+        [\hat{\phi}(k), \hat{\pi}(k')] &= 2\pi i\delta(k + k') \\
+        [\hat{\phi}(k), \hat{\pi}^{\dagger}(k')] &= 2\pi i\delta(k - k') \\
+        [\hat{\phi}(k), \hat{\phi}(k')] = [\hat{\pi}(k), \hat{\pi}(k')]  &= 0 \\
+        [\hat{a}_k, \hat{a}^{\dagger}_{k'}] &= 2\pi \delta(k - k') \\
+        [\hat{a}_k, \hat{a}_{k'}] = [\hat{a}^{\dagger}_k,\hat{a}^{\dagger}_{k'}] &= 0
+\end{align}
+L'Hamiltonien devient
+\begin{equation}
+        \hat{H} = \int_{\mathbb{R}}\frac{dk}{2\pi}\, \left(  \frac{\pi(k)\pi^{\dagger}(k)}{2} + \omega_k^{2}\phi(k)\phi^{\dagger}(k)\right) = \int_{\mathbb{R}}\frac{dk}{2\pi}\, \omega_k\big(\hat{a}^{\dagger}_k \hat{a}_k + \frac{1}{2}2\pi\delta(0)\big)
+\end{equation} 
+On calcule maintenant les relations de commutations avec l'Hamiltonien dans son espace propre. 
+On commence par calculer la commutation avec l'opérateur d'échelle $\hat{a}_k$
+\begin{align*}
+        [\hat{H}, \hat{a}_k] &= \int_{\mathbb{R}} \frac{dk'}{2\pi} \omega_{k'}[\hat{a}^{\dagger}_{k'} \hat{a}_{k'}, \hat{a}_{k}] \\
+        &= \int_{\mathbb{R}} \frac{dk'}{2\pi} \omega_{k'}\left( \hat{a}^{\dagger}_{k'}[ \hat{a}_{k'}, \hat{a}_{k}] + [\hat{a}^{\dagger}_{k'} , \hat{a}_{k}] \hat{a}_{k'}\right)\\
+        &= \int_{\mathbb{R}} \frac{dk'}{2\pi} \omega_{k'}(-2\pi) \delta(k' - k)\hat{a}_{k'}\\
+        \implies  \Aboxed{ [\hat{H}, \hat{a}_k]  &= -\omega_k \hat{a}_{k}}
+\end{align*}
+Par un argument similaire, on a
+\begin{equation}
+        \boxed{[\hat{H}, \hat{a}^{\dagger}_k] = \omega_k\hat{a}^{\dagger}_k}
+\end{equation} 
+On trouve ainsi que les opérateurs d'échelles sont les vecteurs propres de l'Hamiltonien, ce qui correspond bien à notre image de 
+l'oscillateur harmonique simple où l'opérateur d'échelle est utilisé pour construire les modes de différentes énergies. En effet, si on suppose que 
+$\hat{H}\psi = E \psi$ est une solution de l'équation de Schrödinger, alors $\hat{a}^{\dagger}_k \psi$ est aussi une solution avec une énergie $E_k = \omega_k + E$:
+\begin{equation}
+        \hat{H}\hat{a}^{\dagger}_k \psi = (\omega_k+ E)\hat{a}^{\dagger}_k \psi
+\end{equation} 
+Ensuite, on considère la commutation avec le champ $\phi(k)$
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+        [\hat{H}, \hat{\phi}(k)] &=\int_{\mathbb{R}} \frac{dk'}{2\pi}  \frac{\omega_{k'}}{\sqrt{2\omega_{k}}}[\hat{a}^{\dagger}_{k'} \hat{a}_{k'}, \hat{a}_{k} + \hat{a}^{\dagger}_{-k}] \\
+        &= \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+         \frac{\omega_{k'}}{\sqrt{2\omega_{k}}}
+        \left(  
+                \hat{a}^{\dagger}_{k'}[\hat{a}_{k'}, \hat{a}_{k} + \hat{a}^{\dagger}_{-k}] 
+                + [\hat{a}^{\dagger}_{k'} , \hat{a}_{k} + \hat{a}^{\dagger}_{-k}]\hat{a}_{k'} 
+        \right)\\
+        &= \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+         \frac{\omega_{k'}}{\sqrt{2\omega_{k}}}
+        \left(  
+                \hat{a}^{\dagger}_{k'} 2\pi\delta(k' + k) 
+                - 2\pi \delta(k' - k)\hat{a}_{k'}
+        \right)\\
+        &= \sqrt{\frac{\omega_k}{2}} \left(  \hat{a}^{\dagger}_{-k}   - \hat{a}_{k} \right) \\
+        %&= -i \hat{\pi}(k)\\
+        \implies \Aboxed{[\hat{H}, \hat{\phi}(k)]  &= -i\hat{\pi}(k)}\, ,
+\end{align*}
+\endgroup
+et $\pi(k)$
+\begin{align*}
+        [\hat{H}, \hat{\pi}(k)] &= -i \int_{\mathbb{R}} \frac{dk'}{2\pi} \omega_{k'} \sqrt{\frac{\omega_k}{2}}[\hat{a}^{\dagger}_{k'} \hat{a}_{k'}, \hat{a}_{k} - \hat{a}^{\dagger}_{-k}] \\
+        &= -i \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+\omega_{k'} \sqrt{\frac{\omega_k}{2}}
+        \left(  
+                \hat{a}^{\dagger}_{k'}[\hat{a}_{k'}, \hat{a}_{k} - \hat{a}^{\dagger}_{-k}] 
+                + [\hat{a}^{\dagger}_{k'} , \hat{a}_{k} - \hat{a}^{\dagger}_{-k}]\hat{a}_{k'} 
+        \right)\\
+        &=-i \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+\omega_{k'} \sqrt{\frac{\omega_k}{2}}
+        \left(  
+                -\hat{a}^{\dagger}_{k'} 2\pi\delta(k' + k) 
+                - 2\pi \delta(k'- k)\hat{a}_{k'}
+        \right)\\
+        &= i \omega_k\sqrt{\frac{\omega_k}{2}} \left(  \hat{a}^{\dagger}_{-k}  + \hat{a}_{k} \right) \\
+        %&= i \omega^2\hat{\phi}(-k)\\
+        \implies \Aboxed{[\hat{H}, \hat{\pi}(k)]  &= i\omega^{2}_k\hat{\phi}(k)}\, . 
+\end{align*}
+Par soucis de complétude, on dérive aussi les commutateurs pour le champs adjoint $\phi^{\dagger}(k)$
+\begin{align*}
+        [\hat{H}, \hat{\phi}^{\dagger}(k)] %&= \frac{\omega}{\sqrt{2\omega}}\int_{\mathbb{R}} \frac{dk'}{2\pi} [\hat{a}^{\dagger}_{k'} \hat{a}_{k'}, \hat{a^{\dagger}}_{k} + \hat{a}{-k}] \\
+        &= \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+         \frac{\omega_{k'}}{\sqrt{2\omega_{k}}}
+        \left(  
+                \hat{a}^{\dagger}_{k'}[\hat{a}_{k'}, \hat{a}^{\dagger}_{k} + \hat{a}_{-k}] 
+                + [\hat{a}^{\dagger}_{k'} , \hat{a}^{\dagger}_{k} + \hat{a}_{-k}]\hat{a}_{k'} 
+        \right)\\
+        &= \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+         \frac{\omega_{k'}}{\sqrt{2\omega_{k}}}
+        \left(  
+                \hat{a}^{\dagger}_{k'} 2\pi\delta(k'- k) 
+                - 2\pi \delta(k' + k)\hat{a}_{k'}
+        \right)\\
+        &= \sqrt{\frac{\omega_k}{2}} \left(  \hat{a}^{\dagger}_{k}   - \hat{a}_{-k} \right) \\
+        &= -i \hat{\pi}(-k)\\
+        \implies \Aboxed{[\hat{H}, \hat{\phi}^{\dagger}(k)]  &= -i\hat{\pi}^{\dagger}(k)}\, ,
+\end{align*}
+et $\pi^{\dagger}(k)$
+\begin{align*}
+        [\hat{H}, \hat{\pi}(k)] %&=-i \omega \sqrt{\frac{\omega}{2}}\int_{\mathbb{R}} \frac{dk'}{2\pi} [\hat{a}^{\dagger}_{k'} \hat{a}_{k'}, \hat{a}^{\dagger}_{k} - \hat{a}_{-k}] \\
+        &= -i  \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+\omega_{k'} \sqrt{\frac{\omega_k}{2}}
+        \left(  
+                \hat{a}^{\dagger}_{k'}[\hat{a}_{k'}, \hat{a}^{\dagger}_{k} - \hat{a}_{-k}] 
+                + [\hat{a}^{\dagger}_{k'} , \hat{a}^{\dagger}_{k} - \hat{a}_{-k}]\hat{a}_{k'} 
+        \right)\\
+        &=-i \int_{\mathbb{R}} \frac{dk'}{2\pi} 
+\omega_{k'} \sqrt{\frac{\omega_k}{2}}
+        \left(  
+                -\hat{a}^{\dagger}_{k'} 2\pi\delta(k' - k) 
+                - 2\pi \delta(k'+ k)\hat{a}_{k'}
+        \right)\\
+        &= i \omega_k\sqrt{\frac{\omega_k}{2}} \left(  \hat{a}^{\dagger}_{k}  + \hat{a}_{-k} \right) \\
+        &= i \omega^2_k\hat{\phi}(-k)\\
+        \implies \Aboxed{[\hat{H}, \hat{\pi}^{\dagger}(k)]  &= i\omega^{2}_k\hat{\phi}^{\dagger}(k)}\, . 
+\end{align*}
+
+On calcule finalement les relations de commutations pour l'observable $\hat{\phi}(x)$ 
+\begin{align*}
+        [\hat{H}, \hat{\phi}(x)] &= \int_{\mathbb{R}} \frac{dk}{2\pi} e^{ikx}[\hat{H},\hat{\phi}(k)]\\ 
+        &= -i \int_{\mathbb{R}} \frac{dk}{2\pi} e^{ikx} \hat{\pi}(k) \\
+        \implies \Aboxed{[\hat{H}, \hat{\phi}(x)] &= -i \hat{\pi}(x) }
+\end{align*}
+Pour $\hat{\pi}(x)$, il est préférable de calculer le commutateur avec l'Hamiltonien dans l'espace physique pour éviter l'apparition de $\omega_k$ dans l'intégrale de phase. 
+On fait donc la correspondance avec l'Hamiltonien discret
+\begin{equation}
+        \hat{H} = \int_{\mathbb{R}}dx\, \left( \frac{\hat{\pi}^{2}(x)}{2} + \frac{1}{2}\hat{\phi}(x)\left( \omega^2 - \partial_{x}^2\right)\hat{\phi}(x) \right)
+\end{equation} 
+où on a associer le terme $\propto (\hat{q}_i - \hat{q}_{i+1})^2$ au gradient $-\partial_x^2 \phi(x)$. En utilisant les commutateurs canoniques, 
+on obtient
+\begin{align*}
+        [\hat{H}, \hat{\pi} (x)] &= \int_{\mathbb{R}}dx'\,\bigg[\frac{\hat{\pi}^{2}(x')}{2} + \frac{1}{2}\hat{\phi}(x')\left( \omega^2 - \partial_{x}^2\right)\hat{\phi}(x'),\hat{\pi}(x)\bigg]\\ 
+        &= \int_{\mathbb{R}}dx'\,(\omega^2 - \partial_x^2)\phi(x')  i\delta(x - x')\\ 
+        \implies \Aboxed{ [\hat{H}, \hat{\pi} (x)] &= i(\omega^2 - \partial_x^2)\phi(x)  }
+\end{align*}
+
+Ainsi, on a tous les outils en mains pour s'intéresser à la causalité de la théorie. On s'attend à ce que le commutateur entre deux opérateurs 
+hermitiens, soit des observables de la théorie, commutent lorsque la séparation entre deux évènements, disons $\mathcal{E}_1 =(x, t)$ et $\mathcal{E}_2 = (x', t')$, est de type spatiale, 
+donc $(\mathcal{E}_1 - \mathcal{E}_2)^2 < 0$. On a déjà déterminer les commutateurs à temps égaux ($t = t'$). On prend maintenant le point de vue de 
+Heisenberg, où l'état fondamental $| 0 \rangle $ est indépendant du temps et où on fait évoluer un opérateur $\hat{A}$ avec l'opérateur de 
+d'évolution temporelle %$\hat{U}(t) = e^{-i\hat{H}t}$
+\begin{equation}
+        \hat{A}(t) = e^{i\hat{H}t}\hat{A}_S e^{-i\hat{H}t}\, .
+\end{equation} 
+$\hat{A}_S$ est l'opérateur selon le point de vue de Schrödinger. Au fins de l'exercice, on suppose que $t$ et $t'$ sont petits, de sortes qu'on peut prendre 
+l'expansion de Taylor de $\hat{A}(t)$ autour de $\hat{A}_S$
+\begin{equation}
+        \hat{A}(t) = \hat{A}_S + it[\hat{H}, \hat{A}_S] - \frac{1}{2}t^2 [\hat{H}, [\hat{H}, \hat{A}_S]] + \mathcal{O}(t^3)\, .
+\end{equation} 
+%Si on considère en plus les translation spatiales
+%On s'intéresse en premier lieu au commutateur 
+Ainsi, on peut calculer le commutateur entre deux évènements de l'espace-temps pour le champs $\hat{\phi}$ pour une expansion au premier ordre
+\begin{align*}
+        [\phi(x, t), \phi(x', t')] &= \langle 0 | [\phi(x, t), \phi(x', t') ] | 0 \rangle \\
+                                   &\approx \langle 0 | [\phi(x) + it[\hat{H}, \phi(x)], \phi(x') + it'[\hat{H}, \phi(x')]]| 0 \rangle \\
+                                   &= \langle 0 | [\phi(x) + t\pi(x), \phi(x') + t'\pi(x')]| 0 \rangle \\
+                                   &= 2\pi i (t' - t) \delta(x - x')\, .
+\end{align*} 
+Le commutateur est nul dès que $x \not= x'$ ou que $t = t'$, de sortes que la causalité est préservée.
+En effet, on trouve que l'amplitude de propager une particule d'un point $x$ à $x'$ est toujours nulle, peut importe la différence temporelle.
+On conclut que les particules vibrent sur place, sans pouvoir se propager (au moins pour un temps très court). 
+%Puisqu'on a construit la théorie en supposant un potentiel sans terme d'interaction local, 
+%alors la théorie est devenue \textit{hyper}-local, dans le sens où chaque point de l'espace vibre indépendamment des autres, et qu'aucune action à un endroit de l'espace ne peut affecter un 
+%autre endroit de l'espace. Évidemment, un évènement passé peut influencer un évènement futur, à condition que $x = x'$. 
+
+%Pour permettre a la théorie d'avoir une description plus riche, et moins locale, on doit au moins introduire les termes 
+%d'interactions voisins dans le potential, ç.-à-d.~faire l'expansion du potentiel de Hooke \eqref{eq:Hooke Pot} jusqu'à l'ordre $\mathcal{O}((q_i + q_{i+2})^2)$.
+%Ceci fait apparaître un terme $\propto (\partial_x \phi)^2$ dans la théorie, 
+%dans quel cas on recouvre la théorie de Klein-Gordon couverte dans le cours. De façon intéressante, toutes les étapes de la (seconde) quantification ont des résultats identiques  
+%pour cette théorie, exceptés les commutateurs entre l'Hamiltonien et les observables et le fait que $\omega_k$ doit être indexé avec l'indice des modes $k$ (et donc ne peut pas sortir de intégrale sur les $k$). 
+%En particulier, l'expansion au second 
+%ordre du commutateur calculé plus haut 
+
+
+
 \subsection{}
 %Évaluez ∂ t 2 h φ̂(x)i t à l’aide de la théorie discrète. Passez au continu à la fin du calcul.
 %Votre résultat est-il relié à l’équation de Klein-Gordon ? Expliquez.
+%On cherche à évaluer $\partial_t^2 \langle  \hat{\phi}(x) \rangle_t $ à l'aide de la théorie discrète.
 
 \end{document}
 

@@ -992,115 +992,59 @@ Les charges de Noether $Q^{\nu} = \int d^{3}\mathbf{x}\, j_0^{\nu}$ correspondan
         SU(2):&\hspace{.5cm} Q^{k} = \frac{i}{2}\int d^{3}\mathbf{x}\, (\phi_a^{\dagger}(\sigma^{k})_{ab}\pi^{\dagger}_b -  \pi_a (\sigma^{k})_{ab}\phi_b) 
 \end{align}
 On calcule maintenant les relations de commutations des charges $Q^{k}$. 
+Par des arguments similaires au sous numéro précédent, on obtient aussi les charges en termes des opérateurs d'échelles
+\begin{align}
+        U(1):&\hspace{.5cm} Q^{0} =  \int \frac{d^{3}\mathbf{p}}{(2\pi)^{3}}\,  (A^{\dagger}_{a \mathbf{p}}A_{a \mathbf{p}} - B^{\dagger}_{a \mathbf{p}}B_{a \mathbf{p}})\\
+        SU(2):&\hspace{.5cm} Q^{k} = \frac{1}{2}\int \frac{d^{3}\mathbf{p}}{(2\pi)^{3}}\, (A^{\dagger}_{a\mathbf{p}}(\sigma^{k})_{ab} A_{b \mathbf{p}} 
+        -  B^{\dagger}_{a \mathbf{p}} (\sigma^{k})_{ab}B_{b \mathbf{p}}) 
+\end{align}
+Avec ces formules, on peut maintenant calculer le commutateur entre les charges du groupe $SU(2)$
 \begingroup
 \allowdisplaybreaks
 \begin{align*}
-        [Q^{j}, Q^{k}] 
-        &= -\frac{1}{4}\int_{\mathbf{x}} \int_{\mathbf{y}} 
-        [\phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x}) -  \pi_a(\mathbf{x}) (\sigma^{j})_{ab}\phi_b(\mathbf{x}),\, 
-        \phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}\pi^{\dagger}_d(\mathbf{y}) -  \pi_c(\mathbf{y}) (\sigma^{k})_{cd}\phi_d(\mathbf{y})
-        ] \\
-        &= -\frac{1}{4}\int_{\mathbf{x}} \int_{\mathbf{y}} 
-        [\phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x}) ,\, \phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}\pi^{\dagger}_d(\mathbf{y})] 
-        +[ \pi_a(\mathbf{x}) (\sigma^{j})_{ab}\phi_b(\mathbf{x}),\, \pi_c(\mathbf{y}) (\sigma^{k})_{cd}\phi_d(\mathbf{y})
-        ] \\
-        &= -\frac{1}{4}\int_{\mathbf{x}} \int_{\mathbf{y}} 
-        \begin{aligned}[t]
-       &\phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}[\phi_a^{\dagger}(\mathbf{x}) ,\, \pi^{\dagger}_d(\mathbf{y})] (\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x})
-        + [\phi_a^{\dagger}(\mathbf{x})(\sigma^{k})_{ab}\pi^{\dagger}_b(\mathbf{x}) ,\, 
-        \phi_a^{\dagger}(\mathbf{y})(\sigma^{k})_{ab}\pi^{\dagger}_b(\mathbf{y})] \\
-       &+[ \pi_a(\mathbf{x}) (\sigma^{k})_{ab}\phi_b(\mathbf{x}),\, \pi_a(\mathbf{y}) (\sigma^{k})_{ab}\phi_b(\mathbf{y})
-        ]
-       + [ \pi_a(\mathbf{x}) (\sigma^{k})_{ab}\phi_b(\mathbf{x}),\, \pi_a(\mathbf{y}) (\sigma^{k})_{ab}\phi_b(\mathbf{y})
-        ]
-        \end{aligned} \\
-        %&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
-%\begin{aligned}[t]
-        %\big(&[A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}}] 
-        %+[B^{\dagger}_{a \mathbf{p}} (\sigma^{j})_{ab}B_{b \mathbf{p}},\,  B^{\dagger}_{c \mathbf{q}} (\sigma^{k})_{cd}B_{d \mathbf{q}}] \\
-        %&- B^{\dagger}_{a \mathbf{p}}A^{\dagger}_{c\mathbf{q}}[ (\sigma^{j})_{ab},\,(\sigma^{k})_{cd}] B_{b \mathbf{p}} A_{d \mathbf{q}}
-        %-A^{\dagger}_{a\mathbf{p}} B^{\dagger}_{c \mathbf{q}}[(\sigma^{j})_{ab},\,   (\sigma^{k})_{cd}] A_{b \mathbf{p}}B_{d \mathbf{q}}
-        %\big) 
-%\end{aligned} \\
-%&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} \big([A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}}] 
-%+ (A \rightarrow  B)\big)  \\
-%&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
-%\begin{aligned}[t]
-%\big(& A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd}[A^{\dagger}_{a\mathbf{p}},\, A_{d \mathbf{q}}] (\sigma^{j})_{ab} A_{b \mathbf{p}} \\
-%&+ A^{\dagger}_{a\mathbf{p}} A^{\dagger}_{c\mathbf{q}}[(\sigma^{j})_{ab},\,(\sigma^{k})_{cd}]  A_{b \mathbf{p}}  A_{d \mathbf{q}} \\
-%&+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} [A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}] (\sigma^{k})_{cd} A_{d \mathbf{q}}
-%\\
-%&+ (A \rightarrow  B)\big)  
-%\end{aligned}\\
-%&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
-%\big( -A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd}  \delta_{ad}(\sigma^{j})_{ab} A_{b \mathbf{p}} 
-%+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab}\delta_{bc}(\sigma^{k})_{cd} A_{d \mathbf{q}} 
-%+ (A \rightarrow  B)\big) (2\pi)^{3}\delta^{(3)}(\mathbf{p} - \mathbf{q}) \\
-%&=  \frac{1}{4}\int_{\mathbf{p}} 
-%\big( -A^{\dagger}_{c\mathbf{p}}(\sigma^{k})_{cd} (\sigma^{j})_{db} A_{b \mathbf{p}} 
-%+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ac}(\sigma^{k})_{cd} A_{d \mathbf{p}} 
-%+ (A \rightarrow  B)\big) \\
-%&= -\frac{1}{4}\int_{\mathbf{p}} 
-%\big( A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} (\sigma^{k})_{bc} A_{c \mathbf{p}} 
-%-A^{\dagger}_{a\mathbf{p}}(\sigma^{k})_{ab}(\sigma^{j})_{bc} A_{c \mathbf{p}} 
-%+ (A \rightarrow  B)\big) \\
-%&= -\frac{1}{4}\int_{\mathbf{p}} 
-%\big(A^{\dagger}_{a\mathbf{p}}[\sigma^{j}, \sigma^{k}]_{ab} A_{b \mathbf{p}} - B^{\dagger}_{a \mathbf{p}} [\sigma^{j}, \sigma^{k}]_{ab}B_{b \mathbf{p}}\big) 
+        [Q^{j}, Q^{k}] &= \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} [A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} -  B^{\dagger}_{a \mathbf{p}} (\sigma^{j})_{ab}B_{b \mathbf{p}},\, 
+        A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}} -  B^{\dagger}_{c \mathbf{q}} (\sigma^{k})_{cd}B_{d \mathbf{q}}] \\
+        &=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
+\begin{aligned}[t]
+        \big(&[A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}}] 
+        +[B^{\dagger}_{a \mathbf{p}} (\sigma^{j})_{ab}B_{b \mathbf{p}},\,  B^{\dagger}_{c \mathbf{q}} (\sigma^{k})_{cd}B_{d \mathbf{q}}] \\
+        &- B^{\dagger}_{a \mathbf{p}}A^{\dagger}_{c\mathbf{q}}[ (\sigma^{j})_{ab},\,(\sigma^{k})_{cd}] B_{b \mathbf{p}} A_{d \mathbf{q}}
+        -A^{\dagger}_{a\mathbf{p}} B^{\dagger}_{c \mathbf{q}}[(\sigma^{j})_{ab},\,   (\sigma^{k})_{cd}] A_{b \mathbf{p}}B_{d \mathbf{q}}
+        \big) 
+\end{aligned} \\
+&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} \big([A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}}] 
++ (A \rightarrow  B)\big)  \\
+&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
+\begin{aligned}[t]
+\big(& A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd}[A^{\dagger}_{a\mathbf{p}},\, A_{d \mathbf{q}}] (\sigma^{j})_{ab} A_{b \mathbf{p}} \\
+&+ A^{\dagger}_{a\mathbf{p}} A^{\dagger}_{c\mathbf{q}}[(\sigma^{j})_{ab},\,(\sigma^{k})_{cd}]  A_{b \mathbf{p}}  A_{d \mathbf{q}} \\
+&+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} [A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}] (\sigma^{k})_{cd} A_{d \mathbf{q}}
+\\
+&+ (A \rightarrow  B)\big)  
+\end{aligned}\\
+&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
+\big( -A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd}  \delta_{ad}(\sigma^{j})_{ab} A_{b \mathbf{p}} 
++A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab}\delta_{bc}(\sigma^{k})_{cd} A_{d \mathbf{q}} 
++ (A \rightarrow  B)\big) (2\pi)^{3}\delta^{(3)}(\mathbf{p} - \mathbf{q}) \\
+&=  \frac{1}{4}\int_{\mathbf{p}} 
+\big( -A^{\dagger}_{c\mathbf{p}}(\sigma^{k})_{cd} (\sigma^{j})_{db} A_{b \mathbf{p}} 
++A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ac}(\sigma^{k})_{cd} A_{d \mathbf{p}} 
++ (A \rightarrow  B)\big) \\
+&= -\frac{1}{4}\int_{\mathbf{p}} 
+\big( A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} (\sigma^{k})_{bc} A_{c \mathbf{p}} 
+-A^{\dagger}_{a\mathbf{p}}(\sigma^{k})_{ab}(\sigma^{j})_{bc} A_{c \mathbf{p}} 
++ (A \rightarrow  B)\big) \\
+&= -\frac{1}{4}\int_{\mathbf{p}} 
+\big(A^{\dagger}_{a\mathbf{p}}[\sigma^{j}, \sigma^{k}]_{ab} A_{b \mathbf{p}} - B^{\dagger}_{a \mathbf{p}} [\sigma^{j}, \sigma^{k}]_{ab}B_{b \mathbf{p}}\big) 
 \end{align*}
 \endgroup
-%Par des arguments similaires au sous numéro précédent, on obtient aussi les charges en termes des opérateurs d'échelles
-%\begin{align}
-        %U(1):&\hspace{.5cm} Q^{0} =  \int \frac{d^{3}\mathbf{p}}{(2\pi)^{3}}\,  (A^{\dagger}_{a \mathbf{p}}A_{a \mathbf{p}} - B^{\dagger}_{a \mathbf{p}}B_{a \mathbf{p}})\\
-        %SU(2):&\hspace{.5cm} Q^{k} = \frac{1}{2}\int \frac{d^{3}\mathbf{p}}{(2\pi)^{3}}\, (A^{\dagger}_{a\mathbf{p}}(\sigma^{k})_{ab} A_{b \mathbf{p}} 
-        %-  B^{\dagger}_{a \mathbf{p}} (\sigma^{k})_{ab}B_{b \mathbf{p}}) 
-%\end{align}
-%Avec ces formules, on peut maintenant calculer le commutateur entre les charges du groupe $SU(2)$
-%\begingroup
-%\allowdisplaybreaks
-%\begin{align*}
-        %[Q^{j}, Q^{k}] &= \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} [A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} -  B^{\dagger}_{a \mathbf{p}} (\sigma^{j})_{ab}B_{b \mathbf{p}},\, 
-        %A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}} -  B^{\dagger}_{c \mathbf{q}} (\sigma^{k})_{cd}B_{d \mathbf{q}}] \\
-        %&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
-%\begin{aligned}[t]
-        %\big(&[A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}}] 
-        %+[B^{\dagger}_{a \mathbf{p}} (\sigma^{j})_{ab}B_{b \mathbf{p}},\,  B^{\dagger}_{c \mathbf{q}} (\sigma^{k})_{cd}B_{d \mathbf{q}}] \\
-        %&- B^{\dagger}_{a \mathbf{p}}A^{\dagger}_{c\mathbf{q}}[ (\sigma^{j})_{ab},\,(\sigma^{k})_{cd}] B_{b \mathbf{p}} A_{d \mathbf{q}}
-        %-A^{\dagger}_{a\mathbf{p}} B^{\dagger}_{c \mathbf{q}}[(\sigma^{j})_{ab},\,   (\sigma^{k})_{cd}] A_{b \mathbf{p}}B_{d \mathbf{q}}
-        %\big) 
-%\end{aligned} \\
-%&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} \big([A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd} A_{d \mathbf{q}}] 
-%+ (A \rightarrow  B)\big)  \\
-%&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
-%\begin{aligned}[t]
-%\big(& A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd}[A^{\dagger}_{a\mathbf{p}},\, A_{d \mathbf{q}}] (\sigma^{j})_{ab} A_{b \mathbf{p}} \\
-%&+ A^{\dagger}_{a\mathbf{p}} A^{\dagger}_{c\mathbf{q}}[(\sigma^{j})_{ab},\,(\sigma^{k})_{cd}]  A_{b \mathbf{p}}  A_{d \mathbf{q}} \\
-%&+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} [A_{b \mathbf{p}} ,\, A^{\dagger}_{c\mathbf{q}}] (\sigma^{k})_{cd} A_{d \mathbf{q}}
-%\\
-%&+ (A \rightarrow  B)\big)  
-%\end{aligned}\\
-%&=  \frac{1}{4}\int_{\mathbf{p}} \int_{\mathbf{q}} 
-%\big( -A^{\dagger}_{c\mathbf{q}}(\sigma^{k})_{cd}  \delta_{ad}(\sigma^{j})_{ab} A_{b \mathbf{p}} 
-%+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab}\delta_{bc}(\sigma^{k})_{cd} A_{d \mathbf{q}} 
-%+ (A \rightarrow  B)\big) (2\pi)^{3}\delta^{(3)}(\mathbf{p} - \mathbf{q}) \\
-%&=  \frac{1}{4}\int_{\mathbf{p}} 
-%\big( -A^{\dagger}_{c\mathbf{p}}(\sigma^{k})_{cd} (\sigma^{j})_{db} A_{b \mathbf{p}} 
-%+A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ac}(\sigma^{k})_{cd} A_{d \mathbf{p}} 
-%+ (A \rightarrow  B)\big) \\
-%&= -\frac{1}{4}\int_{\mathbf{p}} 
-%\big( A^{\dagger}_{a\mathbf{p}}(\sigma^{j})_{ab} (\sigma^{k})_{bc} A_{c \mathbf{p}} 
-%-A^{\dagger}_{a\mathbf{p}}(\sigma^{k})_{ab}(\sigma^{j})_{bc} A_{c \mathbf{p}} 
-%+ (A \rightarrow  B)\big) \\
-%&= -\frac{1}{4}\int_{\mathbf{p}} 
-%\big(A^{\dagger}_{a\mathbf{p}}[\sigma^{j}, \sigma^{k}]_{ab} A_{b \mathbf{p}} - B^{\dagger}_{a \mathbf{p}} [\sigma^{j}, \sigma^{k}]_{ab}B_{b \mathbf{p}}\big) 
-%\end{align*}
-%\endgroup
-%où à l'avant-dernière ligne on a simplement renommer les indices et simplifier les signes. Au travers de cette dérivation, on a utilisé extensivement 
-%le fait que le commutateurs entre deux éléments des matrices de Pauli est nul, puisque $(\sigma^{j})_{ab} \in \mathbb{C}$ commutent trivialement.
+où à l'avant-dernière ligne on a simplement renommer les indices et simplifier les signes. Au travers de cette dérivation, on a utilisé extensivement 
+le fait que le commutateurs entre deux éléments des matrices de Pauli est nul, puisque $(\sigma^{j})_{ab} \in \mathbb{C}$ commutent trivialement.
 Pour  progresser, on rappel la relation de commutation des matrices de Pauli, soit
 \begin{equation}
         [\sigma^{j}, \sigma^{k}] = 2i \epsilon\indices{^{jk}_{\ell}} \sigma^{\ell}
 \end{equation} 
-La constante de structure de l'algèbre de Lie associé à $SU(2)$ est donc $f\indices{^{jk}_{\ell}} = 2 \epsilon\indices{^{jk}_{\ell}}$, où $\epsilon\indices{^{jk}_{\ell}}$ est tenseur de Levi-Civita. 
+La constante de structure de l'algèbre de Lie associé à $SU(2)$ est $f\indices{^{jk}_{\ell}} = \epsilon\indices{^{jk}_{\ell}}$, où $\epsilon\indices{^{jk}_{\ell}}$ est tenseur de Levi-Civita. 
 Ainsi, on obtient
 \begin{align*}
         [Q^{j}, Q^{k}]        
@@ -1116,6 +1060,83 @@ Ce résultat se généralise au cas des symétries $SU(n)$. Dans ce cas, on obti
 \end{equation} 
 où $f\indices{^{\mu \nu}_{\rho}}$ est la constante de structure associée à $SU(n)$, la généralisation du tenseur de Levi-Civita dans le cas $SU(2)$.
 
+
+
+
+
+
+
+
+
+
+
+
+%\begingroup
+%\allowdisplaybreaks
+%\begin{align*}
+        %[Q^{j}, Q^{k}] 
+        %&= -\frac{1}{4}\int_{\mathbf{x}} \int_{\mathbf{y}} 
+        %[\phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x}) -  \pi_a(\mathbf{x}) (\sigma^{j})_{ab}\phi_b(\mathbf{x}),\, 
+        %\phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}\pi^{\dagger}_d(\mathbf{y}) -  \pi_c(\mathbf{y}) (\sigma^{k})_{cd}\phi_d(\mathbf{y})
+        %] \\
+        %&= -\frac{1}{4}\int_{\mathbf{x}} \int_{\mathbf{y}} 
+        %[\phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x}) ,\, \phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}\pi^{\dagger}_d(\mathbf{y})] 
+        %+[ \pi_a(\mathbf{x}) (\sigma^{j})_{ab}\phi_b(\mathbf{x}),\, \pi_c(\mathbf{y}) (\sigma^{k})_{cd}\phi_d(\mathbf{y})
+        %] \\
+        %&= -\frac{1}{4}\int_{\mathbf{x}} \int_{\mathbf{y}} 
+        %\begin{aligned}[t]
+       %&\phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}[\phi_a^{\dagger}(\mathbf{x}) ,\, \pi^{\dagger}_d(\mathbf{y})] (\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x})
+        %+ \phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}[\pi^{\dagger}_b(\mathbf{x}) ,\, \phi_c^{\dagger}(\mathbf{y})] (\sigma^{k})_{cd}\pi^{\dagger}_d(\mathbf{y})\\
+       %&+\pi_c(\mathbf{y}) (\sigma^{k})_{cd}[ \pi_a(\mathbf{x}),\, \phi_d(\mathbf{y})] (\sigma^{j})_{ab}\phi_b(\mathbf{x})
+       %+ \pi_a(\mathbf{x}) (\sigma^{j})_{ab}[ \phi_b(\mathbf{x}),\, \pi_c(\mathbf{y}) ](\sigma^{k})_{cd}\phi_d(\mathbf{y})
+        %\end{aligned} \\
+        %&= -\frac{i}{4}\int_{\mathbf{x}} 
+        %\begin{aligned}[t]
+       %&\phi_c^{\dagger}(\mathbf{y})(\sigma^{k})_{cd}\delta_{ad}(\sigma^{j})_{ab}\pi^{\dagger}_b(\mathbf{x})
+        %- \phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}\delta_{bc} (\sigma^{k})_{cd}\pi^{\dagger}_d(\mathbf{y})\\
+       %&+\pi_c(\mathbf{y}) (\sigma^{k})_{cd}\delta_{ad}(\sigma^{j})_{ab}\phi_b(\mathbf{x})
+       %- \pi_a(\mathbf{x}) (\sigma^{j})_{ab}\delta_{bc}(\sigma^{k})_{cd}\phi_d(\mathbf{y})
+        %\end{aligned} \\
+        %&= -\frac{i}{4}\int_{\mathbf{x}} 
+        %\begin{aligned}[t]
+       %&\phi_a^{\dagger}(\mathbf{y})(\sigma^{k})_{ab}(\sigma^{j})_{bc}\pi^{\dagger}_c(\mathbf{x})
+        %- \phi_a^{\dagger}(\mathbf{x})(\sigma^{j})_{ab}(\sigma^{k})_{bc}\pi^{\dagger}_c(\mathbf{y})\\
+       %&+\pi_a(\mathbf{y}) (\sigma^{k})_{bc}(\sigma^{j})_{cd}\phi_d(\mathbf{x})
+       %- \pi_a(\mathbf{x}) (\sigma^{j})_{ab}(\sigma^{k})_{bc}\phi_c(\mathbf{y})
+        %\end{aligned} \\
+        %&= \frac{i}{4} \int_{\mathbf{x}} 
+        %\phi_a^{\dagger}(\mathbf{x})[\sigma^{j},\, \sigma^{k}]_{ab}\pi^{\dagger}_b(\mathbf{y})
+       %+\pi_a(\mathbf{y}) (\sigma^{k})_{bc}(\sigma^{j})_{cd}\phi_d(\mathbf{x})
+       %- \pi_a(\mathbf{x}) (\sigma^{j})_{ab}(\sigma^{k})_{bc}\phi_c(\mathbf{y})
+%\end{align*}
+%\endgroup
+%où on a appliquer le delta de Kronecker et renommer les indices pour simplifier la notation. 
+%Pour  progresser, on rappel la relation de commutation des matrices de Pauli, soit
+%\begin{equation}
+        %[\sigma^{j}, \sigma^{k}] = 2i \epsilon\indices{^{jk}_{\ell}} \sigma^{\ell}
+%\end{equation} 
+%La constante de structure de l'algèbre de Lie associé à $SU(2)$ est donc $f\indices{^{jk}_{\ell}} = 2 i\epsilon\indices{^{jk}_{\ell}}$, où $\epsilon\indices{^{jk}_{\ell}}$ est tenseur de Levi-Civita. 
+%\begin{align*}
+        %[Q^{j}, Q^{k}] 
+        %&= -\frac{1}{2} \epsilon\indices{^{jk}_{\ell}}\int_{\mathbf{x}} 
+        %\phi_a^{\dagger}(\mathbf{x})[\sigma^{j}\sigma^{k}]_{ab}\pi^{\dagger}_b(\mathbf{y})
+       %+\pi_a(\mathbf{y}) (\sigma^{k})_{bc}(\sigma^{j})_{cd}\phi_d(\mathbf{x})
+       %- \pi_a(\mathbf{x}) (\sigma^{j})_{ab}(\sigma^{k})_{bc}\phi_c(\mathbf{y})
+%\end{align*}
+%Ainsi, on obtient
+%\begin{align*}
+        %[Q^{j}, Q^{k}]        
+%&= \frac{i}{2}\epsilon\indices{^{jk}_{\ell}}\int \frac{d^{3}\mathbf{x}}{(2\pi)^{3}} 
+%\big( A^{\dagger}_{a\mathbf{p}} (\sigma^{\ell})_{ac} A_{c \mathbf{p}} 
+%- B^{\dagger}_{a\mathbf{p}} (\sigma^{\ell})_{ac} B_{c \mathbf{p}} 
+%\big) \\
+        %\implies \Aboxed{[Q^{j}, Q^{k}] &= i \epsilon\indices{^{jk}_{\ell}}Q^{\ell}}
+%\end{align*}
+%Ce résultat se généralise au cas des symétries $SU(n)$. Dans ce cas, on obtient
+%\begin{equation}
+        %\boxed{ [Q^{\mu}, Q^{\nu}] = if\indices{^{\mu \nu}_{\rho}}Q^{\rho} }
+%\end{equation} 
+%où $f\indices{^{\mu \nu}_{\rho}}$ est la constante de structure associée à $SU(n)$, la généralisation du tenseur de Levi-Civita dans le cas $SU(2)$.
 
 \end{document}
 

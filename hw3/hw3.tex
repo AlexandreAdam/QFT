@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{physics, tensor}
+\usepackage{slashed}
+
+\graphicspath{{figures/}}
+
+\pagestyle{fancy}
+\rhead{Alexandre Adam\\ 20090755}
+\lhead{William Witczak-Krempa \\ PHY 6812: Théorie des champs 1}
+\chead{Devoir 2}
+\rfoot{23 novembre 2022}
+\cfoot{\thepage}
+
+\newcommand{\angstrom}{\textup{\AA}}
+\numberwithin{equation}{section}
+\renewcommand\thesubsection{\alph{subsection})}
+\renewcommand\thesubsubsection{\Roman{subsubsection}}
+\newcommand{\s}{\hspace{0.1cm}}
+
+\theoremstyle{solution}
+\newtheorem{solution}{Réponse}[section]
+
+\renewcommand*{\proofname}{Solution}
+
+
+\begin{document}
+\section{Représentations projectives}
+On cherche à montrer que les spineurs de Weyl et Dirac forment des représentations projectives du groupe
+de Lorentz. 
+En d’autres termes, montrez que ces représentations admettent au moins un 2-cocycle non-trivial.
+
+\section{Charge d’un spineur}
+\subsection{}
+On considère une transformation interne agissant sur un spineur de Dirac
+\begin{equation}\label{eq:t_interne}
+	\begin{split}
+		x' &\rightarrow  x \\
+		\psi(x) &\rightarrow e^{i\theta}\psi(x)
+	\end{split}
+\end{equation} 
+où $\theta \in \mathbb{R}$. On cherche à savoir si cette transformation est une symétrie du Lagrangien de Dirac
+\begin{equation}\label{eq:dirac_L}
+	\mathcal{L} = \bar{\psi}(i \slashed{\partial} - m^{2})\psi
+\end{equation} 
+
+\begin{solution}
+	La transformation interne \eqref{eq:t_interne} est une symétrie du Lagrangien de Dirac.	
+\end{solution}
+\begin{proof}
+	
+\end{proof}
+
+\noindent
+On s'intéresse maintenant aux courants de Noether associés à cette transformation.
+
+\subsection{}
+On considère le Lagrangien de Dirac avec masse nulle, $m = 0$. On cherche les symétries de rotation de phase associé à ce Lagrangien.
+
+\noindent
+On s'intéresse finalement aux courants de Noether associé aux symétries identifiées précédemment.
+
+\section{Invariance d’échelle}
+
+\section{Théorie Yukawa classique}
+
+\section{Opérateurs qui anti-commutent}
+
+\section{Fermions Marojana (Peskins \& Shcroeder 3.4)}
+\end{document}
+

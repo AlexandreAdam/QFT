@@ -24,7 +24,7 @@
 \pagestyle{fancy}
 \rhead{Alexandre Adam\\ 20090755}
 \lhead{William Witczak-Krempa \\ PHY 6812: Théorie des champs 1}
-\chead{Devoir 2}
+\chead{Devoir 3}
 \rfoot{23 novembre 2022}
 \cfoot{\thepage}
 
@@ -33,6 +33,9 @@
 \renewcommand\thesubsection{\alph{subsection})}
 \renewcommand\thesubsubsection{\Roman{subsubsection}}
 \newcommand{\s}{\hspace{0.1cm}}
+\DeclareRobustCommand{\bbzero}{\text{\usefont{U}{bbold}{m}{n}0}}
+\DeclareRobustCommand{\bbone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
 
 \theoremstyle{solution}
 \newtheorem{solution}{Réponse}[section]
@@ -51,33 +54,216 @@ En d’autres termes, montrez que ces représentations admettent au moins un 2-c
 On considère une transformation interne agissant sur un spineur de Dirac
 \begin{equation}\label{eq:t_interne}
 	\begin{split}
-		x' &\rightarrow  x \\
 		\psi(x) &\rightarrow e^{i\theta}\psi(x)
 	\end{split}
 \end{equation} 
 où $\theta \in \mathbb{R}$. On cherche à savoir si cette transformation est une symétrie du Lagrangien de Dirac
 \begin{equation}\label{eq:dirac_L}
-	\mathcal{L} = \bar{\psi}(i \slashed{\partial} - m^{2})\psi
+	\mathcal{L} = \bar{\psi}(i \slashed{\partial} - m)\psi
 \end{equation} 
 
 \begin{solution}
-	La transformation interne \eqref{eq:t_interne} est une symétrie du Lagrangien de Dirac.	
+La transformation interne \eqref{eq:t_interne}, soit une transformation $U(1)$, est une symétrie du Lagrangien de Dirac.	
 \end{solution}
 \begin{proof}
-	
+La preuve suit par calcul direct
+\begin{align*}
+        \mathcal{L} \rightarrow \mathcal{L}'  &= \bar{\psi}'  (i \slashed{\partial} - m) \psi' \\
+                &= e^{-i\theta} \psi^{\dagger} \gamma^0(i \slashed{\partial} - m) e^{i\theta} \psi \\
+                &= \bar{\psi} (i \slashed{\partial} - m) e^{i\theta} \psi \\
+                &= \mathcal{L}
+\end{align*}	
+On a utilisé le fait que $\theta \in \mathbb{R}$ est un paramètre constant et global, donc $e^{-i\theta}$ commute avec 
+la dérivée $\partial_\mu$.
 \end{proof}
 
-\noindent
-On s'intéresse maintenant aux courants de Noether associés à cette transformation.
+\begin{solution}
+Le courant de Noether associé à la transformation interne \eqref{eq:t_interne} est (à une phase $\pm 1$ près)
+\begin{equation}
+        \boxed{j^{\mu} = \bar{\psi} \gamma^{\mu} \psi}
+\end{equation} 
+\end{solution}
+\begin{proof}
+Soit la transformation interne infinitésimale
+\begin{equation}
+        \psi \rightarrow  (1 - i \theta) \psi
+\end{equation} 
+La transformation infinitésimale du spineur de Dirac est donc 
+\begin{equation}
+        \delta \psi = -i \psi
+\end{equation} 
+Il suit de la définition du courant de Noether que
+\begin{align*}
+        j^{\mu} &= \frac{\partial \mathcal{L}}{\partial (\partial_{\mu} \psi)} \delta \psi \\
+        &= \left(  \frac{\partial }{\partial (\partial_{\mu}\psi)} \bar{\psi}(i \gamma^{\nu} \partial_\nu - m) \psi\right) \delta\psi\\
+        &= \bar{\psi}\gamma^{\nu} \delta^{\mu}_\nu \psi \\
+        &= \bar{\psi}\gamma^{\mu}\psi
+\end{align*} 
+\end{proof}
 
 \subsection{}
-On considère le Lagrangien de Dirac avec masse nulle, $m = 0$. On cherche les symétries de rotation de phase associé à ce Lagrangien.
+On considère le Lagrangien de Dirac avec masse nulle, $m = 0$. 
+On utilise la représentation de Weyl (ou représentation chirale) pour représenter les spineurs, soit
+\begin{equation}
+        \psi = \begin{pmatrix}
+                \psi_L \\ \psi_R
+        \end{pmatrix}\, ,
+\end{equation} 
+et
+\begin{equation}
+        \gamma^0 = \begin{pmatrix}
+                \bbzero & \bbone\\
+                \bbone& \bbzero
+        \end{pmatrix}
+        , 
+        \hspace{1cm}
+        \gamma^{i} = 
+        \begin{pmatrix}
+                \bbzero & \sigma^{i} \\
+                \bar{\sigma}^{i}& \bbzero
+        \end{pmatrix}\, .
+\end{equation} 
+où $\sigma^{i}$ sont les matrices de Pauli et $\bar{\sigma} = -\sigma^{i}$.
+Dans ce cas, une symétrie du Lagrangien émerge du fait que les 
+représentations chirales se découples dans l'équation de Dirac. En effet, on obtient les équations de Weyl
+\begin{equation}
+         i\gamma^{\mu}\partial_\mu \psi = 
+         \begin{pmatrix}
+                 i \sigma^{\mu} \partial_\mu \psi_R \\[1ex]
+                 i \bar{\sigma}^{\mu}\partial_\mu \psi_L 
+         \end{pmatrix}
+         = 0\, .
+\end{equation} 
+De ce fait, le Lagrangien se découple en deux termes
+\begin{align*}
+        \mathcal{L} &=  i\bar{\psi} \gamma^{\mu}\partial_\mu \psi \\
+        &= i
+        \begin{pmatrix}
+                \psi_L^{\dagger} \\
+                \psi_R^{\dagger}
+        \end{pmatrix}
+        \gamma^0
+         \begin{pmatrix}
+                 \sigma^{\mu} \partial_\mu \psi_R \\[1ex]
+                 \bar{\sigma}^{\mu}\partial_\mu \psi_L 
+         \end{pmatrix} \\
+         &= 
+        \begin{pmatrix}
+                \psi_R^{\dagger} \\
+                \psi_L^{\dagger}
+        \end{pmatrix}
+         \begin{pmatrix}
+                 \sigma^{\mu} \partial_\mu \psi_R \\[1ex]
+                 \bar{\sigma}^{\mu}\partial_\mu \psi_L 
+         \end{pmatrix} \, .
+\end{align*}
+D'où
+\begin{equation}
+        \mathcal{L} = i \psi_L^{\dagger} \bar{\sigma}^{\mu} \partial_\mu \psi_L + i \psi_r^{\dagger} \sigma^{\nu}\partial_\nu \psi_R \, .
+\end{equation}
+Ainsi, pour des particules de masses nulles, le Lagrangien a maintenant deux symétries internes, soit $U(1)\times U(1)$, donc deux 
+courants de Noether
+\begin{equation}
+        \boxed{j^{\mu}_s = \bar{\psi}_s \sigma^{\mu}_s \psi_s}\, ,
+\end{equation} 
+où $\sigma^{\mu}_R = \sigma^{\mu}$ et $\sigma^{\mu}_L = \bar{\sigma}^{\mu}$. Ces courants sont valides strictement lorsque les représentations chirales 
+sont strictement indépendantes, et n'est donc pas valide dans une limite ultra relativiste. 
 
-\noindent
-On s'intéresse finalement aux courants de Noether associé aux symétries identifiées précédemment.
+En effet, la symétrie du Lagrangien dans la limite où $m \rightarrow  0$, soit une limite ultra relativiste, est légèrement différente. 
+Dans ce cas, on peut construire la symétrie axiale
+\begin{equation}\label{eq:t_axiale}
+        \psi(x) \rightarrow e^{i \theta \gamma^{5}} \psi(x) \, ,
+\end{equation} 
+où, dans la représentation de Weyl, 
+\begin{equation}
+        \gamma^{5} \equiv i\gamma^0\gamma^{1}\gamma^{2}\gamma^{3} = 
+        i
+        \begin{pmatrix}
+                -\sigma^{1}\sigma^{2}\sigma^{2} & \bbzero \\
+                \bbzero & \sigma^{1}\sigma^{2}\sigma^{3}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+                -\bbone & \bbzero \\ 
+                \bbzero & \bbone
+        \end{pmatrix}\, .
+\end{equation} 
+On peut montrer que cette transformation est une symétrie du Lagrangien de Dirac en utilisant le fait que $(\gamma^{5})^{\dagger} = \gamma^{5}$, 
+$(\gamma^{5})^{2} = \bbone$ et 
+la formule d'Euler qui résulte de ce fait
+\begin{equation}
+        e^{i\theta \gamma^{5}} = \cos(\theta) + i \gamma^{5}\sin(\theta)
+\end{equation} 
+On utilise aussi la relation d'anti-commutation
+\begin{equation}
+        \{ \gamma^{5}, \gamma^{\mu} \} = 0\, ,
+\end{equation} 
+de sortes que $e^{i \theta \gamma^{5}} \gamma^{\mu} = \gamma^{\mu}e^{-i \theta \gamma^{5}}$ et
+\begin{align*}
+        \mathcal{L} \rightarrow  \mathcal{L}' &=\psi^{\dagger} e^{-i \theta \gamma^{5}}\gamma^0  (i\gamma^\mu \partial_\mu - m) e^{i\theta \gamma^{5}}\psi \\
+                &=\psi^{\dagger} \gamma^0  e^{i \theta \gamma^{5}}(i\gamma^\mu \partial_\mu - m) e^{i\theta \gamma^{5}}\psi \\
+                &= \bar{\psi} (i\gamma^\mu \partial_\mu - me^{2i\theta \gamma^{5}}) \psi \\
+\end{align*}
+Ainsi, dans la limite $m \rightarrow 0$, la transformation axiale \eqref{eq:t_axiale} est une symétrie du Lagrangien, qui correspond effectivement 
+à deux symétries $U(1)$ où les paramètres des transformations correspondent à $\theta_R = -\theta_L$.  
+On peut calculer le courant de Noether qui correspond à cette symétrie. On considère la transformation infinitésimale
+\begin{equation}
+        \psi(x) \rightarrow  (1 - i \theta \gamma^{5}) \psi(x)\, ,
+\end{equation} 
+d'où
+\begin{equation}
+        \delta \psi = -i \gamma^{5}
+\end{equation} 
+et
+\begin{equation}
+        \boxed{j^{\mu} = \bar{\psi} \gamma^{\mu}\gamma^{5}\psi}
+\end{equation} 
 
 \section{Invariance d’échelle}
+On considère le champ de Dirac avec $d=3$ dimensions spatiales. On considère la transformation d'échelle
+\begin{equation}\label{eq:t_echelle}
+        \begin{split}
+                x &\rightarrow  b x \\
+                \psi(x) &\rightarrow b^{-\Delta} \psi(x)
+        \end{split}
+\end{equation} 
+où $b \in \mathbb{R}_{>0}$ et $\Delta \in \mathbb{R}$.
 
+\subsection{}
+\textbf{Quelle sont les conditions pour que \eqref{eq:t_echelle} soit une symétrie de la théorie? Appelons l’action
+de cette théorie $S_{\star}$. Quel est le courant de Noether associé?} \\
+On ne considère que le cas avec $d = 3$ dimensions spatiales.
+La transformation \eqref{eq:t_echelle} est une symétrie de la théorie si l'action 
+\begin{equation}\label{eq:action}
+        S_\star = \int d^{4}x\, \bar{\psi}(x)(i \slashed{\partial} - m)\psi(x)
+\end{equation} 
+est invariante sous l'application de la transformation. Puisque l'élément de volume devient
+\begin{equation}
+        d^{4}x \rightarrow b^{4}(d^{4}x)\, ,
+\end{equation} 
+et que l'opérateur $\slashed{\partial} \rightarrow b^{-1} \slashed{\partial}$ possède une facteur d'échelle $\Delta_{\slashed{\partial}} = 1$, alors 
+la transformation d'échelle est une symétrie du Lagrangien si et seulement si
+\begin{equation}
+        \boxed{
+        \begin{split}
+              m = 0 \\
+              \Delta_\psi = \frac{3}{2}
+        \end{split}
+}
+\end{equation} 
+On pose $b = 1 - \epsilon$, où $|\epsilon| \ll 1$. Ainsi, 
+\begin{equation}
+        \psi(x) \rightarrow  (1 + \epsilon\Delta ) \psi(x)
+\end{equation} 
+On prend le point de vue d'une transformation active du champ
+\begin{equation}
+        \delta \psi = \psi'(x) - \psi(x) \, .
+\end{equation} 
+On doit donc déterminer la quantité
+\begin{align*}
+        \psi'(x) &=  (1 + \epsilon\Delta ) \psi(x + \epsilon x) + \mathcal{O}(\epsilon^{2}) \\
+\end{align*}
+Or, pour simplifier ce terme, on doit déterminer la dérivée de Lie du champs spineur $\psi(x)$, ce qui est non-trivial.
 \section{Théorie Yukawa classique}
 
 \section{Opérateurs qui anti-commutent}

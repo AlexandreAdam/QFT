@@ -265,7 +265,47 @@ On doit donc déterminer la quantité
 \end{align*}
 Or, pour simplifier ce terme, on doit déterminer la dérivée de Lie du champs spineur $\psi(x)$, ce qui est non-trivial.
 \section{Théorie Yukawa classique}
+Soit la densité lagrangienne pour un champ scalaire réel $\phi$ et un spineur de Dirac $\psi$
+\begin{equation}
+        \mathcal{L} = \frac{1}{2}\partial^{\mu}\phi \partial_\mu \phi - \frac{m^{2}}{2}\phi^{2} - \lambda \phi^{4} + \bar{\psi}(i \slashed{\partial} - M) \psi - g \phi\bar{\psi}\psi
+\end{equation} 
+où $m, M$ sont des masses et $\lambda,g$ sont des constantes de couplage.
 
+\subsection{}
+\textbf{Est-ce une théorie relativiste?}\\
+\begin{solution}
+       La théorie de Yukawa classique est une théorie relativiste. 
+\end{solution}
+\begin{proof}
+Soit une transformation de Lorentz $\Lambda \in SO(3, 1)$. La théorie de Yukawa classique est relativiste si 
+la densité lagrangienne est un scalaire de Lorentz. Par l'étude des densité lagrangienne de Klein-Gordon,  
+on sait que les trois premiers termes sont des scalaires de Lorents. En effet, le champ scalaire $\phi$ est un invariant de Lorentz 
+et, puisque $\Lambda\indices{^{\rho}_{\nu}}\Lambda\indices{_{\rho}^{\mu}} = \delta^{\mu}_\nu$, 
+\begin{align*}
+       \partial_\mu \phi \partial^{\mu}\phi &\rightarrow \Lambda\indices{_{\mu}^{\rho}}\partial_\rho \phi \Lambda\indices{^{\mu}_{\sigma}}\partial^{\sigma}\phi \\
+                &\rightarrow  \delta^{\rho}_\sigma \partial_\rho \phi\partial^{\sigma}\phi \\
+                &\rightarrow  \partial_\mu \phi \partial^{\mu}\phi  \\
+\end{align*} 
+La densité lagrangienne de Dirac est aussi un invariant de Lorentz, sachant que 
+\begin{equation}
+        \begin{split}
+                \psi \rightarrow \Lambda_D \psi \\
+                \bar{\psi} \rightarrow \bar{\psi}\Lambda_D^{-1}
+        \end{split}
+\end{equation} 
+où $\Lambda_D \in SO(3, 1)$ est une transformation de Lorentz dans la représentation de Dirac $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$
+\begin{equation}
+        (\Lambda_D)^{\mu \nu} = \frac{i}{4}[\gamma^{\mu}, \gamma^{\nu}]\, .
+\end{equation} 
+Sachant la relation de commutation 
+\begin{equation}
+        [\gamma]
+\end{equation} 
+
+\begin{align*}
+       \mathcal{L}_D \rightarrow \mathcal{L}'_D &= \bar{\psi}(i \slashed{\partial} - M) \psi
+\end{align*}
+\end{proof}
 \section{Opérateurs qui anti-commutent}
 
 \section{Fermions Marojana (Peskins \& Shcroeder 3.4)}

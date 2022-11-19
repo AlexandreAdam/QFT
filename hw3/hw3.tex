@@ -70,7 +70,7 @@ La preuve suit par calcul direct
 \begin{align*}
         \mathcal{L} \rightarrow \mathcal{L}'  &= \bar{\psi}'  (i \slashed{\partial} - m) \psi' \\
                 &= e^{-i\theta} \psi^{\dagger} \gamma^0(i \slashed{\partial} - m) e^{i\theta} \psi \\
-                &= \bar{\psi} (i \slashed{\partial} - m) e^{i\theta} \psi \\
+                &= \bar{\psi} (i \slashed{\partial} - m)  \psi \\
                 &= \mathcal{L}
 \end{align*}	
 On a utilisé le fait que $\theta \in \mathbb{R}$ est un paramètre constant et global, donc $e^{-i\theta}$ commute avec 
@@ -101,7 +101,24 @@ Il suit de la définition du courant de Noether que
 \end{align*} 
 \end{proof}
 
+
 \subsection{}
+\begin{solution}
+Lorsque $m = 0$, les représentations chirales sont découplées et on obtient deux courants de Noether, une 
+pour les spineurs de chiralité droite ($s=R$) et une pour les spineurs de chiralité gauche ($s=L$), soit 
+une symétrie $U(1) \times U(1)$:
+\begin{equation}
+        \boxed{j^{\mu}_s = \bar{\psi}_s \sigma^{\mu}_s \psi_s}
+\end{equation} 
+où $\sigma_R^{\mu} = \sigma^{\mu}$ et $\sigma_L^{\mu} = \bar{\sigma}^{\mu}$, et $\sigma^{\mu} = (\bbone, \sigma^{i})$.\\ 
+Dans la limite ultra relativiste $m \rightarrow  0$, le courant de Noether est plutôt
+\begin{equation}
+        \boxed{j^{\mu} = \bar{ \psi} \gamma^{\mu}\gamma^{5} \psi}\, .
+\end{equation} 
+Les représentations chirales gauche et droite sont corrélées et spin en sens inverse.
+\end{solution}
+\begin{proof}
+        
 On considère le Lagrangien de Dirac avec masse nulle, $m = 0$. 
 On utilise la représentation de Weyl (ou représentation chirale) pour représenter les spineurs, soit
 \begin{equation}
@@ -167,7 +184,7 @@ courants de Noether
         \boxed{j^{\mu}_s = \bar{\psi}_s \sigma^{\mu}_s \psi_s}\, ,
 \end{equation} 
 où $\sigma^{\mu}_R = \sigma^{\mu}$ et $\sigma^{\mu}_L = \bar{\sigma}^{\mu}$. Ces courants sont valides strictement lorsque les représentations chirales 
-sont strictement indépendantes, et n'est donc pas valide dans une limite ultra relativiste. 
+sont indépendantes, et n'est donc pas valide dans une limite ultra relativiste. 
 
 En effet, la symétrie du Lagrangien dans la limite où $m \rightarrow  0$, soit une limite ultra relativiste, est légèrement différente. 
 Dans ce cas, on peut construire la symétrie axiale
@@ -218,6 +235,9 @@ et
 \begin{equation}
         \boxed{j^{\mu} = \bar{\psi} \gamma^{\mu}\gamma^{5}\psi}
 \end{equation} 
+\end{proof} 
+
+
 
 \section{Invariance d’échelle}
 On considère le champ de Dirac avec $d=3$ dimensions spatiales. On considère la transformation d'échelle
@@ -286,6 +306,7 @@ et, puisque $\Lambda\indices{^{\rho}_{\nu}}\Lambda\indices{_{\rho}^{\mu}} = \del
                 &\rightarrow  \delta^{\rho}_\sigma \partial_\rho \phi\partial^{\sigma}\phi \\
                 &\rightarrow  \partial_\mu \phi \partial^{\mu}\phi  \\
 \end{align*} 
+On sait aussi que $\phi \overset{\Lambda}{\rightarrow}  \phi$.
 La densité lagrangienne de Dirac est aussi un invariant de Lorentz, sachant que 
 \begin{equation}
         \begin{split}
@@ -293,21 +314,183 @@ La densité lagrangienne de Dirac est aussi un invariant de Lorentz, sachant que
                 \bar{\psi} \rightarrow \bar{\psi}\Lambda_D^{-1}
         \end{split}
 \end{equation} 
-où $\Lambda_D \in SO(3, 1)$ est une transformation de Lorentz dans la représentation de Dirac $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$
+où $\Lambda_D \in SO(3, 1)$ est une transformation de Lorentz dans la représentation de Dirac $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$, 
+et que les matrices $\gamma^{\mu}$ se transforme comme
 \begin{equation}
-        (\Lambda_D)^{\mu \nu} = \frac{i}{4}[\gamma^{\mu}, \gamma^{\nu}]\, .
+        \Lambda_D^{-1} \gamma^{\mu} \Lambda_D = \Lambda\indices{^{\mu}_{\nu}}\gamma^{\nu}\, ,
 \end{equation} 
-Sachant la relation de commutation 
-\begin{equation}
-        [\gamma]
-\end{equation} 
-
+on obtient 
 \begin{align*}
-       \mathcal{L}_D \rightarrow \mathcal{L}'_D &= \bar{\psi}(i \slashed{\partial} - M) \psi
+       \mathcal{L}_D \rightarrow \mathcal{L}'_D &= \bar{\psi}\Lambda_D^{-1}(i\gamma^{\mu} \Lambda\indices{_{\mu}^{\nu}}\partial_\nu - M)\Lambda_D \psi \\
+                 &= \bar{\psi}(i \Lambda_D^{-1}\gamma^{\mu} \Lambda_D \Lambda\indices{_{\mu}^{\nu}}\partial_\nu - M)\psi \\
+                 &= \bar{\psi}(i \Lambda\indices{^{\mu}_{\rho}}\gamma^{\rho}\Lambda\indices{_{\mu}^{\nu}}\partial_\nu - M)\psi \\
+                 &= \bar{\psi}(i \delta^{\nu}_\rho\gamma^{\rho}\partial_\nu - M)\psi \\
+                 &= \mathcal{L}_D
 \end{align*}
+Finalement,
+\begin{equation}
+        \bar{\psi}\psi \rightarrow \bar{\psi}\Lambda_D^{-1}\Lambda_D \psi = \bar{\psi} \psi
+\end{equation} 
+Donc
+\begin{equation}
+        \mathcal{L} \overset{\Lambda}{\rightarrow} \mathcal{L} 
+\end{equation} 
 \end{proof}
-\section{Opérateurs qui anti-commutent}
 
-\section{Fermions Marojana (Peskins \& Shcroeder 3.4)}
+\subsection{}
+\textbf{On cherche les équations du mouvement pour la théorie de Yukawa classique}.\\
+\begin{solution}
+       L'équation de mouvement pour $\phi$ est
+       \begin{equation}
+               \boxed{\partial_\mu\partial^{\mu} \phi = -m^{2} \phi - 4\lambda \phi^{3} - g \bar{ \psi} \psi }
+       \end{equation} 
+\end{solution}
+\begin{proof}
+La preuve suit par calcul direct. On a
+\begin{equation}
+        \frac{\partial L}{\partial \phi} = -m^{2}\phi - 4\lambda \phi^{3} - g \bar{\psi}\psi\, ,
+\end{equation} 
+et
+\begin{equation}
+        \frac{\partial L}{\partial (\partial_\mu \phi)} = \partial^{\mu}\phi\, .
+\end{equation} 
+De sortes que
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} \right)
+        = -m^{2}\phi - 4\lambda \phi^{3} -g \bar{\psi} \psi - \partial_\mu \partial^{\mu} \phi
+        = 0
+\end{equation} 
+\end{proof}
+\begin{solution}
+       L'équation de mouvement pour $\psi$ est
+       \begin{equation}
+               \boxed{i \slashed{\partial} \bar{\psi} = (g \phi - M) \bar{\psi}}
+       \end{equation} 
+\end{solution}
+\begin{proof}
+La preuve suit par calcul direct. On a
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \psi} = g\phi \bar{\psi} - M \bar{\psi}\, ,
+\end{equation} 
+et
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial (\partial_\mu \psi)} = i \bar{\psi} \gamma^{\mu}\, .
+\end{equation} 
+D'où
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \psi} - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \psi)} \right)
+        =
+        g\phi \bar{\psi} - M \bar{\psi}
+        -
+         i\partial_\mu \gamma^{\mu}\bar{\psi} 
+        = 0
+\end{equation} 
+\end{proof}
+
+\begin{solution}
+       L'équation de mouvement pour $\bar{\psi}$ est 
+       \begin{equation}
+               \boxed{(i\slashed{\partial} - M - g\phi) \psi = 0 }
+       \end{equation} 
+\end{solution}
+\begin{proof}
+On a que
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \bar{\psi}} = (i\slashed{\partial} - M) \psi - g \phi \psi\, ,
+\end{equation} 
+et
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial (\partial_\mu \bar{\psi})} = 0\, ,
+\end{equation} 
+d'où
+\begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \bar{\psi}} = (i \slashed{\partial} - M) \psi - g \phi \psi = 0\, .
+\end{equation} 
+\end{proof}
+
+\subsection{}
+\textbf{On cherche les conditions sous lesquelles la théorie de Yukawa classique possède une invariance d'échelle.}
+\begin{solution}
+Les conditions pour que la théorie de Yukawa classique soit invariante d'échelle sont
+\begin{equation}
+        \boxed{
+        \begin{split}
+        \Delta_{\phi} &= 1 \\
+        \Delta_{\psi} &=  \frac{3}{2} \\
+        M &= m = 0 \\
+        \end{split}
+}
+\end{equation} 
+\begin{proof}
+Chaque terme du Lagrangien doit posséder un facteur d'échelle total de $4$ pour que la théorie soit invariant d'échelle. 
+Ainsi,
+
+        %\mathcal{L} = \frac{1}{2}\partial^{\mu}\phi \partial_\mu \phi - \frac{m^{2}}{2}\phi^{2} - \lambda \phi^{4} + \bar{\psi}(i \slashed{\partial} - M) \psi - g \phi\bar{\psi}\psi
+\begin{equation}
+        \frac{1}{2}\partial^{\mu}\phi \partial_\mu \phi \rightarrow b^{-2-2\Delta_{\phi}}  \frac{1}{2}\partial^{\mu}\phi \partial_\mu \phi \implies \Delta_{\phi} = 1 
+\end{equation} 
+et il suit que $m = 0$, autrement le terme $\propto m^{2} \phi^2$ n'a pas le bon facteur d'échelle. Comme 
+le terme $\lambda \phi^{4}$ a le bon facteur d'échelle, alors les conditions $\Delta_{\phi} = 1$ et $m = 0$ sont suffisantes 
+et nécessaires pour les 3 premiers termes. Comme dérivé au numéro précédent, le Lagrangien de Dirac impose que
+\begin{equation}
+        \Delta_{\psi} = \frac{3}{2}\hspace{1cm} M = 0
+\end{equation} 
+On remarque finalement que le terme de couplage
+\begin{equation}
+        g \phi \bar{\psi} \psi \rightarrow b^{-4} g\phi \bar{\psi}\psi
+\end{equation} 
+avec les conditions trouvées. 
+\end{proof}
+        
+\end{solution}
+
+\subsection{}
+\textbf{On prend $M = 0$ et $\phi(x) = \phi_0$, une constante de l'espace-temps. On pose aussi $|g| \ll 1$. On cherche une solution pour $\phi_0$.}
+%\begin{solution}
+%\begin{equation}
+        %\boxed{\phi_0 = }
+%\end{equation} 
+%\begin{proof}
+        
+%\end{proof}
+        
+%\end{solution}
+
+\section{Opérateurs qui anti-commutent}
+On considère l'Hamiltonien suivant
+\begin{equation}\label{eq:hamiltonien5}
+       \hat{H} = \sum_{a, b}^{N} \hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b \, ,
+\end{equation} 
+avec les relations d'anti-commutations suivantes
+\begin{equation}
+        \{\hat{c}_a, \hat{c}^{\dagger}_b \} = \delta_{ab} \hspace{1cm} \{ \hat{c}_a, \hat{c}_b\} = 0\, .
+\end{equation} 
+
+\subsection{}
+\textbf{On cherche la condition nécessaire telle que $\hat{H}$ soit un opérateur hermitien.}
+\begin{solution}
+        Les éléments de la matrice $t_{ab}$ sont réels.
+\end{solution}
+\begin{proof}
+Supposons que $\hat{t}_{ab} \in \mathbb{R}$. Il suit que $\hat{t}^{\dagger}_{ab} = \hat{t}_{ba}$ et
+\begin{align*}
+       \hat{H}^{\dagger} &=  \sum_{a,b}(\hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b)^{\dagger} \\
+                         &= \sum_{a,b} \hat{t}_{ba} \hat{c}^{\dagger}_b \hat{c}_a \hspace{1cm} \{\hat{t}_{ab} \in \mathbb{R}\}\\
+                         &= \hat{H}
+\end{align*} 
+où la dernière ligne suit du fait que les indices $a \leftrightarrow b$ sont symétriques.
+La condition $\hat{t}_{ab} \in \mathbb{R}$ suit du fait qu'on requiert $[\hat{t}_{ab},\, \hat{c}^{\dagger}_b \hat{c}_a] = 0$ et $\hat{t}_{ab}^{*} = \hat{t}_{ab}$.
+\end{proof}
+
+\subsection{}
+On suppose $N=1$. On s'intéresse aux états stationnaires de l'Hamiltonien \eqref{eq:hamiltonien5}.
+
+
+\subsection{}
+
+\section{Fermions Majorana (Peskins \& Schroeder 3.4)}
+
+\subsection{}
+On veut montrer que
 \end{document}
 

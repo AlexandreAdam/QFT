@@ -17,7 +17,7 @@
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{physics, tensor}
-\usepackage{slashed}
+\usepackage{slashed, cancel}
 
 \graphicspath{{figures/}}
 
@@ -142,7 +142,7 @@ et
 \end{equation} 
 où $\sigma^{i}$ sont les matrices de Pauli et $\bar{\sigma} = -\sigma^{i}$.
 Dans ce cas, une symétrie du Lagrangien émerge du fait que les 
-représentations chirales se découples dans l'équation de Dirac. En effet, on obtient les équations de Weyl
+représentations chirales se découplent dans l'équation de Dirac. En effet, on obtient les équations de Weyl
 \begin{equation}
          i\gamma^{\mu}\partial_\mu \psi = 
          \begin{pmatrix}
@@ -181,7 +181,7 @@ D'où
 Ainsi, pour des particules de masses nulles, le Lagrangien a maintenant deux symétries internes, soit $U(1)\times U(1)$, donc deux 
 courants de Noether
 \begin{equation}
-        \boxed{j^{\mu}_s = \bar{\psi}_s \sigma^{\mu}_s \psi_s}\, ,
+        j^{\mu}_s = \bar{\psi}_s \sigma^{\mu}_s \psi_s\, ,
 \end{equation} 
 où $\sigma^{\mu}_R = \sigma^{\mu}$ et $\sigma^{\mu}_L = \bar{\sigma}^{\mu}$. Ces courants sont valides strictement lorsque les représentations chirales 
 sont indépendantes, et n'est donc pas valide dans une limite ultra relativiste. 
@@ -196,13 +196,13 @@ où, dans la représentation de Weyl,
         \gamma^{5} \equiv i\gamma^0\gamma^{1}\gamma^{2}\gamma^{3} = 
         i
         \begin{pmatrix}
-                -\sigma^{1}\sigma^{2}\sigma^{2} & \bbzero \\
-                \bbzero & \sigma^{1}\sigma^{2}\sigma^{3}
+                -\sigma^{1}\sigma^{2}\sigma^{2} & 0 \\
+                0 & \sigma^{1}\sigma^{2}\sigma^{3}
         \end{pmatrix}
         =
         \begin{pmatrix}
-                -\bbone & \bbzero \\ 
-                \bbzero & \bbone
+                -\bbone & 0 \\ 
+                0 & \bbone
         \end{pmatrix}\, .
 \end{equation} 
 On peut montrer que cette transformation est une symétrie du Lagrangien de Dirac en utilisant le fait que $(\gamma^{5})^{\dagger} = \gamma^{5}$, 
@@ -211,7 +211,7 @@ la formule d'Euler qui résulte de ce fait
 \begin{equation}
         e^{i\theta \gamma^{5}} = \cos(\theta) + i \gamma^{5}\sin(\theta)
 \end{equation} 
-On utilise aussi la relation d'anti-commutation
+On utilise aussi la relation d'anticommutation
 \begin{equation}
         \{ \gamma^{5}, \gamma^{\mu} \} = 0\, ,
 \end{equation} 
@@ -233,7 +233,7 @@ d'où
 \end{equation} 
 et
 \begin{equation}
-        \boxed{j^{\mu} = \bar{\psi} \gamma^{\mu}\gamma^{5}\psi}
+        j^{\mu} = \bar{\psi} \gamma^{\mu}\gamma^{5}\psi
 \end{equation} 
 \end{proof} 
 
@@ -462,7 +462,7 @@ On considère l'Hamiltonien suivant
        \hat{H} = \sum_{a, b}^{N} \hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b \, ,
 \end{equation} 
 avec les relations d'anti-commutations suivantes
-\begin{equation}
+\begin{equation}\label{eq:commut5}
         \{\hat{c}_a, \hat{c}^{\dagger}_b \} = \delta_{ab} \hspace{1cm} \{ \hat{c}_a, \hat{c}_b\} = 0\, .
 \end{equation} 
 
@@ -483,14 +483,746 @@ La condition $\hat{t}_{ab} \in \mathbb{R}$ suit du fait qu'on requiert $[\hat{t}
 \end{proof}
 
 \subsection{}
-On suppose $N=1$. On s'intéresse aux états stationnaires de l'Hamiltonien \eqref{eq:hamiltonien5}.
-
+\begin{solution}
+        La dimension de l'espace d'Hilbert de l'Hamiltonien \eqref{eq:hamiltonien5}, avec $N=1$, est de $2$. 
+        L'espace de Fock fermionique à 1 particule est décrit par la base complète
+        \begin{equation}\label{eq:base_fermion}
+                | 0 \rangle = \begin{pmatrix}
+                        1 \\ 0
+                \end{pmatrix},
+                \hspace{1cm} 
+                | 1 \rangle = \begin{pmatrix}
+                        0 \\ 1
+                \end{pmatrix}
+        \end{equation} 
+        et les opérateurs
+        \begin{equation}
+                \hat{c}_1 = \begin{pmatrix}
+                        0 & 1 \\
+                        0 & 0
+                \end{pmatrix}
+                ,\hspace{1cm}
+                \hat{c}^{\dagger}_1 = \begin{pmatrix}
+                        0 & 0 \\
+                        1 & 0
+                \end{pmatrix}
+        \end{equation} 
+\end{solution}
+\begin{proof}
+On suppose $N=1$. On s'intéresse aux états stationnaires de l'Hamiltonien \eqref{eq:hamiltonien5}. Par définition, 
+l'état fondamental $| 0 \rangle $ est un état stationnaire de l'Hamiltonien avec valeur propre $0$ ($\hat{c} | 0 \rangle  = 0$). 
+On s'intéresse ensuite à $| 1 \rangle = \hat{c}^{\dagger}_1 | 0 \rangle $
+\begin{align*}
+        \hat{H}| 1 \rangle &= \hat{t}_{11} \hat{c}^{\dagger}_1 \hat{c}_1 \hat{c}^{\dagger}_1 | 0 \rangle \\
+        &= \hat{t}_{11} \hat{c}^{\dagger}_1 (1 - \hat{c}^{\dagger}_1 \hat{c}_1)| 0 \rangle \\
+        &= \hat{t}_{11}| 1 \rangle 
+\end{align*}
+où la seconde ligne suite de la relation d'anticommutation $\{\hat{c}_1, \hat{c}^{\dagger}_1\} = 1$.
+Donc, l'état $| 1 \rangle $ est un état stationnaire de l'Hamiltonien avec valeur propre $\hat{t}_{11}$. 
+Ensuite, on considère l'état $| 2 \rangle = \hat{c}^{\dagger}_1 \hat{c}^{\dagger}_1 | 0 \rangle $
+\begin{align*}
+        \hat{H} | 2 \rangle &= \hat{t}_{11} \hat{c}^{\dagger}_1 \hat{c}_1 \hat{c}^{\dagger}_1 \hat{c}^{\dagger}_1 | 0 \rangle  \\
+                &= \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 | 0 \rangle  - \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 \hat{c}_1\hat{c}^{\dagger}_1 | 0 \rangle  \\
+                &= \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 | 0 \rangle  - \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 | 0 \rangle  \\
+                &= 0
+\end{align*}
+On trouve que l'état $| 2 \rangle $ possède le même niveau d'énergie que $| 0 \rangle $.
+Donc il n'y a pas d'état avec deux particules. Il suit par induction 
+qu'il n'y a pas d'états à $n$ particules, puisque $| 3 \rangle = | 1 \rangle $, etc.
+On conclut que l'Hamiltonien \eqref{eq:hamiltonien5}, avec $N=1$, décrit un fermion puisque la théorie obéit le principe d'exclusion de Pauli.
+\end{proof}
+\begin{solution}
+        La dimension de l'espace d'Hilbert de l'Hamiltonien \eqref{eq:hamiltonien5}, avec $N=1$ et les relations  
+        d'anticommutations \eqref{eq:commut5} remplacée par des relations de commutations
+        \begin{equation}
+                [\hat{c}_a, \hat{c}^{\dagger}_b ] = \delta_{ab} \hspace{1cm} [ \hat{c}_a, \hat{c}_b] = 0\, ,
+        \end{equation} 
+        est $\infty$. L'espace de Fock bosonique à 1 particule est décrit par la base complète
+        \begin{equation}
+                | 0 \rangle = \begin{pmatrix}
+                        1 \\ 0 \\ 0 \\\vdots
+                \end{pmatrix},
+                \hspace{1cm} 
+                | 1 \rangle = \begin{pmatrix}
+                        0 \\ 1 \\ 0 \\\vdots
+                \end{pmatrix},
+                \hspace{1cm} 
+                | 2 \rangle = \begin{pmatrix}
+                        0 \\ 0 \\ 1 \\ \vdots
+                \end{pmatrix},
+                \hspace{1cm}
+                 \dots
+        \end{equation} 
+        et les opérateurs
+        \begin{equation}
+                \hat{c}_1 = \begin{pmatrix}
+                        0 & 1 & 0 & \dots \\
+                        0 & 0 & \sqrt{2} & \dots \\
+                        0 & 0 & 0 & \dots \\
+                        \vdots & \vdots & \vdots & \ddots
+                \end{pmatrix}
+                ,\hspace{1cm}
+                \hat{c}^{\dagger}_1 = \begin{pmatrix}
+                        0 & 0 & 0 &  \dots \\
+                        1 & 0 & 0 &  \dots \\
+                        0 & \sqrt{2} & 0 &  \dots  \\
+                        \vdots & \vdots & \vdots & \ddots 
+                \end{pmatrix}
+        \end{equation} 
+\end{solution}
+\begin{proof}
+On s'intéresse en premier lieu à $| 1 \rangle = \hat{c}^{\dagger}_1 | 0 \rangle $
+\begin{align*}
+        \hat{H}| 1 \rangle &= \hat{t}_{11} \hat{c}^{\dagger}_1 \hat{c}_1 \hat{c}^{\dagger}_1 | 0 \rangle \\
+        &= \hat{t}_{11} \hat{c}^{\dagger}_1 (1 + \hat{c}^{\dagger}_1 \hat{c}_1)| 0 \rangle \\
+        &= \hat{t}_{11}| 1 \rangle 
+\end{align*}
+où la seconde ligne suite de la relation d'commutation $[\hat{c}_1, \hat{c}^{\dagger}_1] = 1$.
+Donc, l'état $| 1 \rangle $ est un état stationnaire de l'Hamiltonien avec valeur propre $\hat{t}_{11}$. 
+Ensuite, on considère l'état $| 2 \rangle = \hat{c}^{\dagger}_1 \hat{c}^{\dagger}_1 | 0 \rangle $
+\begin{align*}
+        \hat{H} | 2 \rangle &= \hat{t}_{11} \hat{c}^{\dagger}_1 \hat{c}_1 \hat{c}^{\dagger}_1 \hat{c}^{\dagger}_1 | 0 \rangle  \\
+                &= \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 | 0 \rangle  + \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 \hat{c}_1\hat{c}^{\dagger}_1 | 0 \rangle  \\
+                &= \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 | 0 \rangle  + \hat{t}_{11}\hat{c}^{\dagger}_1\hat{c}^{\dagger}_1 | 0 \rangle  \\
+                &= 2\hat{t}_{11}| 2 \rangle 
+\end{align*}
+Donc l'état $| 2 \rangle $ est un état stationnaire de l'Hamiltonien avec valeur propre $2 \hat{t}_{11}$. Il suit par 
+induction que $| n \rangle $ est aussi un état stationnaire de l'Hamiltonien. On obtient donc un espace d'Hilbert 
+infini qui décrit une particule bosonique. Chaque états admet $n \in \mathbb{N}$ particules.
+\end{proof}
 
 \subsection{}
+On définit les opérateurs Majorana
+\begin{equation}
+        \hat{\chi}_1 = \frac{1}{\sqrt{2}}(\hat{c} + \hat{c}^{\dagger}), \hspace{1cm} \hat{\chi}_2= \frac{-i}{\sqrt{2}}(\hat{c} - \hat{c}^{\dagger}) 
+\end{equation} 
+En terme des relations d'anticommutations \eqref{eq:commut5}, on a que
+\begin{align*}
+        \{\hat{\chi}_1, \hat{\chi}_2\} &= \frac{-i}{2} \{\hat{c} + \hat{c}^{\dagger},\, \hat{c} - \hat{c}^{\dagger}\}  \\
+                &= \frac{-i}{2}(-\{\hat{c}, \hat{c}^{\dagger}\} + \{\hat{c}^{\dagger}, \hat{c}\}) \\
+\implies     \Aboxed{ \{\hat{\chi}_1, \hat{\chi}_2\} &= 0 } 
+\end{align*}
+On observe que les opérateurs Majorana sont hermitiens, $\hat{\chi}_{a}^{\dagger} = \hat{\chi}_a$, et que 
+\begin{align*}
+        \hat{\chi}_1\hat{\chi}_2 &= \frac{-i}{2}(\hat{c} + \hat{c}^{\dagger})(\hat{c} - \hat{c}^{\dagger}) \\
+        &= \frac{-i}{2}(\hat{c}\hat{c} - \hat{c}^{\dagger}\hat{c}^{\dagger} + 2\hat{c}^{\dagger}\hat{c} - 1)
+\end{align*}
+Or comme $\hat{c}\hat{c} = \hat{c}^{\dagger}\hat{c}^{\dagger} = 0$ pour des fermions (voir équation \eqref{eq:base_fermion}), alors
+\begin{equation}
+        \hat{c}^{\dagger}\hat{c} = i \hat{\chi}_1\hat{\chi_2} + 1
+\end{equation} 
+Ainsi, on trouve l'Hamiltonien
+\begin{equation}
+        \boxed{\hat{H} = \hat{t}_{11}(i\hat{\chi}_1\hat{\chi}_2 + 1 )} 
+\end{equation} 
+Les états propres de $\hat{\chi}_1$, dans la base complète \eqref{eq:base_fermion}, sont
+\begin{equation}
+        \boxed{| \chi_{11} \rangle = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ 1
+        \end{pmatrix}
+        ,
+        \hspace{1cm}
+        | \chi_{12} \rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                1 \\ -1
+        \end{pmatrix}
+}
+\end{equation} 
+En effet, 
+\begin{align*}
+        \hat{\chi}_1 | \chi_{11} \rangle &= \frac{1}{\sqrt{2}} \hat{\chi_1}(| 0 \rangle + | 1 \rangle ) \\
+                        &= \frac{1}{2} (| 1 \rangle + | 0 \rangle ) \\
+                        &= \frac{1}{\sqrt{2}}| \chi_{11} \rangle \\
+        \hat{\chi}_1 | \chi_{12} \rangle &= \frac{1}{\sqrt{2}}\hat{\chi}_1 (| 0 \rangle - | 1 \rangle ) \\
+                &= \frac{1}{2}(| 1 \rangle - | 0 \rangle  ) \\
+                &= -\frac{1}{\sqrt{2}}| \chi_{12} \rangle 
+\end{align*} 
+Les états propres de $\hat{\chi}_2$, dans la base complète \eqref{eq:base_fermion}, sont
+\begin{equation}
+        \boxed{| \chi_{21} \rangle = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ i
+        \end{pmatrix}
+        ,
+        \hspace{1cm}
+        | \chi_{22} \rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                1 \\ -i
+        \end{pmatrix}
+}
+\end{equation} 
+En effet, 
+\begin{align*}
+        \hat{\chi}_2 | \chi_{21} \rangle &= \frac{1}{\sqrt{2}} \hat{\chi_2}(| 0 \rangle + i| 1 \rangle ) \\
+                        &= \frac{1}{2} (i| 1 \rangle - i^2| 0 \rangle ) \\
+                        &= \frac{1}{\sqrt{2}}| \chi_{21} \rangle \\
+        \hat{\chi}_2 | \chi_{22} \rangle &= \frac{1}{\sqrt{2}}\hat{\chi}_2 (| 0 \rangle - i| 1 \rangle ) \\
+                &= \frac{1}{2}(i| 1 \rangle + i^2| 0 \rangle  ) \\
+                &= -\frac{1}{\sqrt{2}}| \chi_{22} \rangle 
+\end{align*} 
+
+\subsection{}
+\begin{solution}
+La dimension de l'espace d'Hilbert associé à l'Hamiltonien \eqref{eq:hamiltonien5} est $2^{N}$, $N \in \mathbb{N}$. Les états 
+\begin{equation}
+        | n_1, n_2, \dots, n_N \rangle, \hspace{1cm} n_i \in \{0, 1\}
+\end{equation} 
+sont associé à une énergie
+\begin{equation}
+        E = \sum_{i = 1}^{N}n_{i}\hat{t}_{ii}
+\end{equation} 
+\end{solution}
+\begin{proof}
+On commence par le cas $N=2$. Dans ce cas, on peut construire les états
+\begin{align*}
+        | 0, 0 \rangle  = | 0 \rangle \hspace{1cm} N = 0 \\
+        | 1, 0 \rangle = \hat{c}_1^{\dagger}| 0 \rangle   \hspace{.5cm} | 0, 1 \rangle = c_2^{\dagger}| 0 \rangle  \hspace{1cm} N = 1 \\
+        | 1, 1 \rangle = c_1^{\dagger}c_2^{\dagger}| 0 \rangle  \hspace{1cm} N = 2
+\end{align*}
+On montre que $| 1, 1 \rangle $ est un état stationnaire de $\hat{H}$.
+En utilisant la relation d'anticommutation $\{\hat{c}_a, \hat{c}_b^{\dagger}\} = \delta_{ab}$, on a
+\begin{align*}
+       \hat{H}| 1, 1 \rangle  &= \sum_{a, b} \hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b \hat{c}_1^{\dagger}\hat{c}_2^{\dagger} | 0 \rangle  \\
+                        &= \sum_{a, b} \hat{t}_{ab} \hat{c}^{\dagger}_a(\delta_{b1} - \hat{c}_1^{\dagger} \hat{c}_b)\hat{c}^{\dagger}_2 | 0 \rangle  \\
+                        &= \sum_{a, b} \hat{t}_{ab} \hat{c}^{\dagger}_{a}\hat{c}^{\dagger}_2\delta_{b1}| 0 \rangle  - \sum_{a,b}\hat{t}_{ab}\hat{c}^{\dagger}_a\hat{c}^{\dagger}_1 \delta_{b2} | 0 \rangle 
+\end{align*}
+En utilisant le fait que $\hat{c}_{a}^{\dagger}\hat{c}_a^{\dagger} = 0$, on obtient
+\begin{equation}
+        \hat{H}| 1, 1 \rangle =  (\hat{t}_{11}  - \hat{t}_{22})| 1, 1 \rangle 
+\end{equation} 
+Les états $| 1, 0 \rangle $ et $| 0, 1 \rangle $ ne sont pas des états stationnaires de l'Hamiltonien à moins que $\hat{t}_{12} = \hat{t}_{21}= 0$. En effet, 
+par des manipulations similaires on obtient
+\begin{align*}
+        \hat{H} | 1, 0 \rangle &= \hat{t}_{11} |1, 0  \rangle + \hat{t}_{21}| 0, 1 \rangle 
+\end{align*}
+Toutefois, on remarque que la superposition $| \xi_1 \rangle  = (\hat{t}_{22} - \hat{t}_{12})| 1, 0 \rangle + (\hat{t}_{11} - \hat{t}_{12})| 0, 1 \rangle$ est un état stationnaire. 
+En effet, considérons l'état $| \xi \rangle  = A | 1, 0 \rangle + B | 0, 1 \rangle $
+\begin{align*}
+        \hat{H}| \xi \rangle &= \sum_{a, b} \hat{t}_{ab}\hat{c}^{\dagger}_a\hat{c}_b (A\hat{c}^{\dagger}_1 + B\hat{c}^{\dagger}_2)| 0 \rangle  \\
+        &= \sum_{a, b} \hat{t}_{ab}\hat{c}^{\dagger}_a(A\delta_{b1} + B\delta_{b2})| 0 \rangle  \\
+        &= (A\hat{t}_{11} + B\hat{t}_{12})| 1, 0 \rangle + (A\hat{t}_{21} + B\hat{t}_{22})| 0, 1 \rangle \\
+\end{align*}
+$| \xi \rangle $ est un état stationnaire si et seulement si
+\begin{equation}
+        A = B \frac{\hat{t}_{22} - \hat{t}_{12}}{\hat{t}_{11} - \hat{t}_{21}}\, .
+\end{equation} 
+Le choix $A = \hat{t}_{22} - \hat{t}_{12}$ et $B = \hat{t}_{11} - \hat{t}_{21}$ est le plus simple. Ainsi, l'état $| \xi_1 \rangle $ 
+est un état stationnaire avec une énergie
+\begin{equation}
+        E_{\xi_1} = \hat{t}_{11}\hat{t}_{22} - \hat{t}_{21}\hat{t}_{12}
+\end{equation} 
+
+
+%Les états stationnaires de 
+%\begin{equation}
+       %\hat{H}=  \sum_{a,b}\hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b\, ,
+%\end{equation} 
+%sont
+%\begin{equation}
+        %| n_1, n_2, \dots, n_N \rangle = \left(  \prod_{\{i | n_i = 1\}}\hat{c}^{\dagger}_i \right)|0\rangle  
+%\end{equation} 
+%On peut montrer que c'est un état stationnaire de l'Hamiltonien 
+%\begin{align*}
+       %\hat{H}| n_1, n_2 \dots, n_N \rangle &=  
+%\end{align*}
+%On peut construire les états stationnaires de l'Hamiltonien avec l'espace de Fock
+%\begin{equation}
+        %F(H) = \bigoplus_{n=1}^{N} S_{-}H^{\otimes n}
+%\end{equation} 
+%où $S_{-}$ est un tenseur complètement antisymétrique. Par exemple, pour $N=2$ on a 
+%\begin{align*}
+        %| 0, 0 \rangle \hspace{1cm} N = 0 \\
+                %| 1, 0 \rangle  \hspace{.5cm} | 0, 1 \rangle \hspace{1cm} N = 1 \\
+        %| 1, 1 \rangle \hspace{1cm} N = 2
+%\end{align*}
+%Pour $N = 3$, on a $2^{3} = 8$ états stationnaires, soit
+%\begin{align*}
+        %| 0, 0, 0 \rangle \hspace{1cm} N = 0 \\
+        %| 1, 0, 0 \rangle  \hspace{.5cm} | 0, 1, 0 \rangle  \hspace{.5cm} | 0, 0, 1 \rangle \hspace{1cm} N = 1 \\
+        %| 1, 1, 0 \rangle  \hspace{.5cm} | 0, 1, 1 \rangle  \hspace{.5cm} | 1, 0, 1 \rangle \hspace{1cm} N = 2 \\
+        %| 1, 1, 1 \rangle \hspace{1cm} N = 3
+%\end{align*}
+%Dans la représentation choisie, un état est décrit par $N$ nombres naturels $n_j \in \{0, 1\}$, qui ne peuvent prendre que deux valeurs. Ainsi, 
+%le système avec $N$ fermions est décrit par les états
+%\begin{equation}
+        %| n_1, n_2, \dots, n_N \rangle\, , 
+%\end{equation}
+%soit une base complète de l'Hamiltonien
+%Par induction, l'Hamiltonien avec $N$ fermions possède $2^{N}$ états stationnaires, ce qui correspond à un espace de Fock ave
+\end{proof}
+
+
 
 \section{Fermions Majorana (Peskins \& Schroeder 3.4)}
+On considère les deux composantes du champ de chiralité gauche $\chi_a(x)$, $a \in \{1, 2\}$, tels que
+\begin{equation}\label{eq:main6}
+        i \bar{\sigma}^{\mu}\partial_\mu \chi(x) - i m \sigma^{2}\chi^{*}(x) = 0
+\end{equation} 
+où $\bar{\sigma}^{\mu} = (\bbone, -\sigma^{1}, -\sigma^{2}, -\sigma^{3}) = (\bbone, -\boldsymbol{ \sigma} )$ 
+est un vecteur incluant les matrices de Pauli et le second terme est appelé le terme de masse de Majorana. 
 
 \subsection{}
-On veut montrer que
+On veut montrer que \eqref{eq:main6} est un invariant de Lorentz et que \eqref{eq:main6} implique l'équation de Klein-Gordon. 
+Pour se faire, on déduit la relation de transformation de $\sigma^{\mu}$ et $\bar{\sigma}^{\mu}$ à partir de la 
+transformation connue des matrices de Dirac 
+\begin{equation}\label{eq:gam6}
+        M_D(\Lambda) \gamma^{\mu}M_D(\Lambda^{-1}) = \Lambda\indices{^{\mu}_{\nu}}\gamma^{\nu}
+\end{equation} 
+où $M_D(\Lambda)$ est la représentation de la transformation de Lorentz dans la base de Dirac $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$. 
+On écrit maintenant la matrice $\gamma^{\mu}$ dans la base chirale de Weyl
+\begin{equation}
+        \gamma^{\mu} = 
+        \begin{pmatrix}
+                0 & \sigma^{\mu} \\
+                \bar{\sigma}^{\mu} & 0
+        \end{pmatrix}
+\end{equation} 
+On fait de même pour les matrices $M(\Lambda)$, 
+qui est une matrice bloc diagonale en terme des représentations irréductibles
+\begin{equation}
+        M_D(\Lambda) =
+        \begin{pmatrix}
+                M_{\frac{1}{2},0}(\Lambda) & 0 \\
+        0 & M_{0, \frac{1}{2}}(\Lambda)
+        \end{pmatrix}
+\end{equation} 
+Il suit que
+\begin{align*}
+        M_D(\Lambda) \gamma^{\mu}M_D(\Lambda^{-1}) &= 
+        \begin{pmatrix}
+                M_{\frac{1}{2},0}(\Lambda) & 0 \\
+        0 & M_{0, \frac{1}{2}}(\Lambda)
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & \sigma^{\mu} \\
+                \bar{\sigma}^{\mu} & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                M_{\frac{1}{2},0}(\Lambda^{-1}) & 0 \\
+        0 & M_{0, \frac{1}{2}}(\Lambda^{-1})
+        \end{pmatrix} \\
+        %&= 
+        %\begin{pmatrix}
+                %M_{\frac{1}{2},0}(\Lambda) & 0 \\
+        %0 & M_{0, \frac{1}{2}}(\Lambda)
+        %\end{pmatrix}
+        %\begin{pmatrix}
+                %0 & \sigma^{\mu}M_{0,\frac{1}{2}}(\Lambda^{-1}) \\
+                %\bar{\sigma}^{\mu}M_{\frac{1}{2}, 0}(\Lambda^{-1}) & 0
+        %\end{pmatrix} \\
+        &= 
+        \begin{pmatrix}
+                0 & M_{\frac{1}{2},0}(\Lambda)\sigma^{\mu}M_{0,\frac{1}{2}}(\Lambda^{-1})  \\
+                M_{0, \frac{1}{2}}(\Lambda)\bar{\sigma}^{\mu} M_{\frac{1}{2},0}(\Lambda^{-1}) & 0
+        \end{pmatrix}
+\end{align*}
+Avec le côté droit de l'équation \eqref{eq:gam6}, on déduit les relations de transformations
+\begin{equation}
+\begin{split}
+        M_{\frac{1}{2},0}(\Lambda)\sigma^{\mu}M_{0,\frac{1}{2}}(\Lambda^{-1}) &= \Lambda\indices{^{\mu}_{\nu}}\sigma^{\nu}\\
+        M_{0, \frac{1}{2}}(\Lambda)\bar{\sigma}^{\mu} M_{\frac{1}{2},0}(\Lambda^{-1}) &= \Lambda\indices{^{\mu}_{\nu}}\bar{\sigma}^{\nu}
+\end{split}
+\end{equation} 
+En réarrangeant les termes, on obtient les relations équivalentes
+\begin{equation}
+\begin{split}
+        M_{\frac{1}{2},0}(\Lambda)\sigma^{\mu}&= \sigma^{\nu}\Lambda\indices{_{\nu}^{\mu}}M_{0,\frac{1}{2}}(\Lambda) \\
+        M_{0, \frac{1}{2}}(\Lambda)\bar{\sigma}^{\mu}&= \bar{\sigma}^{\nu}\Lambda\indices{_{\nu}^{\mu}} M_{\frac{1}{2},0}(\Lambda)
+\end{split}
+\end{equation} 
+où on a utiliser le fait que $\Lambda\indices{^{\mu}_{\nu}}A^{\nu} = A^{\nu}\Lambda\indices{_{\nu}^{\mu}}$.
+On considère maintenant une transformation de Lorentz sur l'équation \eqref{eq:main6} pour la composante de chiralité gauche $(\frac{1}{2}, 0)$. 
+On applique donc les transformations
+\begin{equation}
+        \partial_{\mu} \rightarrow \Lambda\indices{_{\mu}^{\nu}}\partial_\nu\, ,
+\end{equation} 
+et
+\begin{equation}
+        \chi(x) \rightarrow M_{\frac{1}{2},0}(\Lambda)\chi(x)\, .
+\end{equation} 
+de sortes que le premier terme de l'équation \eqref{eq:main6} devient
+\begin{align}
+        \nonumber
+       i \bar{\sigma}^{\mu}\partial_\mu \chi(x) 
+       &\rightarrow  i \bar{\sigma}^{\mu}   \Lambda\indices{_{\mu}^{\nu}}\partial_\nu  M_{\frac{1}{2},0}(\Lambda)\chi(x)   \\
+       \nonumber
+      &\rightarrow  i \Lambda\indices{^{\nu}_{\mu}}\bar{\sigma}^{\mu} M_{\frac{1}{2},0}(\Lambda)\partial_\nu  \chi(x)   \\
+      \label{eq:sol61}
+        \implies \Aboxed{i \bar{\sigma}^{\mu}\partial_\mu \chi(x)   &\rightarrow   M_{0,\frac{1}{2}}(\Lambda)i\bar{\sigma}^{\nu}\partial_\nu \chi(x)}
+\end{align}
+On cherche maintenant à déterminer comment $\sigma^{2} \chi^{*}$ se transforme.
+Dans la représentation chirale, on a les éléments du groupe $SO^{+}(3, 1)$ suivant
+\begin{equation}
+        \begin{split}
+                M_{\frac{1}{2}, 0}(\Lambda) &= \exp \left( -i \boldsymbol{ \theta} \cdot \frac{\boldsymbol{ \sigma} }{2} - \boldsymbol{ \beta} \cdot \frac{\boldsymbol{ \sigma} }{2} \right) \\
+                M_{0, \frac{1}{2}}(\Lambda) &= \exp \left( -i \boldsymbol{ \theta} \cdot \frac{\boldsymbol{ \sigma} }{2} + \boldsymbol{ \beta} \cdot \frac{\boldsymbol{ \sigma} }{2} \right)
+        \end{split}
+\end{equation} 
+où $\boldsymbol{ \theta},\boldsymbol{ \beta} \in \mathbb{R}^{3}$ et $\boldsymbol{ \sigma} = (\sigma^{1}, \sigma^{2}, \sigma^{3})$. On prouve en premier 
+lieu que
+\begin{equation}
+        \sigma^{2} \boldsymbol{ \sigma}^{*} \sigma^{2} = -\boldsymbol{ \sigma} \, . 
+\end{equation} 
+En effet, en utilisant la loi de contraction $\sigma^{i}\sigma^{j} = \delta^{ij}\bbone + i\epsilon\indices{^{ij}_{k}} \sigma^{k}$, où 
+$\epsilon\indices{^{ij}_{k}}$ est le tenseur de Levi-Civita, on obtient
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+        \sigma^{2} (\sigma^{1})^{*}\sigma^{2} &=  \sigma^{2} \sigma^{1}\sigma^{2} \\
+                &= -i\sigma^{3} \sigma^{2} \\
+                &= -\sigma^{1} \\
+        \sigma^{2}(\sigma^{2})^* \sigma^{2} &= -\sigma^{2}\sigma^{2}\sigma^{2} \\
+                &= -\sigma^{2} \\
+        \sigma^{2} (\sigma^{3})^* \sigma^{2} &= \sigma^{2}\sigma^{3}\sigma^{2} \\
+                   &= i\sigma^{1}\sigma^{2} \\
+                   &= -\sigma^{3}
+\end{align*}
+\endgroup
+Ainsi, on peut déduire la transformation de $\sigma^{2}M_{\frac{1}{2}, 0}(\Lambda)^{*} \sigma^{2}$
+\begin{align*}
+        \sigma^{2}M_{\frac{1}{2}, 0}(\Lambda)^{*}\sigma^{2} &=
+        \sigma^{2} \exp \left( i \boldsymbol{ \theta} \cdot \frac{\boldsymbol{ \sigma} }{2} - \boldsymbol{ \beta} \cdot \frac{\boldsymbol{ \sigma} }{2} \right)\sigma^{2} \\
+        &=  \exp \left( -i \boldsymbol{ \theta} \cdot \frac{\boldsymbol{ \sigma} }{2} + \boldsymbol{ \beta} \cdot \frac{\boldsymbol{ \sigma} }{2} \right) \\
+        &= M_{0, \frac{1}{2}}(\Lambda)
+\end{align*}
+En utilisant l'identité $(\sigma^{i})^{2} = \bbone$, on trouve
+\begin{equation}\label{eq:sol62}
+        \begin{split}
+        \sigma^{2}\chi^{*} &\rightarrow \sigma^{2}M_{\frac{1}{2}, 0}(\Lambda)^{*} (\sigma^{2})^{2}\chi^{*} \\
+        \implies \Aboxed{ \sigma^{2}\chi^{*} &\rightarrow  M_{0, \frac{1}{2}}(\Lambda) (\sigma^{2}\chi^{*})}
+        \end{split}
+\end{equation} 
+Donc $\sigma^{2}\chi^{*}$ se transforme comme un spineur de chiralité droite.
+En utilisant les équation \eqref{eq:sol61} et \eqref{eq:sol62}, on obtient la loi de transformation pour \eqref{eq:main6}
+\begin{equation}
+        i \bar{\sigma}^{\mu}\partial_\mu \chi(x) - i m \sigma^{2}\chi^{*}(x) \rightarrow M_{0,\frac{1}{2}}(\Lambda) 
+        (\underbrace{i \bar{\sigma}^{\mu}\partial_\mu \chi(x) - i m \sigma^{2}\chi^{*}(x)}_{=0})  = 0
+\end{equation} 
+soit une équation invariante de Lorentz, tels que requis. 
+
+On s'intéresse maintenant à montrer que \eqref{eq:main6} implique l'équation de Klein-Gordon. On considère en premier lieu 
+l'équation \eqref{eq:main6} conjugué
+\begin{align*}
+        \eqref{eq:main6}^* &\implies  -i (\bar{\sigma}^{\mu})^{*}\partial_\mu \chi^{*}(x) + i m (\sigma^{2})^{*}\chi(x) = 0 \\
+                          &\implies -i (\bar{\sigma}^{\mu})^{*}\partial_\mu \chi^{*}(x) - i m \sigma^{2}\chi(x) = 0 \\
+\end{align*} 
+puisque $(\sigma^{2})^* = -\sigma^{2}$. En isolant $\chi^{*}(x)$ dans \eqref{eq:main6}
+\begin{equation}\label{eq:sub6}
+        \chi^{*}(x) = \frac{1}{m}\sigma^{2} \bar{\sigma}^{\mu} \partial_\mu\chi(x)\, ,
+\end{equation} 
+on peut substituer $\chi^{*}$ dans $\eqref{eq:main6}^{*}$ 
+\begin{align}
+        \nonumber
+        \frac{1}{m} (\bar{\sigma}^{\mu})^{*}\partial_\mu \sigma^{2} \bar{\sigma}^{\nu} \partial_\nu \chi(x) + m \sigma^{2}\chi(x) &= 0 \\
+        \nonumber
+        \implies 
+        \sigma^{2}\sigma^{2}(\bar{\sigma}^{\mu})^{*} \sigma^{2} \bar{\sigma}^{\nu} \partial_\mu\partial_\nu \chi(x) + m^2 \sigma^{2}\chi(x) &= 0 \\
+        \nonumber
+        \implies \sigma^{2}\sigma^{\mu} \bar{\sigma}^{\nu} \partial_\mu\partial_\nu \chi(x) + m^2 \sigma^{2}\chi(x) &= 0 \\
+        \label{eq:res61}
+        \implies \sigma^{\mu} \bar{\sigma}^{\nu} \partial_\mu\partial_\nu \chi(x) + m^2\chi(x) &= 0 
+\end{align} 
+puisque $\sigma^{2} (\bar{\sigma}^{\mu})^*\sigma^{2} = \sigma^{2}(\bbone, -\boldsymbol{ \sigma}^{*} )\sigma^{2} = (\bbone, \boldsymbol{ \sigma} ) = \sigma^{\mu}$. 
+Les matrices de Pauli $\sigma^{\mu}$ obéissent l'algèbre de Clifford pour $\mathbb{R}^{3}$
+(ce qui suit par la loi de contraction utilisée plus haut)
+\begin{equation}
+        \{\sigma^{i}, \sigma^{j}\} = 2 \delta^{ij}\bbone
+\end{equation} 
+On peut retrouver l'algèbre de Clifford pour $\mathbb{R}^{1,3}$, gouverné par la métrique de Minkowsky $\eta^{\mu \nu} = \mathrm{diag}(1, -1, -1, -1)$, 
+avec l'algèbre légèrement modifié
+\begin{equation}
+        \{\sigma^{\mu}, \bar{\sigma}^{\nu}\} =  \{\bar{\sigma}^{\mu}, \sigma^{\nu}\} = 2 \eta^{\mu \nu} \bbone\, ,
+\end{equation} 
+ce qui induit la relation 
+\begin{equation}
+        \sigma^{\mu}\bar{\sigma}^{\nu} = \eta^{\mu \nu}\bbone \, .
+\end{equation} 
+Ainsi, on obtient finalement
+\begin{align*}
+       \eqref{eq:res61}  \implies \eta^{\mu \nu}\partial_\mu\partial_\nu \chi(x) + m^2\chi(x) &= 0  \\
+       \implies \partial^{\mu}\partial_\mu \chi(x) + m^2\chi(x) &= 0  
+\end{align*}
+On trouve donc que \eqref{eq:main6} induit l'équation de Klein-Gordon. 
+
+\subsection{}
+On veut montrer que l'action
+\begin{equation}
+        S = \int d^{4}x\, \bigg( \chi^{\dagger} i \bar{\sigma}^{\mu} \partial_\mu \chi + \frac{im}{2}(\chi^T \sigma^{2} \chi - \chi^{\dagger} \sigma^{2}\chi^{*}) \bigg)
+\end{equation} 
+est réelle $S = S^{*}$. La preuve suit par calcul direct
+\begin{align*}
+        S^{*} = S^{\dagger} &= 
+        \int d^{4}x\, \bigg( (\chi^{\dagger} i \bar{\sigma}^{\mu} \partial_\mu \chi)^{\dagger} - \frac{im}{2}(\chi^T \sigma^{2} \chi - \chi^{\dagger} \sigma^{2}\chi^{*})^{\dagger} \bigg) \\
+        &=  \int d^{4}x\, \bigg( -i (\partial_\mu \chi)^{\dagger}(\bar{\sigma}^{\mu})^{\dagger}\chi - \frac{im}{2}(\chi^{\dagger} (\sigma^{2})^{\dagger} \chi^{*} - \chi^{T} (\sigma^{2})^{\dagger}\chi) \bigg) \\
+        &=  \int d^{4}x\, \bigg( -i (\partial_\mu \chi)^{\dagger}\bar{\sigma}^{\mu}\chi + \frac{im}{2}(\chi^{T} \sigma^{2}\chi -\chi^{\dagger} \sigma^{2}\chi^{*})\bigg) \\
+\end{align*}
+où la dernière ligne suit du fait que les matrices de Pauli sont hermitienne $(\sigma^{\mu})^{\dagger} = \sigma^{\mu}$.
+Pour progresser, on intègre par partie le premier terme en assumant que le champ $\chi(x)$ s'annule à 
+la frontière d'intégration
+\begin{align*}
+        \int_{\mathcal{V}} d^{4}x\,  (\partial_\mu \chi)^{\dagger}\bar{\sigma}^{\mu}\chi = \cancelto{0}{\bigg[\chi^{\dagger} \bar{\sigma}^{\mu} \chi \bigg]_{\partial\mathcal{V}}} - 
+        \int_{\mathcal{V}} d^{4}x\, \chi^{\dagger} \bar{\sigma}^{\mu} \partial_\mu \chi 
+\end{align*}
+D'où
+\begin{align*}
+        S^{\dagger} &= \int d^{4}x\, \bigg( i \chi^{\dagger} \bar{\sigma}^{\mu} \partial_\mu \chi + \frac{im}{2}(\chi^{T} \sigma^{2}\chi -\chi^{\dagger} \sigma^{2}\chi^{*})\bigg) \\
+        \implies S^{*} &=  S \\
+        \implies S &\in \mathbb{R}
+\end{align*}
+On cherche maintenant à dériver les équations du mouvement pour $\chi$ et $\chi^{*}$ associée à cette action. 
+En particulier, on remarque que la dérivée fonctionnelle partielle $\frac{\delta S}{\delta \chi^{\dagger}}$ encode 
+la structure de l'équation de Majorana \eqref{eq:main6}. En effet,
+\begin{align*}
+        \frac{\delta S}{\delta \chi^{\dagger}} = \int d^{4}x\, 
+        \big(i \bar{\sigma}^{\mu} \partial_\mu \chi - im\sigma^{2}\chi^{*} \big) = 0\, ,
+\end{align*}
+On trouve bien l'équation de Majorana de cette façon.
+
+
+\subsection{}
+Soit un spineur $\psi(x)$ dans le représentation chirale
+\begin{equation}
+        \psi(x) = 
+        \begin{bmatrix}
+                \psi_L(x) \\
+                \psi_R(x)
+        \end{bmatrix}
+\end{equation} 
+On peut exprimer chaque composante en terme des composantes du champ Majorana $\chi(x)$
+\begin{equation}\label{eq:dirac_m_rep}
+        \psi_L(x) = \chi_1(x), \hspace{1cm} \psi_R(x) = i \sigma^{2}\chi_2^{*}(x)
+\end{equation} 
+\begin{solution}
+        La densité lagrangienne de Dirac s'écrit en terme du champs Majorana comme
+        \begin{equation}\;a
+                \mathcal{L}_D =  i \chi_1^{\dagger} \bar{\sigma}^{\mu} \partial_\mu \chi_1 + i\chi_2^{\dagger} \bar{\sigma}^{\mu} \partial_\mu \chi_2 + 
+                im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+        \end{equation} 
+\end{solution}
+\begin{proof}
+La densité lagrangienne de Dirac s'écrit
+\begin{equation}
+      \mathcal{L}_D = \bar{\psi}(i \slashed{\partial} - m) \psi
+\end{equation} 
+En terme du champs Majorana \eqref{eq:dirac_m_rep}, on peut écrire
+\begin{align*}
+       \mathcal{L}_D = 
+       \begin{bmatrix}
+               \chi_1^{\dagger} & -i \chi_2^{T}\sigma^{2} 
+       \end{bmatrix}      
+       \gamma^{0}
+       (i \gamma^{\mu} \partial_\mu - m)
+       \begin{bmatrix}
+               \chi_1 \\[1ex] i \sigma^{2}\chi_2^{*}
+       \end{bmatrix}
+       \\
+\end{align*}
+Dans la représentation chirale, on a
+\begin{equation}
+        \gamma^{\mu} = 
+        \begin{bmatrix}
+                0 & \sigma^{\mu} \\
+                \bar{\sigma}^{\mu} & 0
+        \end{bmatrix}\, ,
+\end{equation} 
+de sortes que
+\begin{align*}
+        \mathcal{L}_D &= 
+       \begin{bmatrix}
+               \chi_1^{\dagger} & -i \chi_2^{T}\sigma^{2} 
+       \end{bmatrix}      
+       \begin{bmatrix}
+               0 & \bbone \\
+               \bbone & 0
+       \end{bmatrix}
+       \left(  i 
+       \begin{bmatrix}
+               0 & \sigma^{\mu} \\
+               \bar{\sigma}^{\mu} & 0
+       \end{bmatrix}
+       \partial_\mu - m
+        \right)
+       \begin{bmatrix}
+               \chi_1 \\[1ex] i \sigma^{2}\chi_2^{*}
+       \end{bmatrix}
+       \\
+       &= 
+       \begin{bmatrix}
+               -i \chi_2^{T}\sigma^{2} & \chi_1^{\dagger}
+       \end{bmatrix}      
+       \left(  i 
+       \begin{bmatrix}
+               0 & \sigma^{\mu} \\
+               \bar{\sigma}^{\mu} & 0
+       \end{bmatrix}
+       \partial_\mu - m
+        \right)
+       \begin{bmatrix}
+               \chi_1 \\[1ex] i \sigma^{2}\chi_2^{*}
+       \end{bmatrix}
+       \\
+       &= 
+       \begin{bmatrix}
+               i\chi_1^{\dagger} \bar{\sigma}^{\mu} &  \chi_2^{T}\sigma^{2} \sigma^{\mu}
+       \end{bmatrix}      
+       \begin{bmatrix}
+              \partial_\mu \chi_1 \\[1ex] i \sigma^{2} \partial_\mu\chi_2^{*}
+       \end{bmatrix}
+       +
+        im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+       \\
+       &= 
+       i \chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_1 + i\chi_2^{T}\sigma^{2}\sigma^{\mu}\sigma^{2}\partial_\mu \chi_2^{*}
+       +
+        im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+       \\
+\end{align*}
+On utilisant le fait que $\sigma^{2}\sigma^{\mu}\sigma^{2} = (\bar{\sigma}^{\mu})^{*}$ 
+(ce qui peut être déduit d'un argument similaire fait précédemment pour déduire que 
+$\sigma^{2}\boldsymbol{ \sigma}^{*}\sigma^{2} = -\boldsymbol{ \sigma}$), alors
+\begin{align*}
+       \mathcal{L}_D &= 
+       i \chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_1 + i\chi_2^{T}(\bar{\sigma}^{\mu})^{*}\partial_\mu \chi_2^{*}
+       +
+        im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+\end{align*}
+Puisque $\chi_2^{T}(\sigma^{\mu})^{*}\partial_\mu \chi_2^{*} \in \mathbb{C}$, alors on peut prendre la transposé de cette quantité sans 
+changer le nombre. Ainsi,
+\begin{equation}
+        \mathcal{L}_D = 
+        i \chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_1 + i\chi_2^{\dagger}(\bar{\sigma}^{\mu})^{\dagger}\partial_\mu \chi_2
+       +
+        im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+\end{equation} 
+Puisque les matrices de Pauli sont hermitiennes, alors on obtient finalement
+\begin{equation}
+        \mathcal{L}_D = 
+        i \chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_1 + i\chi_2^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_2
+       +
+        im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+\end{equation} 
+
+\end{proof}
+On note que la forme de la densité lagrangienne obtenue a une forme très similaire à la densité lagrangienne de Majorana. En fait, 
+si on avait $\chi_1 = \chi_2$, on retrouve deux fois la densité lagrangienne de Majorana.
+
+
+\subsection{}
+\begin{solution}
+La densité lagrangienne de Dirac dans la base de Majorana
+\begin{equation}
+        \mathcal{L}_D = 
+        i \chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_1 + i\chi_2^{\dagger}\bar{\sigma}^{\mu}\partial_\mu \chi_2
+       +
+        im(\chi_2^{T} \sigma^{2} \chi_1 - \chi_1^{\dagger} \sigma^{2}\chi_2^{*})
+\end{equation} 
+possède une symétrie globale $U(1)$. 
+\end{solution}
+\begin{proof}
+La symétrie globale $U(1)$ transforme le champs de Majorana comme
+\begin{equation}
+       \chi(x) \overset{U(1)}{\rightarrow } e^{i\theta}\chi(x) = 
+       \begin{pmatrix}
+               e^{i\theta}\chi_1(x) \\[1ex]
+               i \sigma^{2}(e^{-i \theta} \chi_2)^{*}
+       \end{pmatrix}
+\end{equation} 
+avec $\theta \in \mathbb{R}$. Ainsi, $\chi_1 \rightarrow  e^{i\theta}\chi_1$ et $\chi_2 \rightarrow e^{-i\theta}\chi_2$, de sortes que 
+\begin{align*}
+        \mathcal{L}_D \rightarrow \mathcal{L}_D' &= 
+        i e^{-i\theta}\chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu e^{i\theta}\chi_1 + ie^{i\theta}\chi_2^{\dagger}\bar{\sigma}^{\mu}\partial_\mu e^{-i\theta}\chi_2
+       +
+        im(e^{-i\theta}\chi_2^{T} \sigma^{2} e^{i\theta}\chi_1 - e^{-i\theta}\chi_1^{\dagger} e^{i\theta}\sigma^{2}\chi_2^{*})\\
+        &=  \mathcal{L}
+\end{align*}
+\end{proof}
+On calcule maintenant la divergence du courant de Noether pour la densité lagrangienne de Dirac
+\begin{equation}
+        j^{\mu} = \chi^{\dagger} \bar{\sigma}^{\mu}\chi = \chi_1^{\dagger}\bar{\sigma}\chi_1 - \chi_2^{\dagger} \bar{\sigma}^{\mu} \chi_2\, ,
+\end{equation} 
+Pour se faire, on doit déterminer les équations du mouvement pour les champs $\chi_1$ et $\chi_2$.
+Pour le champ $\chi_1$, on a
+\begin{align*}
+        \frac{\partial \mathcal{L}_D}{\partial \chi_1} &= im \chi_2^{T}\sigma^{2} \\
+        \frac{\partial \mathcal{L}_D}{\partial (\partial_\mu \chi_1)} &= i \chi_1^{\dagger} \bar{\sigma}^{\mu}  \\
+        \overset{\mathrm{EL}}{\implies} m \chi_2^{T} \sigma^{2} - \partial_\mu \chi_1^{\dagger} \bar{\sigma}^{\mu} &= 0 \\
+        \implies m \sigma^{2} \chi_2^{*} - \bar{\sigma}^{\mu} \partial_\mu\chi_1 &= 0 
+\end{align*}
+Pour le champ $\chi_2$, on a plutôt
+\begin{align*}
+       \frac{\partial \mathcal{L}_D}{\partial \chi_2} &= im\chi_1^{T}(\sigma^{2})^{T} = -im\chi_1^{T}\sigma^{2} \\
+       \frac{\partial \mathcal{L}_D}{\partial (\partial_\mu \chi_2)} &= i \chi_2^{\dagger}\bar{\sigma}^{\mu} \\
+       \overset{\mathrm{EL}}{\implies} -m\chi_1^{T}\sigma^{2} - \partial_\mu \chi_2^{\dagger}\bar{\sigma}^{\mu} &= 0 \\
+       \implies -m\sigma^{2}\chi_1^{*} - \bar{\sigma}^{\mu} \partial_\mu \chi_2 &= 0
+\end{align*}
+On utilise ces relations pour déterminer la divergence du courant de Noether
+\begin{align*}
+        \partial_\mu j^{\mu} &=  \partial_\mu(\chi_1^{\dagger}\bar{\sigma}\chi_1 - \chi_2^{\dagger} \bar{\sigma}^{\mu} \chi_2) \\
+        &= (\partial_\mu \chi_1^{\dagger} \bar{\sigma}^{\mu})\chi_1 + \chi_1^{\dagger}\bar{\sigma}^{\mu}\partial_\mu\chi_1
+                - (\partial_\mu \chi_2^{\dagger} \bar{\sigma}^{\mu}) \chi_2 
+                - \chi_2^{\dagger} \bar{\sigma}^{\mu} \partial_\mu\chi_2 \\
+        &=      m\chi_2^{T}\sigma^{2}\chi_1 
+                + m\chi_1^{\dagger}\sigma^{2}\chi_2^{*}
+                + m\chi_1^{T}\sigma^{2} \chi_2 
+                + m\chi_2^{\dagger} \sigma^{2}\chi_1^{*}\\
+\end{align*}
+En réarrangeant les termes et en exploitant le fait que chaque terme est un nombre complexe pour prendre
+leur transposée
+\begin{align*}
+        \partial_\mu j^{\mu}   
+        &=      m\chi_2^{T}\sigma^{2}\chi_1 
+                + m\chi_2^{T}(\sigma^{2})^{T} \chi_1
+                + m\chi_1^{\dagger}\sigma^{2}\chi_2^{*}
+                + m\chi_1^{\dagger} (\sigma^{2})^{T}\chi_2^{*}\\
+        &=      m\chi_2^{T}\sigma^{2}\chi_1 
+                - m\chi_2^{T}\sigma^{2} \chi_1
+                + m\chi_1^{\dagger}\sigma^{2}\chi_2^{*}
+                - m\chi_1^{\dagger} \sigma^{2}\chi_2^{*}\\
+        &= 0
+\end{align*}
+Donc le courant de Noether est bien préservé dans cette théorie, ce qui suit de notre observation précédente comme 
+quoi $\mathcal{L}_D$ possède une symétrie $U(1)$. On veut maintenant savoir si ce courant est aussi préservé pour 
+la densité lagrangienne de Majorana
+\begin{equation}
+        \mathcal{L}_M = 
+        \chi^{\dagger} i \bar{\sigma}^{\mu} \partial_\mu \chi + \frac{im}{2}(\chi^T \sigma^{2} \chi - \chi^{\dagger} \sigma^{2}\chi^{*})
+\end{equation} 
+Les équations de mouvement sont
+\begin{align*}
+        \frac{\partial \mathcal{L}_M}{\partial \chi} &= \frac{im}{2}\chi^{T}\sigma^{2} \\
+        \frac{\partial \mathcal{L}_D}{\partial (\partial_\mu \chi)} &= i\chi^{\dagger}\bar{\sigma}^{\mu} \\
+        \overset{EL}{\implies} \frac{m}{2}\chi^{T}\sigma^{2} - \partial_{\mu}\chi^{\dagger}\bar{\sigma}^{\mu} &= 0\\
+        \implies \frac{m}{2}\sigma^{2}\chi^{*} - \bar{\sigma}^{\mu}\partial_{\mu}\chi &=  0
+\end{align*}
+D'où
+\begin{align*}
+        \partial_\mu j^{\mu} &= \partial_\mu(\chi^{\dagger} \bar{\sigma}^{\mu}\chi) \\
+                &= (\partial_\mu \chi^{\dagger} \bar{\sigma}^{\mu}) \chi + \chi^{\dagger}\bar{\sigma}^{\mu} \partial_\mu \chi \\
+                &= \frac{m}{2}(\chi^{T}\sigma^{2}\chi + \chi^{\dagger}\sigma^{2}\chi^{*}) \\
+                &\not= 0
+\end{align*}
+Ainsi, on obtient que la densité lagrangienne de Majorana possède une symétrie $U(1)$ seulement dans le cas où $m = 0$.
+Pour la dernière partie de la question, on construit une théorie avec $N$ champs Majorana 
+%pour généraliser le cas spécial 
+%$\mathcal{L}_D$, qui possède $N = 2$ champs Majorana:
+\begin{equation}
+        \mathcal{L}_N = \sum_{a=1}^{N}
+        i\chi^{\dagger}_a  \bar{\sigma}^{\mu} \partial_\mu \chi_a + \frac{im}{2}(\chi^T_a \sigma^{2} \chi_a - \chi^{\dagger}_a \sigma^{2}\chi^{*}_a)
+\end{equation} 
+On considère une symétrie $O(N)$, soit la transformation interne
+\begin{equation}
+        \psi_a(x) \overset{O(N)}{\rightarrow } A_{ab}\psi_b(x)
+\end{equation} 
+où $A^{T}A = \bbone_{N\times N}$, avec $A_{ij} \in \mathbb{R}$. On montre que cette transformation est une symétrie de $\mathcal{L}_N$
+\begin{align*}
+       \mathcal{L}_N \overset{O(N)}{\rightarrow } \mathcal{L}_N' &=  
+        \sum_{a=1}^{N}  i\chi^{\dagger}_b A_{ab}^{\dagger} \bar{\sigma}^{\mu} \partial_\mu A_{ac}\chi_c 
+        + \frac{im}{2}(\chi^T_b A^{T}_{ab}\sigma^{2} A_{ac}\chi_c - \chi^{\dagger}_b A_{ab}^{\dagger}\sigma^{2}A^{*}_{ac}\chi^{*}_c) \\
+        &= 
+        \sum_{a=1}^{N}  i\chi^{\dagger}_b  \bar{\sigma}^{\mu} \partial_\mu A_{ab}^{T}A_{ac}\chi_c 
+        + \frac{im}{2}(\chi^T_b \sigma^{2}A^{T}_{ab} A_{ac}\chi_c - \chi^{\dagger}_b \sigma^{2}A_{ab}^{T}A_{ac}\chi^{*}_c)\hspace{1cm} \{A_{ij} \in \mathbb{R}\} \\
+        &= \sum_{a=1}^{N}  i\chi^{\dagger}_b  \bar{\sigma}^{\mu} \partial_\mu \delta_{ab}\delta_{ac}\chi_c 
+        + \frac{im}{2}(\chi^T_b \sigma^{2}\delta_{ab}\delta_{ac}\chi_c - \chi^{\dagger}_b \sigma^{2} \delta_{ab}\delta_{ac}\chi^{*}_c) \\
+        &= \mathcal{L}
+\end{align*}
+Donc, $\mathcal{L}_N$ possède une symétrie $O(N)$.
+
 \end{document}
 

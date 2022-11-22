@@ -45,9 +45,86 @@
 
 \begin{document}
 \section{Représentations projectives}
-On cherche à montrer que les spineurs de Weyl et Dirac forment des représentations projectives du groupe
-de Lorentz. 
-En d’autres termes, montrez que ces représentations admettent au moins un 2-cocycle non-trivial.
+%On cherche à montrer que les spineurs de Weyl et Dirac forment des représentations projectives du groupe
+%de Lorentz. 
+%En d’autres termes, montrez que ces représentations admettent au moins un 2-cocycle non-trivial.
+\begin{solution}
+Les spineurs de Weyl, et par extension la représentation réductible de Dirac, 
+sont des représentations projectives du groupe de Lorentz $SO(3, 1)$ puisqu'elles admettent 
+une phase $e^{i\phi(\Lambda_1, \Lambda_2)} = \pm 1 $, soit
+\begin{equation}
+        M(\Lambda_1) M(\Lambda_2) = \pm M(\Lambda_1 \Lambda_2)
+\end{equation} 
+qui ne fait pas partie du groupe d'équivalence triviale ($\phi = 0$). 
+\end{solution}
+\begin{proof}
+La théorie des représentations du groupe de Lorentz $SO(3, 1)$ indique les spineurs de Weyl se transforme comme
+\begin{equation}
+        \begin{split}
+                \psi_{L}(x) &\rightarrow M_{\frac{1}{2}, 0}(\Lambda) \psi_L(x) \\
+                \psi_R(x) &\rightarrow M_{0, \frac{1}{2}}(\Lambda) \psi_R(x)
+        \end{split}
+\end{equation} 
+où les matrices $M$ font partie des groupes de Lie $(\frac{1}{2}, 0)$ et $(0, \frac{1}{2})$ respectivement. En particulier, 
+pour les transformations de Lorentz connectées de façon continue à l'identité $\Lambda \in SO^{+}(3, 1)$, on a
+\begin{equation}\label{eq:rep1}
+        \begin{split}
+                M_{\frac{1}{2}, 0} &= \exp \left( -i \boldsymbol{ \theta}\cdot \frac{\boldsymbol{ \sigma} }{2} - \boldsymbol{ \beta} \cdot \frac{\boldsymbol{ \sigma} }{2} \right) \\
+                M_{0, \frac{1}{2}} &= \exp(-i \boldsymbol{ \theta} \cdot \frac{\boldsymbol{ \sigma} }{2} + \boldsymbol{ \beta} \frac{\boldsymbol{ \sigma} }{2}  )
+        \end{split}
+\end{equation} 
+pour $\boldsymbol{ \theta}, \boldsymbol{ \beta} \in \mathbb{R}^{3}$. Pour construire le 2-cocycle, on considère une 
+transformation de la transformation vers son inverse $M \rightarrow  -M$. Étant donner la représentation \eqref{eq:rep1}, 
+on peut construire une rotation $\theta_3 = \pi$ dans la direction de $\sigma^{3}$,
+\begin{equation}
+        M(\Lambda(\pi)) = \exp \left( -i \frac{\pi}{2}\sigma^{3} \right) = -i\sigma^{3}\, .
+\end{equation} 
+Ceci implique que 
+\begin{equation}
+        M(\Lambda(\pi))M(\Lambda(\pi)) = -1\, .
+\end{equation} 
+Or, 
+\begin{equation}
+       M(\Lambda(\pi)\Lambda(\pi)) = M(\Lambda(2\pi)) = M(\bbone) = 1 \, .
+\end{equation} 
+De sortes que
+\begin{equation}
+        M(\Lambda(\pi))M(\Lambda(\pi)) = - M(\Lambda(\pi)\Lambda(\pi))\, .
+\end{equation} 
+La phase introduite par cette transformation, $e^{i\phi(\pi, \pi)} = -1$, est irréductible, en ce sens qu'on ne peut pas redéfinir la 
+représentation pour prendre en compte le signe qui apparaît après une rotation de $2\pi$ des spineurs de Weyl.
+Ainsi, les spineurs de Weyl forment une représentation projective du groupe de Lorentz.
+%%On commence par construire une représentation honnête du groupe de Lorentz dans la base de Weyl. On note  
+%%l'effet d'une transformation de Lorentz
+%%\begin{equation}
+        %%\begin{split}
+        %%\psi_{L}(x) &\rightarrow M_{\frac{1}{2}, 0}(\Lambda) \psi_L(x) \\
+        %%\psi_R(x) &\rightarrow M_{0, \frac{1}{2}}(\Lambda) \psi_R(x)
+        %%\end{split}
+%%\end{equation} 
+%%où $M_{\frac{1}{2}, 0}(\Lambda)$ et $M_{0, \frac{1}{2}}(\Lambda)$ sont des représentations du groupe de Lorentz $SO(3, 1)$ dans 
+%%les groupes de Lie irréductibles $(\frac{1}{2}, 0)$ et $(0, \frac{1}{2})$. Pour déterminer une représentation des matrices $M(\Lambda)$, 
+%%on utilise le groupe universel de $SO(3, 1)$, soit $SL(2, \mathbb{C})$
+%\begin{equation}
+       %M: SO(3, 1) \rightarrow  SL(2, \mathbb{C}) 
+%\end{equation} 
+%où
+%\begin{equation}
+        %SL(2, \mathbb{C}) = 
+        %\left\{ \begin{pmatrix}
+                %a & b \\
+                %c & d
+        %\end{pmatrix}
+        %: (a,b,c,d) \in \mathbb{C}^{4}, ad - bc = 1
+         %\right\}
+%\end{equation} 
+%On utilise le théorème de décomposition polaire pour exprimer $M \in SL(2, \mathbb{C})$
+%\begin{equation}
+        %M = \lambda e^{h}
+%\end{equation} 
+%où $\lambda \in SU(2)$ et $h \in \mathfrak{su}(2) = \mathrm{span}(i\sigma^{1}, i\sigma^{2}, i\sigma^{3})$. La construction du 2-cocycle se fait alors 
+%en notant que les matrices
+\end{proof}
 
 \section{Charge d’un spineur}
 \subsection{}

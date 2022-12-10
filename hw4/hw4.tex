@@ -1,0 +1,449 @@
+\documentclass{article}
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{physics, tensor}
+\usepackage{slashed, cancel}
+
+\graphicspath{{figures/}}
+
+\pagestyle{fancy}
+\rhead{Alexandre Adam\\ 20090755}
+\lhead{William Witczak-Krempa \\ PHY 6812: Théorie des champs 1}
+\chead{Devoir 4}
+\rfoot{6 décembre 2022}
+\cfoot{\thepage}
+
+\newcommand{\angstrom}{\textup{\AA}}
+\numberwithin{equation}{section}
+\renewcommand\thesubsection{\alph{subsection})}
+\renewcommand\thesubsubsection{\Roman{subsubsection}}
+\newcommand{\s}{\hspace{0.1cm}}
+\DeclareRobustCommand{\bbzero}{\text{\usefont{U}{bbold}{m}{n}0}}
+\DeclareRobustCommand{\bbone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
+
+\theoremstyle{solution}
+\newtheorem{solution}{Réponse}[section]
+
+\renewcommand*{\proofname}{Solution}
+
+
+\begin{document}
+
+
+\section{Algèbre du moment cinétique total}
+On cherche les relations de commutations pour l'opérateur de moment cinétique
+\begin{equation}
+        \hat{\mathbf{J}} = \int_{\mathbf{x}} \hat{\psi}^{\dagger}(\mathbf{x})(\mathbf{x} \times(-i \grad) + \mathbf{L}) \hat{\psi}(\mathbf{x})
+\end{equation} 
+Soit,
+\begin{align*}
+        [\hat{\mathbf{J}}_i, \hat{\mathbf{J}}_j] 
+        &= \int_{\mathbf{x}, \mathbf{y}}
+        [ \hat{\psi}^{\dagger}(\mathbf{x})(\mathbf{x} \times(-i \grad) + \mathbf{L})_i \hat{\psi}(\mathbf{x}),\,
+        \hat{\psi}^{\dagger}(\mathbf{y})(\mathbf{y} \times(-i \grad) + \mathbf{L})_j \hat{\psi}(\mathbf{y})
+        ] \\
+        &= \int_{\mathbf{x}, \mathbf{y}}
+        [ \hat{\psi}^{\dagger}(\mathbf{x})\mathbf{L}_i \hat{\psi}(\mathbf{x}),\,
+        \hat{\psi}^{\dagger}(\mathbf{y})(\mathbf{y} \times(-i \grad))_j \hat{\psi}(\mathbf{y})
+        ] 
+        \\
+        &\hspace{.6cm}+
+        [ \hat{\psi}^{\dagger}(\mathbf{x})(\mathbf{x} \times(-i \grad))_i \hat{\psi}(\mathbf{x}),\,
+        \hat{\psi}^{\dagger}(\mathbf{y})(\mathbf{y} \times(-i \grad))_j \hat{\psi}(\mathbf{y})
+        ] 
+        \\
+        &\hspace{.6cm}+
+        [ \hat{\psi}^{\dagger}(\mathbf{x})(\mathbf{x} \times(-i \grad))_i \hat{\psi}(\mathbf{x}),\,
+        \hat{\psi}^{\dagger}(\mathbf{y})\mathbf{L}_j \hat{\psi}(\mathbf{y})
+        ] 
+        \\
+        &\hspace{.6cm}+
+        [ \hat{\psi}^{\dagger}(\mathbf{x})\mathbf{L}_i \hat{\psi}(\mathbf{x}),\,
+        \hat{\psi}^{\dagger}(\mathbf{y})\mathbf{L}_j \hat{\psi}(\mathbf{y})
+        ] 
+\end{align*}
+En appliquant la règle $[A, BC] = B[A, C] + [A, B]C$ à répétition, on peut utiliser la relation de commutation canonique
+\begin{equation}
+        [\psi(\mathbf{x}), \psi^{\dagger}(\mathbf{y})] = \delta^{(3)}(\mathbf{x} - \mathbf{y}) \bbone
+\end{equation} 
+pour simplifier l'intégrale. De plus,
+\begin{equation}
+        [\mathbf{x} \times (-i \grad), \mathbf{L}_i] = 0
+\end{equation} 
+puisque $\mathbf{L}$ ne dépend pas de la position $\mathbf{x}$. 
+On obtient alors
+\begin{align*}
+        [\hat{\mathbf{J}}_{i}, \hat{\mathbf{J}}_j] 
+        &= 
+        \int_{\mathbf{x}} \hat{\psi}^{\dagger}(\mathbf{x})\big([(\mathbf{x} \times (-i \grad))_{i},(\mathbf{x} \times (-i \grad)_{j}] + [\mathbf{L}_{i}, \mathbf{L}_j]\big)\hat{\psi}(\mathbf{x}) \\ 
+        &= 
+        \int_{\mathbf{x}} \hat{\psi}^{\dagger}(\mathbf{x})\big([(\mathbf{x} \times (-i \grad))_{i},(\mathbf{x} \times (-i \grad)_{k}] + \epsilon_{ijk} \mathbf{L}_{k}\big)\hat{\psi}(\mathbf{x})
+\end{align*}
+On calcule maintenant le dernier commutateur
+\begin{align*}
+        [(\mathbf{x} \times (-i \grad))_{i},(\mathbf{x} \times (-i \grad))_{k}] 
+        &=  i^2( \epsilon_{i \ell m}\mathbf{x}_{\ell} \partial_{m} \epsilon_{jnp}\mathbf{x}_n \partial_{p} - \epsilon_{jnp} \mathbf{x}_{n}\partial_{p} \epsilon_{i\ell m} \mathbf{x}_{\ell} \partial_{m}) \\
+        &=  - \epsilon_{i \ell m}\epsilon_{jnp}\mathbf{x}_{\ell} \delta_{mn} \partial_{p} + \epsilon_{jnp}\epsilon_{i\ell m} \mathbf{x}_{n} \delta_{p \ell} \partial_{m} \\
+        &=   - \epsilon_{i \ell m}\epsilon_{jmp}\mathbf{x}_{\ell} \partial_{p} + \epsilon_{jn\ell}\epsilon_{i\ell m} \mathbf{x}_{n} \partial_{m} 
+\end{align*}
+On sait que
+\begin{equation}
+        \epsilon_{abc}\epsilon_{efg} = \delta_{bf}\delta_{cg} - \delta_{bg}\delta_{cf}
+\end{equation} 
+donc, en permutant les indices $i$ et $j$ à la seconde position du tenseur de Levi-Civita pour utiliser l'identité, et 
+en permutant le premier tenseur une seconde fois pour conserver la somme sur l'indice de $\mathbf{x}$, on obtient
+\begin{align*}
+        [(\mathbf{x} \times (-i \grad))_{i},(\mathbf{x} \times (-i \grad))_{k}] 
+        &=  \epsilon_{m i \ell}\epsilon_{m j p}\mathbf{x}_{\ell} \partial_{p} - \epsilon_{\ell j n}\epsilon_{\ell im} \mathbf{x}_{n} \partial_{m}  \\
+        &=  (\delta_{i j} \delta_{\ell p} - \delta_{i p} \delta_{\ell j})\mathbf{x}_{\ell} \partial_{p} - (\delta_{ij} \delta_{nm} - \delta_{jm}\delta_{n i})\mathbf{x}_{n} \partial_{m}  \\
+        &=   -\delta_{i p} \delta_{\ell j}\mathbf{x}_{\ell} \partial_{p} + \delta_{jm}\delta_{n i}\mathbf{x}_{n} \partial_{m}  \\
+        &=   -\mathbf{x}_{j} \partial_{i} + \mathbf{x}_{i} \partial_{j}  \\
+        &= -\epsilon_{ijk}\mathbf{x}_i\partial_{j} \\
+        &= -(\mathbf{x} \times \grad)_{k}
+\end{align*}
+On obtient finalement (si on peut retrouver le facteur $i$ manquant),
+\begin{equation}
+        \boxed{[\hat{\mathbf{J}}_{i}, \hat{\mathbf{J}}_{j}] = \epsilon_{ijk}\hat{\mathbf{J}}_{k}}
+\end{equation} 
+
+\section{Représentations du groupe de Lorentz $SO(2, 1)$}
+
+\subsection{Représentations irréductibles de $SO(2, 1)$}
+Le groupe $SO(2, 1)$ est le groupe de Lorentz dans l'espace de Minkowsky $(2 + 1)$-dimensionel avec la signature de la métrique $\eta_{\mu\nu} = \mathrm{diag}(+, -, -)$. 
+Ce groupe est définit comme l'ensemble des actions $g \in SO(2, 1)$ avec déterminant $ \mathrm{det}(g) = 1$
+qui préservent le produit intérieur pour deux vecteurs dans l'espace de Minkowsky $x, y \in \mathbb{R}^{2+1}$
+\begin{equation}
+       \langle x | y \rangle = x_0y_0 - x_1y_1 - x_2y_2\, .
+\end{equation} 
+\textbf{Le représentation définissante} du groupe $SO(2, 1)$ agit sur l'espace des vecteurs $\mathbb{R}^{2+1}$ et est définit 
+comme l'ensemble des matrices réelles $3\times 3$ de déterminant $1$ qui laisse la métrique $\eta$ invariante
+\begin{equation}
+        SO(2, 1) = \left\{ \Lambda\indices{^{\mu}_{\nu}} \in \mathbb{M}^{2+1}(\mathbb{R}) \mid \Lambda^{T}\eta\Lambda = \eta,\, \mathrm{det}(\Lambda) = 1 \right\}
+\end{equation} 
+Si on ne considère que le sous-groupe $SO^{+}(2, 1)$ connecté de façon continu à l'identité, alors on peut construire 
+3 générateurs pour l'algèbre de Lie. On considère la transformation infinitésimale 
+\begin{equation}
+        \Lambda\indices{^{\alpha}_{\beta}} = \delta^{\alpha}_{\beta} - \frac{i}{2}\omega_{\mu \nu}(\mathcal{J}^{\mu\nu})\indices{^{\alpha}_{\beta}}
+\end{equation} 
+où $\mathcal{J}^{\mu\nu}$ est un générateur de l'algèbre de Lie $\mathfrak{so}(2, 1)$. Puisque, $\Lambda$ doit 
+laisser la métrique invariante, alors $\mathcal{J}^{\mu\nu}$ doit être antisymétrique ($\mathcal{J}^{\mu \nu} = -\mathcal{J}^{\nu \mu}$), 
+ce qui ne laisse que $3$ éléments indépendants: les générateurs de boost, $\mathcal{J}^{01}$ et $\mathcal{J}^{02}$, 
+et le générateur de rotation $\mathcal{J}^{12}$. On peut construire ces générateurs à partir 
+de la métrique
+\begin{equation}
+        (\mathcal{J}^{\mu \nu})^{\alpha \beta} = i (\eta^{\mu \alpha} \eta^{\nu \beta} - \eta^{\nu \alpha}\eta^{\mu \beta})\, .
+\end{equation} 
+On obtient la forme bilinéaire en appliquant la métrique sur le tenseur $(\mathcal{J}^{\mu\nu})^{\alpha \beta}$
+\begin{equation}
+        (\mathcal{J}^{\mu \nu})\indices{^{\alpha}_{\beta}} = i( \eta^{\mu \alpha} \delta\indices{^{\nu}_{\beta}} - \eta^{\nu \alpha} \delta\indices{^{\mu}_{\beta}})\, ,
+\end{equation} 
+d'où on obtient
+\begin{equation}\label{eq:generators}
+        \mathcal{J}^{01} = 
+        \begin{pmatrix}
+                0 & i & 0 \\
+                i & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        \hspace{1cm}
+        \mathcal{J}^{02} = 
+        \begin{pmatrix}
+                0 & 0 & i \\
+                0 & 0 & 0 \\
+                i & 0 & 0
+        \end{pmatrix}
+        \hspace{1cm}
+        \mathcal{J}^{12} = 
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -i \\
+                0 & i & 0
+        \end{pmatrix}
+\end{equation} 
+L'algèbre de Lie $\mathfrak{so}(2, 1)$ est donc définit par les commutateurs 
+\begin{align}
+        [\mathcal{J}^{01}, \mathcal{J}^{12}] &= i \mathcal{J}^{02} \\
+        [\mathcal{J}^{02}, \mathcal{J}^{12}] &= -i \mathcal{J}^{01}  \\
+        [\mathcal{J}^{01}, \mathcal{J}^{02}] &= i \mathcal{J}^{12}
+\end{align}
+ce qui peut être vérifié explicitement avec les générateurs exprimées dans la représentation définissante \eqref{eq:generators} 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+        [\mathcal{J}^{01}, \mathcal{J}^{12}] &= 
+        \begin{pmatrix}
+                0 & i & 0 \\
+                i & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -i \\
+                0 & i & 0
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -i \\
+                0 & i & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & i & 0 \\
+                i & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        \\
+        &= 
+        \begin{pmatrix}
+                0 & 0 & 1 \\
+                0 & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & 0 \\
+                -1 & 0 & 0
+        \end{pmatrix}
+        \\
+        &= 
+        i \mathcal{J}^{02} \\
+        [\mathcal{J}^{02}, \mathcal{J}^{12}] &= 
+        \begin{pmatrix}
+                0 & 0 & i \\
+                0 & 0 & 0 \\
+                i & 0 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -i \\
+                0 & i & 0
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -i \\
+                0 & i & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & 0 & i \\
+                0 & 0 & 0 \\
+                i & 0 & 0
+        \end{pmatrix}
+        \\
+        &= 
+        \begin{pmatrix}
+                0 & -1 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                1 & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        \\
+        &= 
+        -i \mathcal{J}^{01}\\
+        [\mathcal{J}^{01}, \mathcal{J}^{02}] &= 
+        \begin{pmatrix}
+                0 & i & 0 \\
+                i & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & 0 & i \\
+                0 & 0 & 0 \\
+                i & 0 & 0
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+                0 & 0 & i \\
+                0 & 0 & 0 \\
+                i & 0 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+                0 & i & 0 \\
+                i & 0 & 0 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        \\
+        &= 
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -1 \\
+                0 & 0 & 0
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & 0 \\
+                0 & -1 & 0
+        \end{pmatrix}
+        \\
+        &= 
+        i \mathcal{J}^{12}
+\end{align*}
+\endgroup
+On procède ensuite à la complexification de l'algèbre de Lie. On introduit les générateurs de boosts $K_{\pm}$ et le 
+générateur de rotation $L$
+\begin{align*}
+        K_{\pm} &= \frac{1}{\sqrt{2}}(\mathcal{J}^{01} \mp i \mathcal{J}^{02}) \\
+        L &= \sqrt{2}\mathcal{J}^{12}
+\end{align*}
+Les commutateurs dans ce nouvel espace sont
+\begin{align}
+        [K_{-}, K_{+}] &= L \\
+        [K_{\pm}, L] &= \mp K_{\pm} \, ,
+\end{align}
+ce qui peut être déduit des relation de commutations pour les matrices $\mathcal{J}^{\mu \nu}$
+\begin{align*}
+        [K_{\pm}, L] &= [\mathcal{J}^{01} \mp i \mathcal{J}^{02}, \mathcal{J}^{12}] \\
+                     &= (i\mathcal{J}^{02} \mp i(-i)\mathcal{J}^{01}) \\
+                     &= \mp K_{\pm} \\
+        [K_{-}, K_{+}] &= \frac{1}{2}[\mathcal{J}^{01} + i \mathcal{J}^{02}, \mathcal{J}^{01} - i \mathcal{J}^{02}] \\
+                &= \frac{1}{2}(-i^2\mathcal{J}^{12} - i^2\mathcal{J}^{12})\\ 
+                &= L
+\end{align*}
+Ces relations de commutations rendent claire l'isomorphisme
+\begin{equation}
+        \mathfrak{so}(2, 1) \cong \mathfrak{sl}(2, \mathbb{R}) 
+\end{equation} 
+Le groupe $SL(2, \mathbb{R})$ est définit comme
+\begin{equation}
+        SL(2, \mathbb{R}) = \left\{ M \in \mathbb{M}^{2}(\mathbb{R}) \mid \mathrm{det}(M) = 1 \right\}
+\end{equation} 
+et l'algèbre de Lie $\mathfrak{sl}(2, \mathbb{R})$ possède les générateurs
+\begin{equation}
+        e = 
+        \begin{pmatrix}
+                0 & 1 \\
+                0 & 0
+        \end{pmatrix}
+        \hspace{1cm}
+        f = 
+        \begin{pmatrix}
+                0 & 0 \\
+                1 & 0
+        \end{pmatrix}
+        \hspace{1cm}
+        h = 
+        \frac{1}{2}
+        \begin{pmatrix}
+                1 & 0 \\
+                0 & -1
+        \end{pmatrix}
+\end{equation} 
+avec les relations de commutations
+\begin{align}
+        [e, f] &= h \\
+        [f, h] &= f \\
+        [e, h] &= -e
+\end{align}
+Ces relations soit identiques aux relations de l'algèbre de Lie $\mathfrak{so}(2, 1)$ complexifiée.
+
+On peut donc construire une classification des représentations finies de $\mathfrak{so}(2, 1)$ à partir de la classification 
+connue des représentations finies de $\mathfrak{sl}(2, \mathbb{R})$, qui est très similaires à $\mathfrak{su}(2)$. On doit simplement 
+se rappeler qu'on obtiendra seulement les actions du groupes $SO^{+}(2, 1)$ de cette façon, et non le groupe complet 
+$SO(2, 1)$ qui n'est pas simplement connecté.
+
+%Une représentation du groupe $\mathfrak{sl}(2, \mathbb{R})$ dans dans un espace vectoriel $V$ de dimension $\dim_{\mathbb{C}}(V) = m = 2\ell + 1$, où 
+%$m \in \mathbb{N}$ et $\ell$ est un nombre demi-entier positif. Les représentations irréductibles de du groupe sont classifiées 
+%à l'aide des valeurs propres de l'opérateur $L$. 
+Posons $v \in V$ un élément de l'espace vectoriel de la représentation et un vecteur propre de $L$ avec comme valeur propre $\lambda \in \mathbb{C}$.
+On remarque que 
+\begin{align*}
+        L (K_{+} v) &=  (K_+ L  + [L, K_{+}])v \\
+        &= (\lambda + 2) K_+ v \\
+        L(K_{-} v) &=  (K_{-} L + [L, K_{-}])v \\
+        &= (\lambda - 2)K_{-}v
+\end{align*} 
+Ainsi, les opérateurs $K_{\pm}$ agissent comme des opérateurs d'échelles. 
+
+On peut montrer par induction qu'il existe un vecteur propre $v_{j} = K_{+}^{j}v$ tels que
+\begin{equation}
+        L v_j = (\lambda + 2 j) v_{j} 
+\end{equation} 
+Pour une représentation irréductible de dimension finie, il ne peut exister qu'un nombre fini de vecteur propres. 
+Supposons dans ce cas que $\lambda$ est la dernière valeur propre de $L$.
+Dans ce cas, on doit avoir que $K_{+} v_m = 0$ pour un $m \in \mathbb{N}$ quelconque et $v_{m} \not= 0$, 
+autrement $v_{m+1}$ serait un vecteur propre de $L$ avec une valeur propre $\lambda + 2$. 
+Dans ca cas, $\lambda = m$, et on obtient une représentation de dimension de finie qui est construite par 
+l'espace vectoriel de dimension $\mathrm{dim}_{\mathbb{C}}(V) = m+1$ des vecteurs propres de $L$
+\begin{equation}
+        V = \mathrm{span}(\{v_{0}, v_1, \dots, v_m\})
+\end{equation} 
+En terme de l'indice spinoriel $\ell = 0, \frac{1}{2}, 1, \frac{3}{2}, \dots$, on a
+\begin{equation}
+       m = 2 \ell 
+\end{equation} 
+et $\mathrm{dim}_{\mathbb{C}}(V) = 2\ell + 1$.
+
+\subsection{Première représentation non-triviale de $SO(2, 1)$}
+Puisque $\ell=0$ est une représentation triviale, on considère plutôt le premier cas non-trivial $\ell=\frac{1}{2}$. 
+Posons $\psi \in V$ un élément de l'espace vectoriel de dimension $\mathrm{dim}_{\mathbb{C}}(V) = 2$. Dans cette représentation, les générateurs 
+de l'algèbre de Lie $\mathfrak{so}(2, 1)$ sont les matrices $e$, $f$ et $h$
+\begin{equation}
+        K_{-} = 
+        \begin{pmatrix}
+        0 & 1 \\
+        0 & 0
+        \end{pmatrix}
+        \hspace{1cm}
+        K_{+} = 
+        \begin{pmatrix}
+        0 & 0 \\
+        1 & 0
+        \end{pmatrix}
+        \hspace{1cm}
+        L = 
+        \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+        \end{pmatrix}
+        \hspace{1cm}
+\end{equation} 
+La transformation de Lorentz d'un spineur $\psi \in V$ devient
+\begin{equation}
+        \psi(x) \rightarrow \exp(-\frac{i}{2} \beta_1 K_{-} - \frac{i}{2}\beta_2 K_{+} - \frac{i}{2}\theta L) \psi(x)
+\end{equation} 
+%On remarque que les générateurs obtenus satisfont les relations suivantes
+%\begin{align*}
+        %K_{-} &= \frac{\sigma_{1} + i\sigma_{2}}{2} \\
+        %K_{+} &= \frac{\sigma_{1} - i\sigma_{2}}{2} \\
+        %L &= \frac{\sigma_{3}}{2}
+%\end{align*}
+%Finalement, on obtient comment ces vecteurs se transforment sous l'effet d'une rotation $R(\theta)$ ou d'un boost $\Lambda(v)$. On sait que 
+%la rotation correspond à la map exponentiel du générateur $\mathcal{J}^{12}$, aussi associée à l'élément $L$ de la représentation $\ell=\frac{1}{2}$.
+%Donc, en appliaquant la map exponentielle, on a
+%\begin{align*}
+        %x &\rightarrow R(\theta) x \\
+        %\psi(x) & \rightarrow  \exp(i \theta L) \psi(x)
+%\end{align*}
+%pour le boost, on a
+%\begin{align*}
+        %x &\rightarrow  \Lambda(v) x \\
+        %\psi(x) &\rightarrow \exp(i v )
+%\end{align*}
+
+\subsection{}
+
+\end{document}
+

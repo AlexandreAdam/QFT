@@ -354,13 +354,94 @@ On pose $b = 1 - \epsilon$, où $|\epsilon| \ll 1$. Ainsi,
 \end{equation} 
 On prend le point de vue d'une transformation active du champ
 \begin{equation}
-        \delta \psi = \psi'(x) - \psi(x) \, .
+     \epsilon   \delta \psi = \psi'(x) - \psi(x) \, .
 \end{equation} 
 On doit donc déterminer la quantité
 \begin{align*}
-        \psi'(x) &=  (1 + \epsilon\Delta ) \psi(x + \epsilon x) + \mathcal{O}(\epsilon^{2}) \\
+        \psi'(x) &=  (1 + \epsilon\Delta ) \psi(x + \epsilon x) + \mathcal{O}(\epsilon^{2})
 \end{align*}
-Or, pour simplifier ce terme, on doit déterminer la dérivée de Lie du champs spineur $\psi(x)$, ce qui est non-trivial.
+Pour progresser, on doit déterminer la dérivée de Lie du spineur $\psi(x)$. Pour ce faire, on utilise la levée de Kosmann dans 
+la direction d'un vecteur de Killing $\xi(x)$, 
+\begin{equation}
+        \mathcal{L}_{\xi} \psi(x) = \xi^{\alpha}\partial_\alpha \psi - \frac{1}{4}\partial_{[\alpha}\xi_{\beta]} \gamma^{\alpha}\gamma^{\beta} \psi(x) \, .
+\end{equation} 
+Un vecteur de Killing est tels que que la dérivée de Lie de la métrique de Minkowsky $\eta^{\mu \nu}$ dans la direction $\xi$ s'annule $\mathcal{L}_{\xi}\eta = 0$.
+Avec la définition des matrices de Dirac dans l'algèbre de Clifford
+\begin{equation}
+        \{\gamma^{\mu}, \gamma^{\nu}\} = 2 \eta^{\mu\nu} \bbone
+\end{equation} 
+où $\eta^{\mu\nu}$ est la métrique de Minkowsky, 
+et en utilisant la forme particulière $\xi^{\mu}(x) = x^{\mu}$ pour la symétrie étudiée dans ce problème, on trouve
+\begin{align*}
+        \delta\psi &=  \left(  \Delta + x^{\mu} \partial_\mu - \frac{1}{4}\partial_{[\alpha}x_{\beta]} \gamma^{\alpha}\gamma^{\beta}\right) \psi(x) \\
+        &=  \left(\Delta + x^{\mu} \partial_\mu - \frac{1}{4}\partial_{[\alpha}x_{\beta]}\eta^{\alpha \beta}\right) \psi(x) \\
+          &=  \left(\Delta +  x^{\mu} \partial_\mu\right) \psi(x)
+\end{align*} 
+Puisque les opérateurs $\delta$ et $\partial_\mu$ commutent, alors
+\begin{equation}
+        \delta(\partial_\mu \psi) = \partial_\mu(\delta \psi) = \left(\Delta + 1 + x^{\nu} \partial_\nu\right) \partial_\mu\psi(x)
+\end{equation} 
+Similairement, on obtient
+\begin{equation}
+        \delta \bar{\psi} = (\Delta + x^{\nu} \partial_\nu) \bar{\psi}
+\end{equation} 
+Finalement, la variation infinitésimale du Lagrangien de Dirac ($m=0$) est
+\begin{align*}
+\delta \mathcal{L}_D &=  \frac{\partial \mathcal{L}_D}{\partial (\partial_\mu \psi)} \delta(\partial_\mu \psi) + \frac{\partial \mathcal{L}_D}{\partial \bar{\psi}} \delta \bar{\psi}\\
+                &= i\bar{\psi}\gamma^{\mu}(\Delta + 1 + x^{\nu}\partial_\nu)\partial_\mu \psi  + i\slashed{\partial} \psi (\Delta +  x^{\nu}\partial_\nu) \bar{\psi}\\
+                &= (2\Delta + 1)\mathcal{L}_{D} + i\bar{\psi} x^{\nu}\partial_\nu \slashed{\partial} \psi + i\slashed{\partial} \psi x^{\nu}\partial_\nu \bar{\psi}
+\end{align*}
+Le premier terme annule le determinant de la Jacobienne de la transformation lorsque $\Delta = \frac{3}{2}$ tels que 
+déterminé plus tôt. Le deuxième terme est équivalent à 
+\begin{equation}
+        \partial_{\mu}\mathcal{J}^{\mu} = \partial_\mu(x^{\mu}\mathcal{L}_D)
+\end{equation} 
+via intégration par partie de l'action., En collectant les termes, on utilise la définition du courant de Noether
+\begin{equation}
+        j^{\mu} = \frac{\partial \mathcal{L}_D}{\partial (\partial_\mu \psi)} \delta \psi - \mathcal{J}^{\mu} 
+\end{equation} 
+pour déterminer que le courant de Noether associé à la symétrie d'échelle est
+\begin{equation}
+        \boxed{j^{\mu} = i\bar{\psi}\gamma^{\mu}(\Delta + x^{\nu}\partial_\nu) \psi - x^{\mu}\mathcal{L}_D }
+\end{equation} 
+
+
+\subsection{}
+\begin{solution}
+La dimension d'échelle de $\mathcal{L}_D$ est $\Delta_{\mathcal{L}_D} = 2\Delta_{\psi} + 1 = 4$ lorsque 
+$\Delta_{\psi} = \frac{3}{2}$.
+\end{solution}
+\begin{solution}
+La dimension d'échelle de $(\bar{\psi}\psi)^{n}$ est $\Delta_{(\bar{\psi}\psi)^{n}} = 2n\Delta_{\psi} = 3n$ lorsque 
+$\Delta_{\psi} = \frac{3}{2}$.
+\end{solution}
+
+\subsection{}
+On considère la densité lagrangienne 
+\begin{equation}
+        \mathcal{L}_{\mathrm{int}} = \mathcal{L}_D - \lambda(\bar{ \psi} \psi)^{n}
+\end{equation} 
+avec $n \geq 1$, $n \in \mathbb{N}$. 
+On trouve l'équation du mouvement pour $\bar{\psi}$
+\begin{align*}
+        \frac{\partial \mathcal{L}_{\mathrm{int}}}{\partial \psi} &= n\lambda(\bar{\psi} \psi)^{n-1}\bar{\psi} \\
+        \frac{\partial \mathcal{L}_{\mathrm{int}}}{\partial (\partial_\mu \psi)} &= i \bar{\psi}\gamma^{\mu} \\
+        \implies \Aboxed{n\lambda(\bar{ \psi}\psi)^{n-1}\bar{\psi} - i\slashed{\partial} \bar{\psi} &=  0}
+\end{align*}
+et $\psi$
+\begin{align*}
+       \frac{\partial \mathcal{L}_{\mathrm{int}}}{\partial \bar{\psi}} &= i(\slashed{\partial} - m)\psi +   n\lambda(\bar{\psi}\psi)^{n-1}\psi \\
+       \frac{\partial \mathcal{L}_{\mathrm{int}}}{\partial (\partial_\mu \bar{\psi})} &= 0 \\
+       \implies \Aboxed{(i\slashed{\partial} - im + n\lambda(\bar{\psi}\psi)^{n-1})\psi &=  0}
+\end{align*}
+La difficulté est maintenant de résoudre ces deux équations couplées (qui sont découplées si $\lambda = 0$).
+
+\subsection{}
+\begin{solution}
+        La théorie interagissante ne possède pas d'invariance d'échelle, puisqu'elle requiert $m=0$ et $n = 0$, dans quel cas $\mathcal{L}_{\mathrm{int}}$ est 
+        équivalente à $\mathcal{L}_D$.
+\end{solution}
+
 \section{Théorie Yukawa classique}
 Soit la densité lagrangienne pour un champ scalaire réel $\phi$ et un spineur de Dirac $\psi$
 \begin{equation}
@@ -546,17 +627,21 @@ avec les relations d'anti-commutations suivantes
 \subsection{}
 \textbf{On cherche la condition nécessaire telle que $\hat{H}$ soit un opérateur hermitien.}
 \begin{solution}
-        Les éléments de la matrice $t_{ab}$ sont réels.
+        La matrice $\hat{t}_{ab}$ est hermitienne, $\hat{t}_{ab}^{\dagger} = \hat{t}_{ab}$.
 \end{solution}
 \begin{proof}
-Supposons que $\hat{t}_{ab} \in \mathbb{R}$. Il suit que $\hat{t}^{\dagger}_{ab} = \hat{t}_{ba}$ et
+%Supposons que $\hat{t}_{ab} \in \mathbb{R}$. Il suit que $\hat{t}^{\dagger}_{ab} = \hat{t}_{ba}$ et
+On a que
 \begin{align*}
        \hat{H}^{\dagger} &=  \sum_{a,b}(\hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b)^{\dagger} \\
-                         &= \sum_{a,b} \hat{t}_{ba} \hat{c}^{\dagger}_b \hat{c}_a \hspace{1cm} \{\hat{t}_{ab} \in \mathbb{R}\}\\
-                         &= \hat{H}
+                         &=  \sum_{a,b} \hat{c}^{\dagger}_b \hat{c}_a \hat{t}_{ab}^{\dagger} \\
+                        &= \sum_{a,b} \hat{c}^{\dagger}_a \hat{c}_b \hat{t}_{ba}^{\dagger} \hspace{1cm} \{a \leftrightarrow b \}
 \end{align*} 
-où la dernière ligne suit du fait que les indices $a \leftrightarrow b$ sont symétriques.
-La condition $\hat{t}_{ab} \in \mathbb{R}$ suit du fait qu'on requiert $[\hat{t}_{ab},\, \hat{c}^{\dagger}_b \hat{c}_a] = 0$ et $\hat{t}_{ab}^{*} = \hat{t}_{ab}$.
+Pour que $\hat{H}^{\dagger} = \hat{H}$, on doit avoir que $\hat{t}^{\dagger} = \hat{t}$, soit une matrice hermitienne avec $\hat{t}_{ab} \in \mathbb{C}$. Dans ce cas,
+\begin{align*}
+        \hat{H}^{\dagger} &= \sum_{a,b} \hat{t}_{ab}\hat{c}^{\dagger}_a\hat{c}_b\hspace{1cm} \{\hat{t}_{ba}^{\dagger} = \hat{t}_{ab} \} \\
+                        &= \hat{H}
+\end{align*}
 \end{proof}
 
 \subsection{}
@@ -737,17 +822,23 @@ En effet,
 
 \subsection{}
 \begin{solution}
-La dimension de l'espace d'Hilbert associé à l'Hamiltonien \eqref{eq:hamiltonien5} est $2^{N}$, $N \in \mathbb{N}$. Les états 
-\begin{equation}
-        | n_1, n_2, \dots, n_N \rangle, \hspace{1cm} n_i \in \{0, 1\}
-\end{equation} 
-sont associé à une énergie
-\begin{equation}
-        E = \sum_{i = 1}^{N}n_{i}\hat{t}_{ii}
-\end{equation} 
+La dimension de l'espace d'Hilbert associé à l'Hamiltonien \eqref{eq:hamiltonien5} est $2^{N}$, $N \in \mathbb{N}$. 
 \end{solution}
 \begin{proof}
-On commence par le cas $N=2$. Dans ce cas, on peut construire les états
+Un espace de Fock avec $N$ particules est construit en appliquant les opérateurs de créations associé à chaque degré de liberté de l'espace. 
+Pour les fermions, soit $\hat{c}^{\dagger}_j \hat{c}^{\dagger}_j = 0,\,\, \forall j \in \{1, 2, \dots, N\}$, on a
+\begin{equation}
+        | n_1, n_2, \dots, n_N \rangle = \left( \prod_{n_i \not= 0} \hat{c}_{i}^{\dagger}\right) | 0 \rangle
+\end{equation} 
+où $| 0 \rangle$ est l'état fondamental, $\hat{c}_i | 0 \rangle = 0$. 
+Puisque $n_j \in \{0, 1\}$, le nombre total d'états possibles correspond au nombre de permutations possibles 
+de $N$ nombres $n_j$, en pigeant dans un ensemble de 2 objets, soit $\{0, 1\}$, avec remplacement. Le nombre d'états est 
+donc $2^{N}$.
+\end{proof}
+
+En général, il n'est pas possible de décrire sous forme fermée les états stationnaires de l'Hamiltonien et les énergies, 
+toutefois, on décrit une procédure pour le faire. 
+On commence par le cas $N=2$, pour construire une intuition. Dans ce cas, on peut construire les états
 \begin{align*}
         | 0, 0 \rangle  = | 0 \rangle \hspace{1cm} N = 0 \\
         | 1, 0 \rangle = \hat{c}_1^{\dagger}| 0 \rangle   \hspace{.5cm} | 0, 1 \rangle = c_2^{\dagger}| 0 \rangle  \hspace{1cm} N = 1 \\
@@ -785,46 +876,18 @@ est un état stationnaire avec une énergie
 \begin{equation}
         E_{\xi_1} = \hat{t}_{11}\hat{t}_{22} - \hat{t}_{21}\hat{t}_{12}
 \end{equation} 
+Puisque $\hat{t}_{ab}^{\dagger} = \hat{t}_{ab}$, alors 
+\begin{equation}
+        E_{\xi_1} = \hat{t}_{11}\hat{t}_{22} - |\hat{t}_{12}|^{2}
+\end{equation} 
 
 
-%Les états stationnaires de 
-%\begin{equation}
-       %\hat{H}=  \sum_{a,b}\hat{t}_{ab}\hat{c}^{\dagger}_a \hat{c}_b\, ,
-%\end{equation} 
-%sont
-%\begin{equation}
-        %| n_1, n_2, \dots, n_N \rangle = \left(  \prod_{\{i | n_i = 1\}}\hat{c}^{\dagger}_i \right)|0\rangle  
-%\end{equation} 
-%On peut montrer que c'est un état stationnaire de l'Hamiltonien 
-%\begin{align*}
-       %\hat{H}| n_1, n_2 \dots, n_N \rangle &=  
-%\end{align*}
-%On peut construire les états stationnaires de l'Hamiltonien avec l'espace de Fock
-%\begin{equation}
-        %F(H) = \bigoplus_{n=1}^{N} S_{-}H^{\otimes n}
-%\end{equation} 
-%où $S_{-}$ est un tenseur complètement antisymétrique. Par exemple, pour $N=2$ on a 
-%\begin{align*}
-        %| 0, 0 \rangle \hspace{1cm} N = 0 \\
-                %| 1, 0 \rangle  \hspace{.5cm} | 0, 1 \rangle \hspace{1cm} N = 1 \\
-        %| 1, 1 \rangle \hspace{1cm} N = 2
-%\end{align*}
-%Pour $N = 3$, on a $2^{3} = 8$ états stationnaires, soit
-%\begin{align*}
-        %| 0, 0, 0 \rangle \hspace{1cm} N = 0 \\
-        %| 1, 0, 0 \rangle  \hspace{.5cm} | 0, 1, 0 \rangle  \hspace{.5cm} | 0, 0, 1 \rangle \hspace{1cm} N = 1 \\
-        %| 1, 1, 0 \rangle  \hspace{.5cm} | 0, 1, 1 \rangle  \hspace{.5cm} | 1, 0, 1 \rangle \hspace{1cm} N = 2 \\
-        %| 1, 1, 1 \rangle \hspace{1cm} N = 3
-%\end{align*}
-%Dans la représentation choisie, un état est décrit par $N$ nombres naturels $n_j \in \{0, 1\}$, qui ne peuvent prendre que deux valeurs. Ainsi, 
-%le système avec $N$ fermions est décrit par les états
-%\begin{equation}
-        %| n_1, n_2, \dots, n_N \rangle\, , 
-%\end{equation}
-%soit une base complète de l'Hamiltonien
-%Par induction, l'Hamiltonien avec $N$ fermions possède $2^{N}$ états stationnaires, ce qui correspond à un espace de Fock ave
-\end{proof}
-
+En général, on construit les états stationnaires de l'Hamiltonien avec des superpositions d'états avec le même nombre de particules. 
+\begin{equation}
+        | \xi \rangle = \sum_{i=1}^{n} A_i  \left( \prod_{j \in S_{n}} \hat{c}_j^{\dagger}  \right)| 0\rangle
+\end{equation} 
+où $S_n$ est le groupe de permutation de $n$ éléments, et $n \in \{0, \dots, N\}$. Les énergies sont alors trouvée en appliquant ces 
+états à l'Hamiltonien, comme fait pour le cas $N=2$.
 
 
 \section{Fermions Majorana (Peskins \& Schroeder 3.4)}
